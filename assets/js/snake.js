@@ -63,7 +63,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         if (collisionDetection()) {
+            alert('Game Over!');
             return;
+            
         
         }
 
@@ -109,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
           let collideRightWall = snake[0].x > gameBoard.width - 20;
           let collideToptWall = snake[0].y < 0;
           let collideBottomWall = snake[0].y > gameBoard.height - 20;
-          return collideLeftWall || collideRightWall || collideToptWall || collideBottomWall;
+          return (collideLeftWall || collideRightWall || collideToptWall || collideBottomWall);
         }
     
 

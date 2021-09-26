@@ -4,7 +4,6 @@ let gameBoard = document.getElementById("snakeBoard");
 // set canvas to 2d drawing context
 let gameBoardCtx = gameBoard.getContext("2d");
 
-drawCanvas();
 
 /**
  * drawCanvas will be called often to "reset" the game board to allow the updated movements to then be drawn so there is no overlap of the previous frame
@@ -21,20 +20,30 @@ function drawCanvas () {
 }
 
 let snake = [
-    {x: 100, y: 100},
-    {x: 90, y: 100},
-    {x: 80, y: 100},
-    {x: 70, y: 100},
-    {x: 60, y: 100}
+    {x: 100, y: 500},
+    {x: 80, y: 500},
+    {x: 60, y: 500},
+    {x: 40, y: 500},
+    {x: 20, y: 500}
   ]
 
 /**
  * To draw the snake on the canvas
  */
 function drawSnake() {
-
+    snake.forEach(drawEachSnakeSection);
 }
 
-function drawEachSnakeSection() {
-
+function drawEachSnakeSection(snakeSection) {
+    // background color of snake section
+    gameBoardCtx.fillStyle = '#000';
+    // border of snake section
+    gameBoardCtx.strokeStyle = 'yellow'
+    // Define size of each section
+    gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, 20, 20);
+    // draw the canvas border
+    gameBoardCtx.strokeRect(snakeSection.x, snakeSection.y, 20, 20);
 }
+
+drawCanvas();
+drawSnake();

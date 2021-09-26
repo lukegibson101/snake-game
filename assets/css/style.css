@@ -1,3 +1,25 @@
+/* Remove default browser padding */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
 body {
+    background-color: whitesmoke;
+}
+
+section {
+    height:100%;
+    width: 100%;
+    background-color: orange;
+}
+
+#snake-container {
+    margin: 0 auto;
+    width: 600px;
+    height: 600px;
     background-color: red;
 }
+

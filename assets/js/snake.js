@@ -81,6 +81,18 @@ document.addEventListener("DOMContentLoaded", function () {
         snake.pop();
     }
 
+    /** Lets get the snake changing direction! */
+    function changeSnakeDirection() {
+
+    }
+
+    /**
+     * This funtion detects if the snake has collided with anything and then calls game over
+     */
+    function collisionDetection() {
+        
+    }
+
     function playGame() {
         setTimeout(function onTick() {
             drawCanvas();
@@ -91,5 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }, speed)
     }
 
+    // lets start the game
     playGame();
-})
+
+}) //end DOM loaded function

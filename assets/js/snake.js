@@ -1,5 +1,3 @@
-
-
 // wait for the DOM to finish loading before running the game
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -18,23 +16,23 @@ document.addEventListener("DOMContentLoaded", function () {
     let gameBoardCtx = gameBoard.getContext("2d");
 
     let snake = [{
-            x: 100,
+            x: gameWidth/6,
             y: snakeStart
         },
         {
-            x: 80,
+            x: gameWidth/7.5,
             y: snakeStart
         },
         {
-            x: 60,
+            x: gameWidth/10,
             y: snakeStart
         },
         {
-            x: 40,
+            x: gameWidth/15,
             y: snakeStart
         },
         {
-            x: 20,
+            x: gameWidth/30,
             y: snakeStart
         }
     ]
@@ -42,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // change to true if changiung direction
     let changingSnakeDirection = false;
     // initial horizontal movement  
-    let dx = 20;
+    let dx = gameWidth/30;
     // initial vertical movement
     let dy = 0;
     // inital speed
@@ -102,9 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // border of snake section
         gameBoardCtx.strokeStyle = 'yellow'
         // Define size of each section
-        gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, 20, 20);
+        gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, gameWidth/30, gameWidth/30);
         // draw the canvas border
-        gameBoardCtx.strokeRect(snakeSection.x, snakeSection.y, 20, 20);
+        gameBoardCtx.strokeRect(snakeSection.x, snakeSection.y, gameWidth/30, gameWidth/30);
     }
 
 
@@ -116,9 +114,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true; //if snake hits itself
           }
           let collideLeftWall = snake[0].x < 0;
-          let collideRightWall = snake[0].x > gameWidth - 15;
+          let collideRightWall = snake[0].x > gameWidth;
           let collideToptWall = snake[0].y < 0;
-          let collideBottomWall = snake[0].y > gameWidth - 15;
+          let collideBottomWall = snake[0].y > gameWidth;
           return collideLeftWall || collideRightWall || collideToptWall || collideBottomWall;
         }
     
@@ -144,49 +142,49 @@ document.addEventListener("DOMContentLoaded", function () {
         let keyPressed = event.keyCode;
 
         //define what action to take depending on snake direction
-        let leftDir = dx === -20;
-        let rightDir = dx === 20;
-        let upDir = dy === -20;
-        let downDir = dy === 20;
+        let leftDir = dx === -gameWidth/30;
+        let rightDir = dx === gameWidth/30;
+        let upDir = dy === -gameWidth/30;
+        let downDir = dy === gameWidth/30;
 
         if (keyPressed === arrowLeft && !rightDir) {
-            dx = -20;
+            dx = -gameWidth/30;
             dy = 0;
         }
 
         if (keyPressed === arrowRight && !leftDir) {
-            dx = 20;
+            dx = gameWidth/30;
             dy = 0;
         }
 
         if (keyPressed === arrowUp && !downDir) {
             dx = 0;
-            dy = -20;
+            dy = -gameWidth/30;
         }
 
         if (keyPressed === arrowDown && !upDir) {
             dx = 0;
-            dy = 20;
+            dy = gameWidth/30;
         }
 
         if (keyPressed === keyA && !rightDir) {
-            dx = -20;
+            dx = -gameWidth/30;
             dy = 0;
         }
 
         if (keyPressed === keyD && !leftDir) {
-            dx = 20;
+            dx = gameWidth/30;
             dy = 0;
         }
 
         if (keyPressed === keyW && !downDir) {
             dx = 0;
-            dy = -20;
+            dy = -gameWidth/30;
         }
 
         if (keyPressed === keyS && !upDir) {
             dx = 0;
-            dy = 20;
+            dy = gameWidth/30;
         }
     }
 

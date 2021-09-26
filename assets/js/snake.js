@@ -1,25 +1,41 @@
+
+
 // wait for the DOM to finish loading before running the game
 document.addEventListener("DOMContentLoaded", function () {
-    
+
+    // get canvas element
+    let gameBoard = document.getElementById("snakeBoard");
+    parent = gameBoard.parentNode;  // the div's parent element
+    gameWidth = parent.offsetWidth;
+    parent.style.height = gameWidth;
+    parent.style.backgroundColor = "yellow";
+    gameBoard.width = gameWidth;
+    gameBoard.height = gameWidth;
+
+    snakeStart = gameWidth - 60; // set starting position on responsive canvas
+    console.log(gameWidth);
+        // set canvas to 2d drawing context
+    let gameBoardCtx = gameBoard.getContext("2d");
+
     let snake = [{
             x: 100,
-            y: 500
+            y: snakeStart
         },
         {
             x: 80,
-            y: 500
+            y: snakeStart
         },
         {
             x: 60,
-            y: 500
+            y: snakeStart
         },
         {
             x: 40,
-            y: 500
+            y: snakeStart
         },
         {
             x: 20,
-            y: 500
+            y: snakeStart
         }
     ]
 
@@ -32,13 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // inital speed
     let speed = 300;
 
-    // get canvas element
-    let gameBoard = document.getElementById("snakeBoard");
-
-    // set canvas to 2d drawing context
-    let gameBoardCtx = gameBoard.getContext("2d");
-
-
+    
     /**
      * drawCanvas will be called often to "reset" the game board to allow the updated movements to then be drawn so there is no overlap of the previous frame
      */
@@ -48,9 +58,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // canvas border color
         gameBoardCtx.strokeStyle = '#000'
         // Draw a filled rectangle to cover the canvas
-        gameBoardCtx.fillRect(0, 0, gameBoard.width, gameBoard.height);
+        gameBoardCtx.fillRect(0, 0, gameWidth, gameWidth);
         // draw the canvas border
-        gameBoardCtx.strokeRect(0, 0, gameBoard.width, gameBoard.height);
+        gameBoardCtx.strokeRect(0, 0, gameWidth, gameWidth);
     }
 
     //Begin game
@@ -64,9 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (collisionDetection()) {
             alert('Game Over!');
-            return;
-            
-        
+            return;     
         }
 
         changingSnakeDirection = false;
@@ -108,10 +116,10 @@ document.addEventListener("DOMContentLoaded", function () {
             if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true; //if snake hits itself
           }
           let collideLeftWall = snake[0].x < 0;
-          let collideRightWall = snake[0].x > gameBoard.width - 20;
+          let collideRightWall = snake[0].x > gameWidth - 15;
           let collideToptWall = snake[0].y < 0;
-          let collideBottomWall = snake[0].y > gameBoard.height - 20;
-          return (collideLeftWall || collideRightWall || collideToptWall || collideBottomWall);
+          let collideBottomWall = snake[0].y > gameWidth - 15;
+          return collideLeftWall || collideRightWall || collideToptWall || collideBottomWall;
         }
     
 

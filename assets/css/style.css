@@ -18,8 +18,7 @@ section {
 
 #snake-container {
     margin: 0 auto;
-    width: 600px;
-    height: 600px;
+    max-width: 600px;
     background-color: red;
 }
 

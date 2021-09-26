@@ -4,6 +4,8 @@ parent = gameBoard.parentNode;  // the div's parent element
 gameWidth = parent.offsetWidth;
 parent.style.height = gameWidth;
 parent.style.backgroundColor = "yellow";
+gameBoard.width=gameWidth;
+gameBoard.height=gameWidth;
 
 // wait for the DOM to finish loading before running the game
 document.addEventListener("DOMContentLoaded", function () {
@@ -115,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
           let collideLeftWall = snake[0].x < 0;
           let collideRightWall = snake[0].x > gameWidth - dx;
           let collideToptWall = snake[0].y < 0;
-          let collideBottomWall = snake[0].y > gameWidth - dx;
+          let collideBottomWall = snake[0].y > gameWidth - dy;
           return collideLeftWall || collideRightWall || collideToptWall || collideBottomWall;
         }
     

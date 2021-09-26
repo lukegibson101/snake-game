@@ -107,6 +107,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let arrowRight = 39;
         let arrowUp = 38;
         let arrowDown = 40;
+        let keyA = 65;
+        let keyD = 68;
+        let keyW = 87;
+        let keyS = 83;
         
 
         // prevent snake from reversing
@@ -138,6 +142,26 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (keyPressed === arrowDown && !upDir) {
+            dx = 0;
+            dy = 20;
+        }
+
+        if (keyPressed === keyA && !rightDir) {
+            dx = -20;
+            dy = 0;
+        }
+
+        if (keyPressed === keyD && !leftDir) {
+            dx = 20;
+            dy = 0;
+        }
+
+        if (keyPressed === keyW && !downDir) {
+            dx = 0;
+            dy = -20;
+        }
+
+        if (keyPressed === keyS && !upDir) {
             dx = 0;
             dy = 20;
         }

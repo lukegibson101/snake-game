@@ -19,3 +19,22 @@ function drawCanvas () {
     // draw the canvas border
     gameBoardCtx.strokeRect(0, 0, gameBoard.width, gameBoard.height);
 }
+
+let snake = [
+    {x: 100, y: 100},
+    {x: 90, y: 100},
+    {x: 80, y: 100},
+    {x: 70, y: 100},
+    {x: 60, y: 100}
+  ]
+
+/**
+ * To draw the snake on the canvas
+ */
+function drawSnake() {
+
+}
+
+function drawEachSnakeSection() {
+
+}

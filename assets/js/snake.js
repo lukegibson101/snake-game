@@ -45,5 +45,15 @@ function drawEachSnakeSection(snakeSection) {
     gameBoardCtx.strokeRect(snakeSection.x, snakeSection.y, 20, 20);
 }
 
+/**
+ * Move the snake. Update snake array my adding to front of snake array in the direction of travel and removing the last item in the array
+ */
+function moveSnake () {
+    let front = {x: snake[0].x + dx, y: snake[0].y +dy}
+    snake.unshift(front);
+    snake.pop();
+}
+
+
 drawCanvas();
 drawSnake();

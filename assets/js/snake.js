@@ -61,6 +61,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function playGame() {
 
+
+        if (collisionDetection()) {
+            return;
+        
+        }
+
         changingSnakeDirection = false;
         setTimeout(function onTick() {
             drawCanvas();
@@ -96,8 +102,15 @@ document.addEventListener("DOMContentLoaded", function () {
      * This funtion detects if the snake has collided with anything and then calls game over
      */
      function collisionDetection() {
-
-     }
+        for (let i = 4; i < snake.length; i++) { //start at 4 as length of starting snake
+            if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true; //if snake hits itself
+          }
+          let collideLeftWall = snake[0].x < 0;
+          let collideRightWall = snake[0].x > gameBoard.width - 20;
+          let collideToptWall = snake[0].y < 0;
+          let collideBottomWall = snake[0].y > gameBoard.height - 20;
+          return collideLeftWall || collideRightWall || collideToptWall || collideBottomWall;
+        }
     
 
     /** Lets get the snake changing direction! */

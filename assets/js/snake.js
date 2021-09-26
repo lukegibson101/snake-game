@@ -1,14 +1,13 @@
+// get canvas element
+let gameBoard = document.getElementById("snakeBoard");
+parent = gameBoard.parentNode;  // the div's parent element
+gameWidth = parent.offsetWidth;
+parent.style.height = gameWidth;
+parent.style.backgroundColor = "yellow";
+
 // wait for the DOM to finish loading before running the game
 document.addEventListener("DOMContentLoaded", function () {
 
-    // get canvas element
-    let gameBoard = document.getElementById("snakeBoard");
-    parent = gameBoard.parentNode;  // the div's parent element
-    gameWidth = parent.offsetWidth;
-    parent.style.height = gameWidth;
-    parent.style.backgroundColor = "yellow";
-    gameBoard.width = gameWidth;
-    gameBoard.height = gameWidth;
 
     snakeStart = gameWidth - 60; // set starting position on responsive canvas
     console.log(gameWidth);
@@ -16,23 +15,23 @@ document.addEventListener("DOMContentLoaded", function () {
     let gameBoardCtx = gameBoard.getContext("2d");
 
     let snake = [{
-            x: gameWidth/6,
+            x: 100,
             y: snakeStart
         },
         {
-            x: gameWidth/7.5,
+            x: 80,
             y: snakeStart
         },
         {
-            x: gameWidth/10,
+            x: 60,
             y: snakeStart
         },
         {
-            x: gameWidth/15,
+            x: 40,
             y: snakeStart
         },
         {
-            x: gameWidth/30,
+            x: 20,
             y: snakeStart
         }
     ]
@@ -40,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // change to true if changiung direction
     let changingSnakeDirection = false;
     // initial horizontal movement  
-    let dx = gameWidth/30;
+    let dx = 20;
     // initial vertical movement
     let dy = 0;
     // inital speed
@@ -100,9 +99,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // border of snake section
         gameBoardCtx.strokeStyle = 'yellow'
         // Define size of each section
-        gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, gameWidth/30, gameWidth/30);
+        gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, 20, 20);
         // draw the canvas border
-        gameBoardCtx.strokeRect(snakeSection.x, snakeSection.y, gameWidth/30, gameWidth/30);
+        gameBoardCtx.strokeRect(snakeSection.x, snakeSection.y, 20, 20);
     }
 
 
@@ -114,9 +113,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true; //if snake hits itself
           }
           let collideLeftWall = snake[0].x < 0;
-          let collideRightWall = snake[0].x > gameWidth;
+          let collideRightWall = snake[0].x > gameWidth - dx;
           let collideToptWall = snake[0].y < 0;
-          let collideBottomWall = snake[0].y > gameWidth;
+          let collideBottomWall = snake[0].y > gameWidth - dx;
           return collideLeftWall || collideRightWall || collideToptWall || collideBottomWall;
         }
     
@@ -142,49 +141,49 @@ document.addEventListener("DOMContentLoaded", function () {
         let keyPressed = event.keyCode;
 
         //define what action to take depending on snake direction
-        let leftDir = dx === -gameWidth/30;
-        let rightDir = dx === gameWidth/30;
-        let upDir = dy === -gameWidth/30;
-        let downDir = dy === gameWidth/30;
+        let leftDir = dx === -20;
+        let rightDir = dx === 20;
+        let upDir = dy === -20;
+        let downDir = dy === 20;
 
         if (keyPressed === arrowLeft && !rightDir) {
-            dx = -gameWidth/30;
+            dx = -20;
             dy = 0;
         }
 
         if (keyPressed === arrowRight && !leftDir) {
-            dx = gameWidth/30;
+            dx = 20;
             dy = 0;
         }
 
         if (keyPressed === arrowUp && !downDir) {
             dx = 0;
-            dy = -gameWidth/30;
+            dy = -20;
         }
 
         if (keyPressed === arrowDown && !upDir) {
             dx = 0;
-            dy = gameWidth/30;
+            dy = 20;
         }
 
         if (keyPressed === keyA && !rightDir) {
-            dx = -gameWidth/30;
+            dx = -20;
             dy = 0;
         }
 
         if (keyPressed === keyD && !leftDir) {
-            dx = gameWidth/30;
+            dx = 20;
             dy = 0;
         }
 
         if (keyPressed === keyW && !downDir) {
             dx = 0;
-            dy = -gameWidth/30;
+            dy = -20;
         }
 
         if (keyPressed === keyS && !upDir) {
             dx = 0;
-            dy = gameWidth/30;
+            dy = 20;
         }
     }
 

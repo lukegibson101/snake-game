@@ -27,6 +27,14 @@ let snake = [
     {x: 20, y: 500}
   ]
 
+
+// horizontal movement  
+let dx = 20;
+// vertical movement
+let dy = 0;
+// inital speed
+let speed = 200;
+
 /**
  * To draw the snake on the canvas
  */
@@ -54,6 +62,14 @@ function moveSnake () {
     snake.pop();
 }
 
+function playGame () {
+    setTimeout(function onTick() {
+    drawCanvas();
+    moveSnake();
+    drawSnake();
+    // call again to refresh
+    playGame();
+    }, speed)
+}
 
-drawCanvas();
-drawSnake();
+playGame();

@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         pixelSize = 20;
     }
 
-    snakeStart = gameBoard.width - 60; // set starting position on responsive canvas
+    snakeStart = gameBoard.width - (gameBoard.width / 5); // set starting position on responsive canvas
     console.log(gameBoard.width);
     // set canvas to 2d drawing context
     let gameBoardCtx = gameBoard.getContext("2d");

@@ -1,32 +1,30 @@
-
-
 // wait for the DOM to finish loading before running the game
 document.addEventListener("DOMContentLoaded", function () {
 
     // get canvas element
-let gameBoard = document.getElementById("snakeBoard");
-parent = gameBoard.parentNode;  // the div's parent element
-gameWidth = parent.offsetWidth;
-parent.style.height = gameWidth;
-parent.style.backgroundColor = "yellow";
-gameBoard.width=gameWidth;
-gameBoard.height=gameWidth;
+    let gameBoard = document.getElementById("snakeBoard");
+    parent = gameBoard.parentNode; // the div's parent element
+    gameWidth = parent.offsetWidth;
+    parent.style.height = gameWidth;
+    parent.style.backgroundColor = "yellow";
+    gameBoard.width = gameWidth;
+    gameBoard.height = gameWidth;
 
-// add responsive sized canvas
-if (gameWidth < 400) {
-    gameBoard.width = 300;
-    gameBoard.height = 300;
-} else if (gameWidth < 500) {
-    gameBoard.width = 300;
-    gameBoard.height = 300;
-} else if (gameWidth < 600) {
-    gameBoard.width = 500;
-    gameBoard.height = 500;
-}
+    // add responsive sized canvas
+    if (gameWidth < 400) {
+        gameBoard.width = 300;
+        gameBoard.height = 300;
+    } else if (gameWidth < 500) {
+        gameBoard.width = 300;
+        gameBoard.height = 300;
+    } else if (gameWidth < 600) {
+        gameBoard.width = 500;
+        gameBoard.height = 500;
+    }
 
     snakeStart = gameBoard.width - 60; // set starting position on responsive canvas
     console.log(gameBoard.width);
-        // set canvas to 2d drawing context
+    // set canvas to 2d drawing context
     let gameBoardCtx = gameBoard.getContext("2d");
 
     let snake = [{
@@ -62,7 +60,16 @@ if (gameWidth < 400) {
     // inital speed
     let speed = 300;
 
-    
+    //Begin game
+    playGame();
+
+    //generate food
+    generateFood();
+
+    // listen for keypress to change direction
+    document.addEventListener("keydown", changeSnakeDirection);
+
+
     /**
      * drawCanvas will be called often to "reset" the game board to allow the updated movements to then be drawn so there is no overlap of the previous frame
      */
@@ -77,21 +84,10 @@ if (gameWidth < 400) {
         gameBoardCtx.strokeRect(0, 0, gameBoard.width, gameBoard.height);
     }
 
-    //Begin game
-    playGame();
-
-    //generate food
-    generateFood();
-
-    // listen for keypress to change direction
-    document.addEventListener("keydown", changeSnakeDirection);
-
     function playGame() {
-
-
         if (collisionDetection()) {
             alert('Game Over!');
-            return;     
+            return;
         }
 
         changingSnakeDirection = false;
@@ -104,8 +100,6 @@ if (gameWidth < 400) {
             playGame();
         }, speed)
     }
-
-
 
     /**
      * To draw the snake on the canvas
@@ -125,21 +119,19 @@ if (gameWidth < 400) {
         gameBoardCtx.strokeRect(snakeSection.x, snakeSection.y, 20, 20);
     }
 
-
-     /**
+    /**
      * This funtion detects if the snake has collided with anything and then calls game over
      */
-     function collisionDetection() {
+    function collisionDetection() {
         for (let i = 4; i < snake.length; i++) { //start at 4 as length of starting snake
             if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true; //if snake hits itself
-          }
-          let collideLeftWall = snake[0].x < 0;
-          let collideRightWall = snake[0].x > gameBoard.width - dx;
-          let collideToptWall = snake[0].y < 0;
-          let collideBottomWall = snake[0].y > gameBoard.width - dy;
-          return collideLeftWall || collideRightWall || collideToptWall || collideBottomWall;
         }
-    
+        let collideLeftWall = snake[0].x < 0;
+        let collideRightWall = snake[0].x > gameBoard.width - dx;
+        let collideToptWall = snake[0].y < 0;
+        let collideBottomWall = snake[0].y > gameBoard.width - dy;
+        return collideLeftWall || collideRightWall || collideToptWall || collideBottomWall;
+    }
 
     /** Lets get the snake changing direction! */
     function changeSnakeDirection(event) {
@@ -152,7 +144,6 @@ if (gameWidth < 400) {
         let keyD = 68;
         let keyW = 87;
         let keyS = 83;
-        
 
         // prevent snake from reversing
         if (changingSnakeDirection) return;
@@ -211,51 +202,49 @@ if (gameWidth < 400) {
     /**
      * Move the snake. Update snake array my adding to front of snake array in the direction of travel and removing the last item in the array
      */
-     function moveSnake() {
+    function moveSnake() {
         let front = {
             x: snake[0].x + dx,
             y: snake[0].y + dy
         }
         snake.unshift(front);
         let snakeEaten = snake[0].x === foodX && snake[0].y === foodY; // chech snake head has just hit food
-        if (snakeEaten) { 
+        if (snakeEaten) {
             generateFood(); //generate a new food location
             currentScore += 20;
             document.getElementById('newScore').innerHTML = currentScore;
         } else { // remove the last part of the body (if has eaten the snake will now grow in size)
-        snake.pop();
+            snake.pop();
         }
     }
 
     /**
      * Generate food for the snake to eat where min is 0 and max is width or height of the canvas (which may change depending on screen size)
      */
-   function generateFoodRandom (min, max) {
-    return Math.round((Math.random() * (max - min) + min) / 20) * 20;
-   }
+    function generateFoodRandom(min, max) {
+        return Math.round((Math.random() * (max - min) + min) / 20) * 20;
+    }
 
-   /**
-    * use the random food generator, check its not actually where the snake is and assign a co-ordinate
-    */
-   function generateFood () {
-    foodX = generateFoodRandom (0, gameBoard.width - 20); // x co-ordinate
-    foodY = generateFoodRandom (0, gameBoard.width - 20); // y co-ordinate
-    snake.forEach(function hasSnakeEaten(part) {
-        let snakeEaten = part.x == foodX && part.y == foodY;
-        if (snakeEaten) generateFood();
-    });
-   }
+    /**
+     * use the random food generator, check its not actually where the snake is and assign a co-ordinate
+     */
+    function generateFood() {
+        foodX = generateFoodRandom(0, gameBoard.width - 20); // x co-ordinate
+        foodY = generateFoodRandom(0, gameBoard.width - 20); // y co-ordinate
+        snake.forEach(function hasSnakeEaten(part) {
+            let snakeEaten = part.x == foodX && part.y == foodY;
+            if (snakeEaten) generateFood();
+        });
+    }
 
-   /**
-    * Take generated co-ordinates and draw food to the canvas
-    */
-  function drawFood () {
-    gameBoardCtx.fillStyle = 'red';
-    gameBoardCtx.strokeStyle = 'black';
-    gameBoardCtx.fillRect(foodX, foodY, 20, 20);
-    gameBoardCtx.strokeRect(foodX, foodY, 20, 20);
-}
-
-   
+    /**
+     * Take generated co-ordinates and draw food to the canvas
+     */
+    function drawFood() {
+        gameBoardCtx.fillStyle = 'red';
+        gameBoardCtx.strokeStyle = 'black';
+        gameBoardCtx.fillRect(foodX, foodY, 20, 20);
+        gameBoardCtx.strokeRect(foodX, foodY, 20, 20);
+    }
 
 }) //end DOM loaded function

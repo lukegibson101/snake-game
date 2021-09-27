@@ -27,6 +27,10 @@ section {
     max-width: 600px;
 }
 
+#game-message {
+    height: 2rem;
+}
+
 .btnControls {
     border-radius: 50%;
     background-color: #c0c0c0;
@@ -38,6 +42,7 @@ section {
 
 #game-message {
     text-align: center;
+    color: #990000;
 }
 
 .pause {
@@ -50,4 +55,13 @@ section {
         position: relative;
         left: 2rem;
    
+}
+
+.float-right {
+    float: right;
+    padding-right: 1rem;
+}
+
+#scores {
+    padding-left: 1rem;
 }

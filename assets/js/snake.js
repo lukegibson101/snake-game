@@ -59,6 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let dy = 0;
     // inital speed
     let speed = 200;
+    // level
+    let level = 1;
     // how many food eaten
     let eatCount = 0;
     // set pause
@@ -282,9 +284,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("game-message").textContent = "";
                 if (eatCount % 5 === 0 && speed > 50) {
                     speed -= 10;
-                    document.getElementById("game-message").textContent = "Level Up! Speed Increased!";
+                    ++level;
+                    document.getElementById("game-message").innerHTML = `<strong>Level Up! Speed Increased!</strong>`;
                 }
                 document.getElementById('newScore').innerHTML = currentScore;
+                document.getElementById('newLevel').innerHTML = level;
+
+                
             } else { // remove the last part of the body (if has eaten the snake will now grow in size)
                 snake.pop();
             }

@@ -71,6 +71,22 @@ document.addEventListener("DOMContentLoaded", function () {
     startGame = false;
     let beginGame = document.getElementById('startGame');
     beginGame.addEventListener('click', startGameNow);
+    // listen for keypress to start game
+    document.addEventListener("keydown", startGameWithSpacebar);
+    
+    function startGameWithSpacebar(event) {
+        let spaceBar = 32;
+
+         // get the code for the pressed key
+        let SpacePressed = event.keyCode;
+
+        if (startGame === false && SpacePressed === spaceBar) {
+            startGame = true;
+            pause = true;
+            beginGame.style = "display:none;"
+        }
+    }
+
 
     function startGameNow() {
         if (startGame === false) {
@@ -80,13 +96,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+   
+
     //Begin game
     playGame();
     //generate food
     generateFood();
 
-    // listen for keypress to change direction
-    document.addEventListener("keydown", changeSnakeDirection);
+     // listen for keypress to change direction
+     document.addEventListener("keydown", changeSnakeDirection);
 
 
     /**
@@ -220,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (keyPressed === spaceBar) {
-                if (pause === false) {
+                 if (pause === false) {
                     pause = true;
                 } else {
                     pause = false;

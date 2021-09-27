@@ -78,6 +78,9 @@ if (gameWidth < 400) {
     //Begin game
     playGame();
 
+    //generate food
+    generateFood();
+
     // listen for keypress to change direction
     document.addEventListener("keydown", changeSnakeDirection);
 
@@ -92,6 +95,7 @@ if (gameWidth < 400) {
         changingSnakeDirection = false;
         setTimeout(function onTick() {
             drawCanvas();
+            drawFood();
             moveSnake();
             drawSnake();
             // call again to refresh
@@ -233,6 +237,16 @@ if (gameWidth < 400) {
     });
    }
 
-   console.log(generateFood);
+   /**
+    * Take generated co-ordinates and draw food to the canvas
+    */
+  function drawFood () {
+    gameBoardCtx.fillStyle = 'red';
+    gameBoardCtx.strokeStyle = 'black';
+    gameBoardCtx.fillRect(foodX, foodY, 20, 20);
+    gameBoardCtx.strokeRect(foodX, foodY, 20, 20);
+}
+
+   
 
 }) //end DOM loaded function

@@ -304,7 +304,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (this.getAttribute("id") === "pause") {
                 if (pause === false) {
                     pause = true;
-                    document.getElementById('paused').style.display = "block";
+                    document.getElementById('paused').style.display = "inline-block";
 
                 } else {
                     pause = false;

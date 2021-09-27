@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(gameBoard.width);
     // set canvas to 2d drawing context
     let gameBoardCtx = gameBoard.getContext("2d");
-    
+
 
     let snake = [{
             x: pixelSize * 5,
@@ -77,11 +77,11 @@ document.addEventListener("DOMContentLoaded", function () {
     beginGame.addEventListener('click', startGameNow);
     // listen for keypress to start game
     document.addEventListener("keydown", startGameWithSpacebar);
-    
+
     function startGameWithSpacebar(event) {
         let spaceBar = 32;
 
-         // get the code for the pressed key
+        // get the code for the pressed key
         let SpacePressed = event.keyCode;
 
         if (startGame === false && SpacePressed === spaceBar) {
@@ -100,15 +100,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-   
+
 
     //Begin game
     playGame();
     //generate food
     generateFood();
 
-     // listen for keypress to change direction
-     document.addEventListener("keydown", changeSnakeDirection);
+    // listen for keypress to change direction
+    document.addEventListener("keydown", changeSnakeDirection);
 
 
     /**
@@ -127,10 +127,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function playGame() {
         if (collisionDetection()) {
-            alert('Check');
-            document.location.reload();
+            Swal.fire({
+                position: 'top',
+                icon: 'warning',
+                title: `Game Over! You reached level ${level} with a score of ${currentScore}. Game reloading...`,
+                timerProgressBar: true,
+                showConfirmButton: false,
+                timer: 2000
+                
+            })
+
+
+            setInterval('document.location.reload();', 2000);
+
+
             return;
-            
+
         }
 
         changingSnakeDirection = false;
@@ -244,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (keyPressed === spaceBar) {
-                 if (pause === false) {
+                if (pause === false) {
                     pause = true;
                 } else {
                     pause = false;

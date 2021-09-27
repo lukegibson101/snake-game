@@ -22,4 +22,6 @@ section {
     background-color: red;
 }
 
-
+#touch-controls {
+    font-size:3rem;
+}

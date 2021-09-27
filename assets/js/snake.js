@@ -3,11 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // get canvas element
     let gameBoard = document.getElementById("snakeBoard");
+    // let startButton = document.getElementById('startGame');
     parent = gameBoard.parentNode; // the div's parent element
     gameWidth = parent.offsetWidth; // get width and height for canvas from parent element width (Will use this to manage responsiveness for different screen sizes)
-
-
-    // add responsive sized canvas
+    
+    // add responsive sized canvas and start game button
     if (gameWidth < 500) { // smaller screens
         gameBoard.width = 300;
         gameBoard.height = 300;
@@ -64,15 +64,26 @@ document.addEventListener("DOMContentLoaded", function () {
     // how many food eaten
     let eatCount = 0;
     // set pause
-    let pause = false;
+    let pause = true;
     pauseDx = 0;
     pauseDy = 0;
+    // start game
+    startGame = false;
+    let beginGame = document.getElementById('startGame');
+    beginGame.addEventListener('click', startGameNow);
 
-    //Begin game
-    playGame();
+    function startGameNow () {
+        if (startGame === false) {
+            startGame = true;
+            pause = false;
+            beginGame.style = "display:none;"
+        } 
+    }
 
-    //generate food
-    generateFood();
+        //Begin game
+        playGame();
+        //generate food
+        generateFood();
 
     // listen for keypress to change direction
     document.addEventListener("keydown", changeSnakeDirection);
@@ -270,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * Move the snake. Update snake array my adding to front of snake array in the direction of travel and removing the last item in the array
      */
     function moveSnake() {
-        if (pause === false) {
+        if (pause === false && startGame == true) {
             let front = {
                 x: snake[0].x + dx,
                 y: snake[0].y + dy

@@ -243,8 +243,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function drawFood() {
         gameBoardCtx.fillStyle = 'red';
         gameBoardCtx.strokeStyle = 'black';
-        gameBoardCtx.fillRect(foodX, foodY, pixelSize, pixelSize);
-        gameBoardCtx.strokeRect(foodX, foodY, pixelSize, pixelSize);
+        gameBoardCtx.beginPath();
+        gameBoardCtx.arc(foodX+(pixelSize / 2),foodY+(pixelSize / 2),(pixelSize / 2),0,2*Math.PI);
+        gameBoardCtx.fill();
+        gameBoardCtx.stroke();
+
+        
     }
 
 }) //end DOM loaded function

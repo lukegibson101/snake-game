@@ -93,6 +93,7 @@ section {
 @media screen and (max-width: 599px) {
 
     #startGame, #paused {
+        font-size:7.5rem;
         width: 450px;
         height: 450px;
     }
@@ -101,6 +102,7 @@ section {
 @media screen and (max-width: 499px) {
 
     #startGame, #paused {
+        font-size:5rem;
         width: 300px;
         height: 300px;
     }

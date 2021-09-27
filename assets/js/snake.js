@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (keyPressed === spaceBar) {
                 if (pause === false) {
                     pause = true;
-                    document.getElementById('paused').style.display = "block";
+                    document.getElementById('paused').style.display = "inline-block";
 
                 } else {
                     pause = false;

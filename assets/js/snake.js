@@ -246,6 +246,14 @@ document.addEventListener("DOMContentLoaded", function () {
             dy = pixelSize;
         }
 
+        if (this.getAttribute("id") === "pause") {
+            if (pause === false) {
+                pause = true;
+            } else {
+                pause = false;
+            }
+        }
+
     }
 
     let touchControls = document.getElementsByClassName('btnControls');

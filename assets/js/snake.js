@@ -219,9 +219,20 @@ if (gameWidth < 400) {
      */
    function generateFoodRandom (min, max) {
     return Math.round((Math.random() * (max - min) + min) / 20) * 20;
-    
    }
 
-     console.log(generateFoodRandom(0, 600));
+   /**
+    * use the random food generator, check its not actually where the snake is and assign a co-ordinate
+    */
+   function generateFood () {
+    foodX = generateFoodRandom (0, gameBoard.width - 20); // x co-ordinate
+    foodY = generateFoodRandom (0, gameBoard.width - 20); // y co-ordinate
+    snake.forEach(function hasSnakeEaten(part) {
+        let snakeEaten = part.x == foodX && part.y == foodY;
+        if (snakeEaten) generateFood();
+    });
+   }
+
+   console.log(generateFood);
 
 }) //end DOM loaded function

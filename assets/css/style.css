@@ -36,3 +36,18 @@ section {
     font-size:2rem;
 }
 
+#game-message {
+    text-align: center;
+}
+
+.pause {
+    position: relative;
+    left: 2rem;
+}
+
+.left {
+    
+        position: relative;
+        left: 2rem;
+   
+}

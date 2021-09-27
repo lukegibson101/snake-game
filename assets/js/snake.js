@@ -279,8 +279,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 generateFood(); //generate a new food location
                 currentScore += 20; // increase score
                 ++eatCount;
+                document.getElementById("game-message").textContent = "";
                 if (eatCount % 5 === 0 && speed > 50) {
                     speed -= 10;
+                    document.getElementById("game-message").textContent = "Level Up! Speed Increased!";
                 }
                 document.getElementById('newScore').innerHTML = currentScore;
             } else { // remove the last part of the body (if has eaten the snake will now grow in size)

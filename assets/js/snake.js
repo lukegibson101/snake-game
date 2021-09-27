@@ -58,7 +58,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // initial vertical movement
     let dy = 0;
     // inital speed
-    let speed = 300;
+    let speed = 200;
+    // how many food eaten
+    let eatCount = 0;
 
     //Begin game
     playGame();
@@ -253,6 +255,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (snakeEaten) {
             generateFood(); //generate a new food location
             currentScore += 20; // increase score
+            ++eatCount;
+            if (eatCount % 5 === 0 && speed > 50) {
+                speed -= 10;
+            }
             document.getElementById('newScore').innerHTML = currentScore;
         } else { // remove the last part of the body (if has eaten the snake will now grow in size)
             snake.pop();

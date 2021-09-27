@@ -51,6 +51,8 @@ if (gameWidth < 400) {
         }
     ]
 
+    let currentScore = 0;
+
     // change to true if changiung direction
     let changingSnakeDirection = false;
     // initial horizontal movement  
@@ -218,6 +220,8 @@ if (gameWidth < 400) {
         let snakeEaten = snake[0].x === foodX && snake[0].y === foodY; // chech snake head has just hit food
         if (snakeEaten) { 
             generateFood(); //generate a new food location
+            currentScore += 20;
+            document.getElementById('newScore').innerHTML = currentScore;
         } else { // remove the last part of the body (if has eaten the snake will now grow in size)
         snake.pop();
         }

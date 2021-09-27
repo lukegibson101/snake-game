@@ -17,11 +17,11 @@ if (gameWidth < 400) {
     gameBoard.width = 300;
     gameBoard.height = 300;
 } else if (gameWidth < 500) {
-    gameBoard.width = 400;
-    gameBoard.height = 400;
-} else if (gameWidth < 600) {
     gameBoard.width = 300;
     gameBoard.height = 300;
+} else if (gameWidth < 600) {
+    gameBoard.width = 500;
+    gameBoard.height = 500;
 }
 
     snakeStart = gameBoard.width - 60; // set starting position on responsive canvas

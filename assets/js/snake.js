@@ -4,22 +4,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // get canvas element
     let gameBoard = document.getElementById("snakeBoard");
     parent = gameBoard.parentNode; // the div's parent element
-    gameWidth = parent.offsetWidth;
-    parent.style.height = gameWidth;
+    gameWidth = parent.offsetWidth; // get width and height for canvas from parent element width (Will use this to manage responsiveness for different screen sizes)
     parent.style.backgroundColor = "yellow";
-    gameBoard.width = gameWidth;
-    gameBoard.height = gameWidth;
-
+    
     // add responsive sized canvas
-    if (gameWidth < 400) {
+    if (gameWidth < 500) { // smaller screens
         gameBoard.width = 300;
         gameBoard.height = 300;
-    } else if (gameWidth < 500) {
-        gameBoard.width = 300;
-        gameBoard.height = 300;
-    } else if (gameWidth < 600) {
-        gameBoard.width = 500;
-        gameBoard.height = 500;
+        pixelSize = 10; // defines "pixel size" Size of snake, size of each movememnt, size of each tile.
+    } else if (gameWidth < 600) { // small tablets
+        gameBoard.width = 450;
+        gameBoard.height = 450; 
+        pixelSize = 15;
+    } else { // everything elsse
+        gameBoard.width = gameWidth;
+        gameBoard.height = gameWidth;
+        pixelSize = 20;
     }
 
     snakeStart = gameBoard.width - 60; // set starting position on responsive canvas
@@ -28,23 +28,23 @@ document.addEventListener("DOMContentLoaded", function () {
     let gameBoardCtx = gameBoard.getContext("2d");
 
     let snake = [{
-            x: 100,
+            x: pixelSize * 5,
             y: snakeStart
         },
         {
-            x: 80,
+            x: pixelSize * 4,
             y: snakeStart
         },
         {
-            x: 60,
+            x: pixelSize * 3,
             y: snakeStart
         },
         {
-            x: 40,
+            x: pixelSize * 2,
             y: snakeStart
         },
         {
-            x: 20,
+            x: pixelSize,
             y: snakeStart
         }
     ]
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // change to true if changiung direction
     let changingSnakeDirection = false;
     // initial horizontal movement  
-    let dx = 20;
+    let dx = pixelSize;
     // initial vertical movement
     let dy = 0;
     // inital speed
@@ -114,9 +114,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // border of snake section
         gameBoardCtx.strokeStyle = 'yellow'
         // Define size of each section
-        gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, 20, 20);
+        gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, pixelSize, pixelSize);
         // draw the canvas border
-        gameBoardCtx.strokeRect(snakeSection.x, snakeSection.y, 20, 20);
+        gameBoardCtx.strokeRect(snakeSection.x, snakeSection.y, pixelSize, pixelSize);
     }
 
     /**
@@ -153,49 +153,49 @@ document.addEventListener("DOMContentLoaded", function () {
         let keyPressed = event.keyCode;
 
         //define what action to take depending on snake direction
-        let leftDir = dx === -20;
-        let rightDir = dx === 20;
-        let upDir = dy === -20;
-        let downDir = dy === 20;
+        let leftDir = dx === -pixelSize;
+        let rightDir = dx === pixelSize;
+        let upDir = dy === -pixelSize;
+        let downDir = dy === pixelSize;
 
         if (keyPressed === arrowLeft && !rightDir) {
-            dx = -20;
+            dx = -pixelSize;
             dy = 0;
         }
 
         if (keyPressed === arrowRight && !leftDir) {
-            dx = 20;
+            dx = pixelSize;
             dy = 0;
         }
 
         if (keyPressed === arrowUp && !downDir) {
             dx = 0;
-            dy = -20;
+            dy = -pixelSize;
         }
 
         if (keyPressed === arrowDown && !upDir) {
             dx = 0;
-            dy = 20;
+            dy = pixelSize;
         }
 
         if (keyPressed === keyA && !rightDir) {
-            dx = -20;
+            dx = -pixelSize;
             dy = 0;
         }
 
         if (keyPressed === keyD && !leftDir) {
-            dx = 20;
+            dx = pixelSize;
             dy = 0;
         }
 
         if (keyPressed === keyW && !downDir) {
             dx = 0;
-            dy = -20;
+            dy = -pixelSize;
         }
 
         if (keyPressed === keyS && !upDir) {
             dx = 0;
-            dy = 20;
+            dy = pixelSize;
         }
     }
 
@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let snakeEaten = snake[0].x === foodX && snake[0].y === foodY; // chech snake head has just hit food
         if (snakeEaten) {
             generateFood(); //generate a new food location
-            currentScore += 20;
+            currentScore += 20; // increase score
             document.getElementById('newScore').innerHTML = currentScore;
         } else { // remove the last part of the body (if has eaten the snake will now grow in size)
             snake.pop();
@@ -222,15 +222,15 @@ document.addEventListener("DOMContentLoaded", function () {
      * Generate food for the snake to eat where min is 0 and max is width or height of the canvas (which may change depending on screen size)
      */
     function generateFoodRandom(min, max) {
-        return Math.round((Math.random() * (max - min) + min) / 20) * 20;
+        return Math.round((Math.random() * (max - min) + min) / pixelSize) * pixelSize;
     }
 
     /**
      * use the random food generator, check its not actually where the snake is and assign a co-ordinate
      */
     function generateFood() {
-        foodX = generateFoodRandom(0, gameBoard.width - 20); // x co-ordinate
-        foodY = generateFoodRandom(0, gameBoard.width - 20); // y co-ordinate
+        foodX = generateFoodRandom(0, gameBoard.width - pixelSize); // x co-ordinate
+        foodY = generateFoodRandom(0, gameBoard.width - pixelSize); // y co-ordinate
         snake.forEach(function hasSnakeEaten(part) {
             let snakeEaten = part.x == foodX && part.y == foodY;
             if (snakeEaten) generateFood();
@@ -243,8 +243,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function drawFood() {
         gameBoardCtx.fillStyle = 'red';
         gameBoardCtx.strokeStyle = 'black';
-        gameBoardCtx.fillRect(foodX, foodY, 20, 20);
-        gameBoardCtx.strokeRect(foodX, foodY, 20, 20);
+        gameBoardCtx.fillRect(foodX, foodY, pixelSize, pixelSize);
+        gameBoardCtx.strokeRect(foodX, foodY, pixelSize, pixelSize);
     }
 
 }) //end DOM loaded function

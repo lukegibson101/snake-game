@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(gameBoard.width);
     // set canvas to 2d drawing context
     let gameBoardCtx = gameBoard.getContext("2d");
+    
 
     let snake = [{
             x: pixelSize * 5,
@@ -49,8 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     ]
 
-    let currentScore = 0;
 
+    let currentScore = 0;
     // change to true if changiung direction
     let changingSnakeDirection = false;
     // initial horizontal movement  
@@ -69,6 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
     pauseDy = 0;
     // start game
     startGame = false;
+
+
+
     let beginGame = document.getElementById('startGame');
     beginGame.addEventListener('click', startGameNow);
     // listen for keypress to start game
@@ -123,8 +127,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function playGame() {
         if (collisionDetection()) {
-            alert('Game Over!');
+            alert('Check');
+            document.location.reload();
             return;
+            
         }
 
         changingSnakeDirection = false;

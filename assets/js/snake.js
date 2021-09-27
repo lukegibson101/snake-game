@@ -214,8 +214,14 @@ if (gameWidth < 400) {
         snake.pop();
     }
 
-   
+    /**
+     * Generate food for the snake to eat where min is 0 and max is width or height of the canvas (which may change depending on screen size)
+     */
+   function generateFoodRandom (min, max) {
+    return Math.round((Math.random() * (max - min) + min) / 20) * 20;
+    
+   }
 
-     
+     console.log(generateFoodRandom(0, 600));
 
 }) //end DOM loaded function

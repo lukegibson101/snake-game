@@ -1,4 +1,9 @@
-// get canvas element
+
+
+// wait for the DOM to finish loading before running the game
+document.addEventListener("DOMContentLoaded", function () {
+
+    // get canvas element
 let gameBoard = document.getElementById("snakeBoard");
 parent = gameBoard.parentNode;  // the div's parent element
 gameWidth = parent.offsetWidth;
@@ -7,12 +12,20 @@ parent.style.backgroundColor = "yellow";
 gameBoard.width=gameWidth;
 gameBoard.height=gameWidth;
 
-// wait for the DOM to finish loading before running the game
-document.addEventListener("DOMContentLoaded", function () {
+// add responsive sized canvas
+if (gameWidth < 400) {
+    gameBoard.width = 300;
+    gameBoard.height = 300;
+} else if (gameWidth < 500) {
+    gameBoard.width = 400;
+    gameBoard.height = 400;
+} else if (gameWidth < 600) {
+    gameBoard.width = 300;
+    gameBoard.height = 300;
+}
 
-
-    snakeStart = gameWidth - 60; // set starting position on responsive canvas
-    console.log(gameWidth);
+    snakeStart = gameBoard.width - 60; // set starting position on responsive canvas
+    console.log(gameBoard.width);
         // set canvas to 2d drawing context
     let gameBoardCtx = gameBoard.getContext("2d");
 
@@ -57,9 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // canvas border color
         gameBoardCtx.strokeStyle = '#000'
         // Draw a filled rectangle to cover the canvas
-        gameBoardCtx.fillRect(0, 0, gameWidth, gameWidth);
+        gameBoardCtx.fillRect(0, 0, gameBoard.width, gameBoard.height);
         // draw the canvas border
-        gameBoardCtx.strokeRect(0, 0, gameWidth, gameWidth);
+        gameBoardCtx.strokeRect(0, 0, gameBoard.width, gameBoard.height);
     }
 
     //Begin game
@@ -115,9 +128,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true; //if snake hits itself
           }
           let collideLeftWall = snake[0].x < 0;
-          let collideRightWall = snake[0].x > gameWidth - dx;
+          let collideRightWall = snake[0].x > gameBoard.width - dx;
           let collideToptWall = snake[0].y < 0;
-          let collideBottomWall = snake[0].y > gameWidth - dy;
+          let collideBottomWall = snake[0].y > gameBoard.width - dy;
           return collideLeftWall || collideRightWall || collideToptWall || collideBottomWall;
         }
     

@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let gameBoard = document.getElementById("snakeBoard");
     parent = gameBoard.parentNode; // the div's parent element
     gameWidth = parent.offsetWidth; // get width and height for canvas from parent element width (Will use this to manage responsiveness for different screen sizes)
-    parent.style.backgroundColor = "yellow";
+   
     
     // add responsive sized canvas
     if (gameWidth < 500) { // smaller screens

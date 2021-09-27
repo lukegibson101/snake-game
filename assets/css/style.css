@@ -13,16 +13,24 @@ body {
 section {
     height:100%;
     width: 100%;
-    background-color: orange;
+    
 }
 
 #snake-container {
     margin: 0 auto;
     max-width: 600px;
-    background-color: red;
 }
 
 #touch-controls {
-    font-size: 3rem;
-    
+    padding-top: 2rem; 
 }
+
+.btn {
+    border-radius: 50%;
+    background-color: #c0c0c0;
+    border: 4px solid;
+    width: 3rem;
+    height: 3rem;
+    font-size:2rem;
+}
+

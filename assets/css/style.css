@@ -75,6 +75,10 @@ section {
     font-weight: 700;
 }
 
+#play-now {
+    font-size:2rem;
+}
+
 @media screen and (max-width: 599px) {
 
     #startGame {

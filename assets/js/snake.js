@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let gameBoard = document.getElementById("snakeBoard");
     parent = gameBoard.parentNode; // the div's parent element
     gameWidth = parent.offsetWidth; // get width and height for canvas from parent element width (Will use this to manage responsiveness for different screen sizes)
-   
-    
+
+
     // add responsive sized canvas
     if (gameWidth < 500) { // smaller screens
         gameBoard.width = 300;
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         pixelSize = 10; // defines "pixel size" Size of snake, size of each movememnt, size of each tile.
     } else if (gameWidth < 600) { // small tablets
         gameBoard.width = 450;
-        gameBoard.height = 450; 
+        gameBoard.height = 450;
         pixelSize = 15;
     } else { // everything elsse
         gameBoard.width = gameWidth;
@@ -199,6 +199,47 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function touchControlsClicked() {
+        // prevent snake from reversing
+        if (changingSnakeDirection) return;
+        changingSnakeDirection = true;
+
+        //define what action to take depending on snake direction
+        let leftDir = dx === -pixelSize;
+        let rightDir = dx === pixelSize;
+        let upDir = dy === -pixelSize;
+        let downDir = dy === pixelSize;
+
+        if (this.getAttribute("id") === "btn-left" && !rightDir) {
+            dx = -pixelSize;
+            dy = 0;
+        }
+
+        if (this.getAttribute("id") === "btn-right" && !leftDir) {
+            dx = pixelSize;
+            dy = 0;
+        }
+
+        if (this.getAttribute("id") === "btn-up" && !downDir) {
+            dx = 0;
+            dy = -pixelSize;
+        }
+
+        if (this.getAttribute("id") === "btn-down" && !upDir) {
+            dx = 0;
+            dy = pixelSize;
+        }
+        
+    }
+      
+    let touchControls = document.getElementsByClassName('btnControls');
+    
+    for (let i = 0; i < touchControls.length; i++) {
+        touchControls[i].addEventListener('click', touchControlsClicked);
+    }
+
+
+
     /**
      * Move the snake. Update snake array my adding to front of snake array in the direction of travel and removing the last item in the array
      */
@@ -244,11 +285,11 @@ document.addEventListener("DOMContentLoaded", function () {
         gameBoardCtx.fillStyle = 'red';
         gameBoardCtx.strokeStyle = 'black';
         gameBoardCtx.beginPath();
-        gameBoardCtx.arc(foodX+(pixelSize / 2),foodY+(pixelSize / 2),(pixelSize / 2),0,2*Math.PI);
+        gameBoardCtx.arc(foodX + (pixelSize / 2), foodY + (pixelSize / 2), (pixelSize / 2), 0, 2 * Math.PI);
         gameBoardCtx.fill();
         gameBoardCtx.stroke();
 
-        
+
     }
 
 }) //end DOM loaded function

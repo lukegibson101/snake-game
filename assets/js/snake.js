@@ -61,6 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let speed = 200;
     // how many food eaten
     let eatCount = 0;
+    // set pause
+    let pause = false;
+    pauseDx = 0;
+    pauseDy = 0;
 
     //Begin game
     playGame();
@@ -146,6 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let keyD = 68;
         let keyW = 87;
         let keyS = 83;
+        let spaceBar = 32;
 
         // prevent snake from reversing
         if (changingSnakeDirection) return;
@@ -199,6 +204,15 @@ document.addEventListener("DOMContentLoaded", function () {
             dx = 0;
             dy = pixelSize;
         }
+
+        if (keyPressed === spaceBar) {
+            if (pause === false) {
+                pause = true;
+            } else {
+                pause = false;
+            }
+
+        }
     }
 
     function touchControlsClicked() {
@@ -231,11 +245,11 @@ document.addEventListener("DOMContentLoaded", function () {
             dx = 0;
             dy = pixelSize;
         }
-        
+
     }
-      
+
     let touchControls = document.getElementsByClassName('btnControls');
-    
+
     for (let i = 0; i < touchControls.length; i++) {
         touchControls[i].addEventListener('click', touchControlsClicked);
     }
@@ -246,22 +260,24 @@ document.addEventListener("DOMContentLoaded", function () {
      * Move the snake. Update snake array my adding to front of snake array in the direction of travel and removing the last item in the array
      */
     function moveSnake() {
-        let front = {
-            x: snake[0].x + dx,
-            y: snake[0].y + dy
-        }
-        snake.unshift(front);
-        let snakeEaten = snake[0].x === foodX && snake[0].y === foodY; // chech snake head has just hit food
-        if (snakeEaten) {
-            generateFood(); //generate a new food location
-            currentScore += 20; // increase score
-            ++eatCount;
-            if (eatCount % 5 === 0 && speed > 50) {
-                speed -= 10;
+        if (pause === false) {
+            let front = {
+                x: snake[0].x + dx,
+                y: snake[0].y + dy
             }
-            document.getElementById('newScore').innerHTML = currentScore;
-        } else { // remove the last part of the body (if has eaten the snake will now grow in size)
-            snake.pop();
+            snake.unshift(front);
+            let snakeEaten = snake[0].x === foodX && snake[0].y === foodY; // chech snake head has just hit food
+            if (snakeEaten) {
+                generateFood(); //generate a new food location
+                currentScore += 20; // increase score
+                ++eatCount;
+                if (eatCount % 5 === 0 && speed > 50) {
+                    speed -= 10;
+                }
+                document.getElementById('newScore').innerHTML = currentScore;
+            } else { // remove the last part of the body (if has eaten the snake will now grow in size)
+                snake.pop();
+            }
         }
     }
 

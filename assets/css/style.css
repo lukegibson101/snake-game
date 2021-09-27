@@ -79,9 +79,20 @@ section {
     font-size:2rem;
 }
 
+#paused {
+    display: none;
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    font-size:10rem;
+    font-weight: 700;
+    background-color: rgba(192, 192, 192, .5);
+
+}
+
 @media screen and (max-width: 599px) {
 
-    #startGame {
+    #startGame, #paused {
         width: 450px;
         height: 450px;
     }
@@ -89,7 +100,7 @@ section {
 
 @media screen and (max-width: 499px) {
 
-    #startGame {
+    #startGame, #paused {
         width: 300px;
         height: 300px;
     }

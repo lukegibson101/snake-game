@@ -258,8 +258,11 @@ document.addEventListener("DOMContentLoaded", function () {
             if (keyPressed === spaceBar) {
                 if (pause === false) {
                     pause = true;
+                    document.getElementById('paused').style.display = "block";
+
                 } else {
                     pause = false;
+                    document.getElementById('paused').style.display = "none";
                 }
 
             }
@@ -301,8 +304,11 @@ document.addEventListener("DOMContentLoaded", function () {
             if (this.getAttribute("id") === "pause") {
                 if (pause === false) {
                     pause = true;
+                    document.getElementById('paused').style.display = "block";
+
                 } else {
                     pause = false;
+                    document.getElementById('paused').style.display = "none";
                 }
             }
 

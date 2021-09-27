@@ -75,18 +75,6 @@ section {
     font-weight: 700;
 }
 
-#gameOver {
-    display:none;
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border: 2px solid #000;
-    background-color: rgba(192, 192, 192, .5);
-    font-size:3rem;
-    font-weight: 700;
-
-}
-
 @media screen and (max-width: 599px) {
 
     #startGame {

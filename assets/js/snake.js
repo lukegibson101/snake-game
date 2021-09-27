@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // let startButton = document.getElementById('startGame');
     parent = gameBoard.parentNode; // the div's parent element
     gameWidth = parent.offsetWidth; // get width and height for canvas from parent element width (Will use this to manage responsiveness for different screen sizes)
-    
+
     // add responsive sized canvas and start game button
     if (gameWidth < 500) { // smaller screens
         gameBoard.width = 300;
@@ -72,18 +72,18 @@ document.addEventListener("DOMContentLoaded", function () {
     let beginGame = document.getElementById('startGame');
     beginGame.addEventListener('click', startGameNow);
 
-    function startGameNow () {
+    function startGameNow() {
         if (startGame === false) {
             startGame = true;
             pause = false;
             beginGame.style = "display:none;"
-        } 
+        }
     }
 
-        //Begin game
-        playGame();
-        //generate food
-        generateFood();
+    //Begin game
+    playGame();
+    //generate food
+    generateFood();
 
     // listen for keypress to change direction
     document.addEventListener("keydown", changeSnakeDirection);
@@ -154,119 +154,123 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /** Lets get the snake changing direction! */
     function changeSnakeDirection(event) {
-        // define key presses for directions
-        let arrowLeft = 37;
-        let arrowRight = 39;
-        let arrowUp = 38;
-        let arrowDown = 40;
-        let keyA = 65;
-        let keyD = 68;
-        let keyW = 87;
-        let keyS = 83;
-        let spaceBar = 32;
+        if (startGame) {
+            // define key presses for directions
+            let arrowLeft = 37;
+            let arrowRight = 39;
+            let arrowUp = 38;
+            let arrowDown = 40;
+            let keyA = 65;
+            let keyD = 68;
+            let keyW = 87;
+            let keyS = 83;
+            let spaceBar = 32;
 
-        // prevent snake from reversing
-        if (changingSnakeDirection) return;
-        changingSnakeDirection = true;
+            // prevent snake from reversing
+            if (changingSnakeDirection) return;
+            changingSnakeDirection = true;
 
-        // get the code for the pressed key
-        let keyPressed = event.keyCode;
+            // get the code for the pressed key
+            let keyPressed = event.keyCode;
 
-        //define what action to take depending on snake direction
-        let leftDir = dx === -pixelSize;
-        let rightDir = dx === pixelSize;
-        let upDir = dy === -pixelSize;
-        let downDir = dy === pixelSize;
+            //define what action to take depending on snake direction
+            let leftDir = dx === -pixelSize;
+            let rightDir = dx === pixelSize;
+            let upDir = dy === -pixelSize;
+            let downDir = dy === pixelSize;
 
-        if (keyPressed === arrowLeft && !rightDir) {
-            dx = -pixelSize;
-            dy = 0;
-        }
-
-        if (keyPressed === arrowRight && !leftDir) {
-            dx = pixelSize;
-            dy = 0;
-        }
-
-        if (keyPressed === arrowUp && !downDir) {
-            dx = 0;
-            dy = -pixelSize;
-        }
-
-        if (keyPressed === arrowDown && !upDir) {
-            dx = 0;
-            dy = pixelSize;
-        }
-
-        if (keyPressed === keyA && !rightDir) {
-            dx = -pixelSize;
-            dy = 0;
-        }
-
-        if (keyPressed === keyD && !leftDir) {
-            dx = pixelSize;
-            dy = 0;
-        }
-
-        if (keyPressed === keyW && !downDir) {
-            dx = 0;
-            dy = -pixelSize;
-        }
-
-        if (keyPressed === keyS && !upDir) {
-            dx = 0;
-            dy = pixelSize;
-        }
-
-        if (keyPressed === spaceBar) {
-            if (pause === false) {
-                pause = true;
-            } else {
-                pause = false;
+            if (keyPressed === arrowLeft && !rightDir) {
+                dx = -pixelSize;
+                dy = 0;
             }
 
+            if (keyPressed === arrowRight && !leftDir) {
+                dx = pixelSize;
+                dy = 0;
+            }
+
+            if (keyPressed === arrowUp && !downDir) {
+                dx = 0;
+                dy = -pixelSize;
+            }
+
+            if (keyPressed === arrowDown && !upDir) {
+                dx = 0;
+                dy = pixelSize;
+            }
+
+            if (keyPressed === keyA && !rightDir) {
+                dx = -pixelSize;
+                dy = 0;
+            }
+
+            if (keyPressed === keyD && !leftDir) {
+                dx = pixelSize;
+                dy = 0;
+            }
+
+            if (keyPressed === keyW && !downDir) {
+                dx = 0;
+                dy = -pixelSize;
+            }
+
+            if (keyPressed === keyS && !upDir) {
+                dx = 0;
+                dy = pixelSize;
+            }
+
+            if (keyPressed === spaceBar) {
+                if (pause === false) {
+                    pause = true;
+                } else {
+                    pause = false;
+                }
+
+            }
         }
     }
 
     function touchControlsClicked() {
-        // prevent snake from reversing
-        if (changingSnakeDirection) return;
-        changingSnakeDirection = true;
+        if (startGame) {
+            // prevent snake from reversing
+            if (changingSnakeDirection) return;
+            changingSnakeDirection = true;
 
-        //define what action to take depending on snake direction
-        let leftDir = dx === -pixelSize;
-        let rightDir = dx === pixelSize;
-        let upDir = dy === -pixelSize;
-        let downDir = dy === pixelSize;
+            //define what action to take depending on snake direction
+            let leftDir = dx === -pixelSize;
+            let rightDir = dx === pixelSize;
+            let upDir = dy === -pixelSize;
+            let downDir = dy === pixelSize;
 
-        if (this.getAttribute("id") === "btn-left" && !rightDir) {
-            dx = -pixelSize;
-            dy = 0;
-        }
-
-        if (this.getAttribute("id") === "btn-right" && !leftDir) {
-            dx = pixelSize;
-            dy = 0;
-        }
-
-        if (this.getAttribute("id") === "btn-up" && !downDir) {
-            dx = 0;
-            dy = -pixelSize;
-        }
-
-        if (this.getAttribute("id") === "btn-down" && !upDir) {
-            dx = 0;
-            dy = pixelSize;
-        }
-
-        if (this.getAttribute("id") === "pause") {
-            if (pause === false) {
-                pause = true;
-            } else {
-                pause = false;
+            if (this.getAttribute("id") === "btn-left" && !rightDir) {
+                dx = -pixelSize;
+                dy = 0;
             }
-        }
 
+            if (this.getAttribute("id") === "btn-right" && !leftDir) {
+                dx = pixelSize;
+                dy = 0;
+            }
+
+            if (this.getAttribute("id") === "btn-up" && !downDir) {
+                dx = 0;
+                dy = -pixelSize;
+            }
+
+            if (this.getAttribute("id") === "btn-down" && !upDir) {
+                dx = 0;
+                dy = pixelSize;
+            }
+
+            if (this.getAttribute("id") === "pause") {
+                if (pause === false) {
+                    pause = true;
+                } else {
+                    pause = false;
+                }
+            }
+
+        }
     }
 
     let touchControls = document.getElementsByClassName('btnControls');
@@ -301,7 +305,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById('newScore').innerHTML = currentScore;
                 document.getElementById('newLevel').innerHTML = level;
 
-                
+
             } else { // remove the last part of the body (if has eaten the snake will now grow in size)
                 snake.pop();
             }

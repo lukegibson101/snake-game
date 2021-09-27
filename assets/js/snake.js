@@ -215,7 +215,12 @@ if (gameWidth < 400) {
             y: snake[0].y + dy
         }
         snake.unshift(front);
+        let snakeEaten = snake[0].x === foodX && snake[0].y === foodY; // chech snake head has just hit food
+        if (snakeEaten) { 
+            generateFood(); //generate a new food location
+        } else { // remove the last part of the body (if has eaten the snake will now grow in size)
         snake.pop();
+        }
     }
 
     /**

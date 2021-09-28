@@ -58,11 +58,11 @@ section {
 
 .float-right {
     float: right;
-    padding-right: 1rem;
+    padding-right: 2rem;
 }
 
-#scores {
-    padding-left: 1rem;
+#scores, #highScore {
+    padding-left: 2rem;
 }
 
 #startGame {

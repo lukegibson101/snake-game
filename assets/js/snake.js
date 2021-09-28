@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     pauseDx = 0;
     pauseDy = 0;
     let bonusFood = false;
-    
+
     // start game
     startGame = false;
 
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
             startGame = false;
             playGame();
 
-            // setInterval('document.location.reload();', 2000);
+
 
 
             return;
@@ -385,15 +385,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 generateFood(); //generate a new food location
                 currentScore += 20; // increase score
                 ++eatCount;
-                if (bonusFood) {
-                document.getElementById("game-message").textContent = "";
-                }
                 if (eatCount % 5 === 0 && speed > 50) {
                     speed -= 10;
                     ++level;
                     document.getElementById("game-message").innerHTML = `<strong>Level Up! Speed Increased!</strong>`;
+                    setTimeout(function () {
+                        document.getElementById("game-message").textContent = "";
+                    }, 3000);
                     bonusFood = true;
                     generateBonusFood();
+                    setTimeout(function () {
+                        bonusFood = false;
+                        generateBonusFood();
+                        document.getElementById("game-message").textContent = "";
+                    }, 5000);
                 }
                 document.getElementById('newScore').innerHTML = currentScore;
                 document.getElementById('newLevel').innerHTML = level;
@@ -403,14 +408,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 snake.pop();
             }
             if (bonusFood) {
-            let bonusSnakeEaten = snake[0].x === bonusFoodX && snake[0].y === bonusFoodY; // chech snake head has just hit food
-            if (bonusSnakeEaten) {
-                bonusFood = false;
-                generateBonusFood();
-                document.getElementById("game-message").innerHTML = `<strong>Bonus Mode! Gain +10 score per food eaten</strong>`;
+                let bonusSnakeEaten = snake[0].x === bonusFoodX && snake[0].y === bonusFoodY; // chech snake head has just hit food
+                if (bonusSnakeEaten) {
+                    bonusFood = false;
+                    generateBonusFood();
+                    document.getElementById("game-message").innerHTML = `<strong>Bonus Mode! Gain +10 score per food eaten</strong>`;
+                }
             }
         }
-    }
     }
 
     /**
@@ -434,18 +439,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function generateBonusFood() {
         if (bonusFood) {
-        bonusFoodX = generateFoodRandom(0, gameBoard.width - pixelSize); // x co-ordinate
-        bonusFoodY = generateFoodRandom(0, gameBoard.width - pixelSize); // y co-ordinate
-        
-        snake.forEach(function hasBonusSnakeEaten(part) {
-            let bonusSnakeEaten = part.x == bonusFoodX && part.y == bonusFoodX;
-            if (bonusSnakeEaten) generateBonusFood();
-        });
-    } else {
-        bonusFoodX = "";
-        bonusFoodY = "";
-    }
-    
+            bonusFoodX = generateFoodRandom(0, gameBoard.width - pixelSize); // x co-ordinate
+            bonusFoodY = generateFoodRandom(0, gameBoard.width - pixelSize); // y co-ordinate
+
+            snake.forEach(function hasBonusSnakeEaten(part) {
+                let bonusSnakeEaten = part.x == bonusFoodX && part.y == bonusFoodX;
+                if (bonusSnakeEaten) generateBonusFood();
+            });
+        } else {
+            bonusFoodX = "";
+            bonusFoodY = "";
+        }
+
     }
 
     /**
@@ -458,17 +463,17 @@ document.addEventListener("DOMContentLoaded", function () {
         gameBoardCtx.arc(foodX + (pixelSize / 2), foodY + (pixelSize / 2), (pixelSize / 2), 0, 2 * Math.PI);
         gameBoardCtx.fill();
         gameBoardCtx.stroke();
-       
+
     }
 
     function drawBonusFood() {
         if (bonusFood) {
-        gameBoardCtx.fillStyle = 'green';
-        gameBoardCtx.strokeStyle = 'black';
-        gameBoardCtx.beginPath();
-        gameBoardCtx.arc(bonusFoodX + (pixelSize / 2), bonusFoodY + (pixelSize / 2), (pixelSize / 2), 0, 2 * Math.PI);
-        gameBoardCtx.fill();
-        gameBoardCtx.stroke();
+            gameBoardCtx.fillStyle = 'green';
+            gameBoardCtx.strokeStyle = 'black';
+            gameBoardCtx.beginPath();
+            gameBoardCtx.arc(bonusFoodX + (pixelSize / 2), bonusFoodY + (pixelSize / 2), (pixelSize / 2), 0, 2 * Math.PI);
+            gameBoardCtx.fill();
+            gameBoardCtx.stroke();
         }
 
     }

@@ -27,7 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // set canvas to 2d drawing context
     let gameBoardCtx = gameBoard.getContext("2d");
 
+    
 
+    
     let snake = [{
             x: pixelSize * 5,
             y: snakeStart
@@ -51,6 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
     ]
 
 
+
+
     let currentScore = 0;
     // change to true if changiung direction
     let changingSnakeDirection = false;
@@ -70,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
     pauseDy = 0;
     // start game
     startGame = false;
+    highScore = 0;
 
 
 
@@ -136,9 +141,43 @@ document.addEventListener("DOMContentLoaded", function () {
                 timer: 2000
                 
             })
+            beginGame.style = "display:;"
+            document.getElementById('newScore').innerHTML = "0";
+            document.getElementById('newLevel').innerHTML = "1" ;
+            gameBoardCtx.clearRect(0, 0, gameBoard.width, gameBoard.height);
+            drawCanvas();
+            snake = [{
+                x: pixelSize * 5,
+                y: snakeStart
+            },
+            {
+                x: pixelSize * 4,
+                y: snakeStart
+            },
+            {
+                x: pixelSize * 3,
+                y: snakeStart
+            },
+            {
+                x: pixelSize * 2,
+                y: snakeStart
+            },
+            {
+                x: pixelSize,
+                y: snakeStart
+            }
+        ]
+        drawSnake();
+        currentScore = 0;
+        changingSnakeDirection = false;
+        dx = pixelSize;
+        dy = 0;
+        level = 1;
+        eatCount = 0;
+        startGame = false;
+        playGame();
 
-
-            setInterval('document.location.reload();', 2000);
+            // setInterval('document.location.reload();', 2000);
 
 
             return;

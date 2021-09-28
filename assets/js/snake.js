@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function playGame() {
-        if (collisionDetection()) {
+        if (collisionDetection()) { // game is over. Reset some variables back to default
             Swal.fire({
                 position: 'top',
                 icon: 'warning',
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (highScore < currentScore) {
                 document.getElementById('newHighScore').innerHTML = currentScore;
             }
-
+            document.getElementById("game-message").textContent = "";
             beginGame.style = "display:;"
             document.getElementById('newScore').innerHTML = "0";
             document.getElementById('newLevel').innerHTML = "1";

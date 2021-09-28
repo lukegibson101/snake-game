@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     let currentScore = 0;
+    let bonusScore = 0;
     // change to true if changiung direction
     let changingSnakeDirection = false;
     // initial horizontal movement  
@@ -176,13 +177,14 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
             drawSnake();
             currentScore = 0;
+            bonusScore = 0;
             changingSnakeDirection = false;
             dx = pixelSize;
             dy = 0;
             level = 1;
             eatCount = 0;
             startGame = false;
-            bonusFood=false;
+            bonusFood = false;
             generateBonusFood;
             playGame();
 
@@ -385,23 +387,28 @@ document.addEventListener("DOMContentLoaded", function () {
             let snakeEaten = snake[0].x === foodX && snake[0].y === foodY; // chech snake head has just hit food
             if (snakeEaten) {
                 generateFood(); //generate a new food location
-                currentScore += 20; // increase score
+                currentScore += (20 + bonusScore); // increase score
                 ++eatCount;
-                if (eatCount % 5 === 0 && speed > 50) {
-                    speed -= 10;
+                if (eatCount % 5 === 0) {
+                    if (speed > 50) {
+                        speed -= 10;
+                    }
                     ++level;
+                    bonusScore = 0;
                     document.getElementById("game-message").innerHTML = `<strong>Level Up! Speed Increased!</strong>`;
-                    setTimeout(function () {
-                        document.getElementById("game-message").textContent = "";
-                    }, 3000);
+
                     bonusFood = true;
                     generateBonusFood();
+                    clearGameMessage = true;
                     setTimeout(function () {
                         bonusFood = false;
                         generateBonusFood();
-                        document.getElementById("game-message").textContent = "";
+                        if (clearGameMessage) {
+                            document.getElementById("game-message").textContent = "";
+                        }
                     }, 5000);
                 }
+
                 document.getElementById('newScore').innerHTML = currentScore;
                 document.getElementById('newLevel').innerHTML = level;
 
@@ -414,7 +421,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (bonusSnakeEaten) {
                     bonusFood = false;
                     generateBonusFood();
-                    document.getElementById("game-message").innerHTML = `<strong>Bonus Mode! Gain +10 score per food eaten</strong>`;
+                    clearGameMessage = false;
+                    bonusScore = 10;
+                    document.getElementById("game-message").innerHTML = `<strong><font color="green">Bonus Mode! +10 score per food eaten!</font></strong>`;
                 }
             }
         }

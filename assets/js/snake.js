@@ -182,6 +182,8 @@ document.addEventListener("DOMContentLoaded", function () {
             level = 1;
             eatCount = 0;
             startGame = false;
+            bonusFood=false;
+            generateBonusFood;
             playGame();
 
 

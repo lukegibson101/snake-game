@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     snakeStart = gameBoard.width - (gameBoard.width / 5); // set starting position on responsive canvas
-    console.log(gameBoard.width);
     // set canvas to 2d drawing context
     let gameBoardCtx = gameBoard.getContext("2d");
 
@@ -142,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             })
             highScore = document.getElementById('newHighScore').innerHTML;
-            console.log(highScore);
             if (highScore < currentScore) {
                 document.getElementById('newHighScore').innerHTML = currentScore;
             }

@@ -7,7 +7,8 @@
 }
 
 body {
-    background-color: whitesmoke;
+    
+    background: #000 url('../images/snake.png') no-repeat fixed center;
 }
 
 section {

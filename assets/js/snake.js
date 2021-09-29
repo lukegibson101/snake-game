@@ -324,7 +324,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function touchControlsClicked() {
         if (startGame) {
-            Haptics.vibrate(200);
+            Haptics.vibrate(100);
             // prevent snake from reversing
             if (changingSnakeDirection) return;
             changingSnakeDirection = true;

@@ -208,9 +208,9 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function drawEachSnakeSection(snakeSection) {
         // background color of snake section
-        gameBoardCtx.fillStyle = '#000';
+        gameBoardCtx.fillStyle = 'green';
         // border of snake section
-        gameBoardCtx.strokeStyle = 'yellow';
+        gameBoardCtx.strokeStyle = '#000';
         gameBoardCtx.lineWidth = 1;
         // Define size of each section
         gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, pixelSize, pixelSize);

@@ -12,28 +12,28 @@ body {
 }
 
 #nav {
-    width:100%;
+    width: 100%;
     text-align: center;
-    }
-   
+}
+
 ul {
 
     margin: 1rem auto;
     max-width: 600px;
     list-style: none;
     text-align: center;
-    
+
 }
 
 li {
-    width:30%;
+    width: 30%;
     display: inline-block;
     box-sizing: border-box;
 
 }
 
 .nav-btn {
-    width:100%;
+    width: 100%;
     padding: 5px;
     border: 3px solid #000;
     border-radius: 10px;
@@ -48,20 +48,26 @@ li {
 
 
 section {
-    height: 100%;
-    width: 100%;
+  width: 100%;
 
 }
 
 #snake-container {
     margin: 0 auto;
     max-width: 600px;
+    background-color: red;
+}
+
+#canvas-container {
+    text-align: center;
+    width:100%;
+        margin: 0 auto;
 }
 
 #touch-controls {
     position: relative;
     margin: 0 auto;
-    width:100%;
+    width: 100%;
 }
 
 #table-buttons {
@@ -106,7 +112,8 @@ section {
     padding-right: 2rem;
 }
 
-#scores, #highScore {
+#scores,
+#highScore {
     padding-left: 2rem;
 }
 
@@ -118,7 +125,7 @@ section {
     background: url('../images/snake.png') no-repeat center;
     background-size: contain;
     background-color: #c0c0c0;
-    font-size:3rem;
+    font-size: 3rem;
     font-weight: 700;
 }
 
@@ -127,7 +134,7 @@ section {
 }
 
 #play-now {
-    font-size:2rem;
+    font-size: 2rem;
 }
 
 #paused {
@@ -138,13 +145,15 @@ section {
     font-size: 10rem;
     font-weight: 700;
     background-color: rgba(192, 192, 192, .5);
+    border: 1px solid #000;
 
 }
 
 @media screen and (max-width: 599px) {
 
-    #startGame, #paused {
-        font-size:7.5rem;
+    #startGame,
+    #paused {
+        font-size: 7.5rem;
         width: 450px;
         height: 450px;
     }
@@ -153,20 +162,21 @@ section {
         margin-top: -7.5rem;
         font-size: 2.25rem;
     }
-    
+
     #play-now {
         font-size: 1.5rem;
     }
 
-    
 
-    
+
+
 }
 
 @media screen and (max-width: 499px) {
 
-    #startGame, #paused {
-        font-size:5rem;
+    #startGame,
+    #paused {
+        font-size: 5rem;
         width: 300px;
         height: 300px;
     }
@@ -175,9 +185,8 @@ section {
         margin-top: -5rem;
         font-size: 1.5rem;
     }
-    
+
     #play-now {
         font-size: 1rem;
     }
 }
-

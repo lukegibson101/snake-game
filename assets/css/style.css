@@ -7,7 +7,7 @@
 }
 
 body {
-    
+    font-size: 16px;
     background: #f5f5f5;
 }
 
@@ -59,8 +59,15 @@ section {
 }
 
 #touch-controls {
+    position: relative;
     margin: 0 auto;
-    max-width: 600px;
+    width:100%;
+}
+
+table {
+    margin: 0 auto;
+    border: 2px solid #000;
+    padding: 5px;
 }
 
 #game-message {
@@ -127,7 +134,7 @@ section {
     position: absolute;
     width: 600px;
     height: 600px;
-    font-size:10rem;
+    font-size: 10rem;
     font-weight: 700;
     background-color: rgba(192, 192, 192, .5);
 

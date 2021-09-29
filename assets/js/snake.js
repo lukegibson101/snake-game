@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
+    // set initial snake co-ordinates
     let snake = [{
             x: pixelSize * 5,
             y: snakeStart
@@ -49,33 +49,22 @@ document.addEventListener("DOMContentLoaded", function () {
             x: pixelSize,
             y: snakeStart
         }
-    ]
+    ];
 
 
 
-
+    // set initial variables
     let currentScore = 0;
     let bonusScore = 0;
-    // change to true if changiung direction
-    let changingSnakeDirection = false;
-    // initial horizontal movement  
+    let changingSnakeDirection = false;  
     let dx = pixelSize;
-    // initial vertical movement
     let dy = 0;
-    // inital speed
     let speed = 200;
-    // level
     let level = 1;
-    // how many food eaten
     let eatCount = 0;
-    // set pause
     let pause = true;
-    pauseDx = 0;
-    pauseDy = 0;
     let bonusFood = false;
-
-    // start game
-    startGame = false;
+    let startGame = false;
 
 
 
@@ -94,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (startGame === false && SpacePressed === spaceBar) {
             startGame = true;
             pause = true;
-            beginGame.style = "display:none;"
+            beginGame.style = "display:none;";
         }
     }
 
@@ -103,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (startGame === false) {
             startGame = true;
             pause = false;
-            beginGame.style = "display:none;"
+            beginGame.style = "display:none;";
         }
     }
 
@@ -126,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // background color of canvas
         gameBoardCtx.fillStyle = '#c0c0c0';
         // canvas border color
-        gameBoardCtx.strokeStyle = '#000'
+        gameBoardCtx.strokeStyle = '#000';
         // Draw a filled rectangle to cover the canvas
         gameBoardCtx.fillRect(0, 0, gameBoard.width, gameBoard.height);
         // draw the canvas border
@@ -143,13 +132,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 showConfirmButton: false,
                 timer: 2000
 
-            })
+            });
             highScore = document.getElementById('newHighScore').innerHTML;
             if (highScore < currentScore) {
                 document.getElementById('newHighScore').innerHTML = currentScore;
             }
             document.getElementById("game-message").textContent = "";
-            beginGame.style = "display:;"
+            beginGame.style = "display:;";
             document.getElementById('newScore').innerHTML = "0";
             document.getElementById('newLevel').innerHTML = "1";
             gameBoardCtx.clearRect(0, 0, gameBoard.width, gameBoard.height);
@@ -174,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     x: pixelSize,
                     y: snakeStart
                 }
-            ]
+            ];
             drawSnake();
             currentScore = 0;
             bonusScore = 0;
@@ -185,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
             eatCount = 0;
             startGame = false;
             bonusFood = false;
-            generateBonusFood;
+            generateBonusFood();
             playGame();
 
 
@@ -204,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
             drawSnake();
             // call again to refresh
             playGame();
-        }, speed)
+        }, speed);
     }
 
     /**
@@ -218,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // background color of snake section
         gameBoardCtx.fillStyle = '#000';
         // border of snake section
-        gameBoardCtx.strokeStyle = 'yellow'
+        gameBoardCtx.strokeStyle = 'yellow';
         // Define size of each section
         gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, pixelSize, pixelSize);
         // draw the canvas border
@@ -382,7 +371,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let front = {
                 x: snake[0].x + dx,
                 y: snake[0].y + dy
-            }
+            };
             snake.unshift(front);
             let snakeEaten = snake[0].x === foodX && snake[0].y === foodY; // chech snake head has just hit food
             if (snakeEaten) {

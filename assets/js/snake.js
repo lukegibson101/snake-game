@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
         gameBoardCtx.fillStyle = '#c0c0c0';
         // canvas border color
         gameBoardCtx.strokeStyle = '#000';
-        gameBoardCtx.lineWidth = pixelSize*2;
+        gameBoardCtx.lineWidth = (pixelSize*2) - 2;
         // Draw a filled rectangle to cover the canvas
         gameBoardCtx.fillRect(0, 0, gameBoard.width, gameBoard.height);
         // draw the canvas border
@@ -445,8 +445,8 @@ document.addEventListener("DOMContentLoaded", function () {
      * generates co-ordinates for food from generateFoodRandom and cheks they don't clash with the snake co-ordinates
      */
     function generateFood() {
-        foodX = generateFoodRandom(0, gameBoard.width - pixelSize); // x co-ordinate
-        foodY = generateFoodRandom(0, gameBoard.width - pixelSize); // y co-ordinate
+        foodX = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize*2)); // x co-ordinate
+        foodY = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize*2)); // y co-ordinate
         snake.forEach(function hasSnakeEaten(part) {
             let snakeEaten = part.x == foodX && part.y == foodY;
             if (snakeEaten) generateFood();
@@ -458,8 +458,8 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function generateBonusFood() {
         if (bonusFood) {
-            bonusFoodX = generateFoodRandom(0, gameBoard.width - pixelSize); // x co-ordinate
-            bonusFoodY = generateFoodRandom(0, gameBoard.width - pixelSize); // y co-ordinate
+            bonusFoodX = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize*2)); // x co-ordinate
+            bonusFoodY = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize*2)); // y co-ordinate
 
             snake.forEach(function hasBonusSnakeEaten(part) {
                 let bonusSnakeEaten = part.x == bonusFoodX && part.y == bonusFoodX;

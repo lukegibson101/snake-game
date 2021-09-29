@@ -7,6 +7,7 @@
 }
 
 body {
+    width:100%;
     font-size: 16px;
     background: #f5f5f5;
 }
@@ -58,10 +59,16 @@ section {
     background-color: red;
 }
 
+.panel {
+border: 2px solid #000;
+padding: 5px;
+border-radius: 25px;
+margin: 0 auto;
+}
+
 #canvas-container {
     text-align: center;
     width:100%;
-        margin: 0 auto;
 }
 
 #touch-controls {
@@ -103,17 +110,6 @@ section {
     color: #990000;
 }
 
-.pause {
-    position: relative;
-    left: 2rem;
-}
-
-.left {
-
-    position: relative;
-    left: 2rem;
-
-}
 
 .float-right {
     float: right;
@@ -157,7 +153,11 @@ section {
 
 }
 
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 600px) {
+
+    #snake-container {
+        width: 450px;
+    }
 
     #startGame,
     #paused {
@@ -165,6 +165,8 @@ section {
         width: 450px;
         height: 450px;
     }
+
+   
 
     #game-title {
         margin-top: -7.5rem;
@@ -180,8 +182,12 @@ section {
 
 }
 
-@media screen and (max-width: 499px) {
+@media screen and (max-width: 500px) {
 
+    #snake-container {
+        width: 300px;
+    }
+    
     #startGame,
     #paused {
         font-size: 5rem;
@@ -189,6 +195,7 @@ section {
         height: 300px;
     }
 
+   
     #game-title {
         margin-top: -5rem;
         font-size: 1.5rem;

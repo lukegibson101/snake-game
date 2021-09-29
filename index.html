@@ -22,14 +22,14 @@
     <section>
         <div id="snake-container">
 
-            <div id="scores">
+            <div id="scores" class="panel">
                 <strong>
                     Current Score: <span id="newScore">0</span>
                     <span class="float-right">Level: <span id="newLevel">0</span></span>
                 </strong>
+                <div><strong>High Score: <span id="newHighScore">0</span></strong></div>
             </div>
-            <div id="highScore"><strong>High Score: <span id="newHighScore">0</span></strong></div>
-            <div id = canvas-container>
+            <div id="canvas-container">
                 <button id="startGame">
                     <div id="game-title">
                         <h1>Snake</h1>
@@ -39,50 +39,50 @@
                     </div>
                 </button>
                 <button id="paused"><i class="far fa-pause-circle"></i></button>
-                
+
                 <canvas id="snakeBoard"></canvas>
-                </div>
-                <div id="game-message"></div>
-            
+            </div>
+            <div id="game-message"></div>
+
         </div>
         <div id="touch-controls">
-            
-                <table id="table-buttons">
-                    <tr>
-                        <td></td>
-                        <td>
-                            <button class='btnControls' id="btn-up">
-                                <i class="fas fa-arrow-up"></i>
-                            </button>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button class='btnControls' id="btn-left">
-                                <i class="fas fa-arrow-left"></i>
-                            </button>
-                        </td>
-                        <td><button class="btnControls" id="pause">
+
+            <table id="table-buttons">
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class='btnControls' id="btn-up">
+                            <i class="fas fa-arrow-up"></i>
+                        </button>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class='btnControls' id="btn-left">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                    </td>
+                    <td><button class="btnControls" id="pause">
                             <i class="fas fa-pause"></i>
                         </button></td>
-                        <td>
-                            <button class='btnControls' id="btn-right">
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <button class='btnControls' id="btn-down">
-                                <i class="fas fa-arrow-down"></i>
-                            </button>
-                        </td>
-                        <td></td>
-                    </tr>
-                </table>
-            
+                    <td>
+                        <button class='btnControls' id="btn-right">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class='btnControls' id="btn-down">
+                            <i class="fas fa-arrow-down"></i>
+                        </button>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+
         </div>
     </section>
 

@@ -5,10 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let gameBoard = document.getElementById("snakeBoard");
     // let startButton = document.getElementById('startGame');
     parent = gameBoard.parentNode; // the div's parent element
+    console.log(parent);
     gameWidth = parent.offsetWidth; // get width and height for canvas from parent element width (Will use this to manage responsiveness for different screen sizes)
 
     // add responsive sized canvas and start game button
-    if (gameWidth < 500) { // smaller screens
+    if (gameWidth < 450) { // smaller screens
         gameBoard.width = 300;
         gameBoard.height = 300;
         pixelSize = 10; // defines "pixel size" Size of snake, size of each movememnt, size of each tile.

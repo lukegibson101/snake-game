@@ -173,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
             changingSnakeDirection = false;
             dx = pixelSize;
             dy = 0;
+            speed = 200;
             level = 1;
             eatCount = 0;
             startGame = false;

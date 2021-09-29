@@ -66,9 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let bonusFood = false;
     let startGame = false;
 
-
-
-
     let beginGame = document.getElementById('startGame');
     beginGame.addEventListener('click', startGameNow);
     // listen for keypress to start game
@@ -87,7 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-
+    /**
+     * Set starGame to true and hides the star game button
+     */
     function startGameNow() {
         if (startGame === false) {
             startGame = true;
@@ -109,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /**
-     * drawCanvas will be called often to "reset" the game board to allow the updated movements to then be drawn so there is no overlap of the previous frame
+     * sets the play area and sets background color and border
      */
     function drawCanvas() {
         // background color of canvas
@@ -122,6 +121,10 @@ document.addEventListener("DOMContentLoaded", function () {
         gameBoardCtx.strokeRect(0, 0, gameBoard.width, gameBoard.height);
     }
 
+    /**
+     * 
+     * @returns refreshes game at speed dependent on speed variable. If snake has crashed, resets the game, recalls initial variables, records high score and shows player a message that its game over.
+     */
     function playGame() {
         if (collisionDetection()) { // game is over. Reset some variables back to default
             Swal.fire({
@@ -176,14 +179,8 @@ document.addEventListener("DOMContentLoaded", function () {
             bonusFood = false;
             generateBonusFood();
             playGame();
-
-
-
-
             return;
-
         }
-
         changingSnakeDirection = false;
         setTimeout(function onTick() {
             drawCanvas();
@@ -197,12 +194,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * To draw the snake on the canvas
+     * generate co-ordinates from snake array to pass to drawEachSnakeSection
      */
     function drawSnake() {
         snake.forEach(drawEachSnakeSection);
     }
 
+    /**
+     * 
+     * @param {*} draws the snake to the canvas from co-ordinates given in drawSnake 
+     */
     function drawEachSnakeSection(snakeSection) {
         // background color of snake section
         gameBoardCtx.fillStyle = '#000';
@@ -215,7 +216,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * This funtion detects if the snake has collided with anything and then calls game over
+     * 
+     * @returns detects if snake has collided with an object to call game over
      */
     function collisionDetection() {
         for (let i = 4; i < snake.length; i++) { //start at 4 as length of starting snake
@@ -228,7 +230,11 @@ document.addEventListener("DOMContentLoaded", function () {
         return collideLeftWall || collideRightWall || collideToptWall || collideBottomWall;
     }
 
-    /** Lets get the snake changing direction! */
+    /**
+     * 
+     * @param {*} event key press
+     * @returns listens for a key press and either turns the snake in the correct direction or pauses the game
+     */
     function changeSnakeDirection(event) {
         if (startGame) {
             // define key presses for directions
@@ -309,6 +315,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    /**
+     * 
+     * @returns touch / click controls for buttons
+     */
     function touchControlsClicked() {
         if (startGame) {
             // prevent snake from reversing
@@ -364,7 +374,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /**
-     * Move the snake. Update snake array my adding to front of snake array in the direction of travel and removing the last item in the array
+     * Move the snake by updating the snake array. Check if leveling up and call to generate bonus food. Update score.
      */
     function moveSnake() {
         if (pause === false && startGame == true) {
@@ -419,14 +429,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Generate food for the snake to eat where min is 0 and max is width or height of the canvas (which may change depending on screen size)
+     * 
+     * @param {0} min 
+     * @param {num} max 
+     * @returns a random co-ordinte to play food on the canvas
      */
     function generateFoodRandom(min, max) {
         return Math.round((Math.random() * (max - min) + min) / pixelSize) * pixelSize;
     }
 
     /**
-     * use the random food generator, check its not actually where the snake is and assign a co-ordinate
+     * generates co-ordinates for food from generateFoodRandom and cheks they don't clash with the snake co-ordinates
      */
     function generateFood() {
         foodX = generateFoodRandom(0, gameBoard.width - pixelSize); // x co-ordinate
@@ -437,6 +450,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    /**
+     * generate bonus food. If not leveled up, set co-ordinates to null.
+     */
     function generateBonusFood() {
         if (bonusFood) {
             bonusFoodX = generateFoodRandom(0, gameBoard.width - pixelSize); // x co-ordinate
@@ -466,6 +482,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    /**
+     * Take generated co-ordinates and draw bonus food to the canvas 
+     */
     function drawBonusFood() {
         if (bonusFood) {
             gameBoardCtx.fillStyle = 'green';

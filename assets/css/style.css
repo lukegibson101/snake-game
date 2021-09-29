@@ -7,8 +7,25 @@
 }
 
 body {
-    background: #000;
+    
+    background: #f5f5f5;
 }
+
+#nav {
+    width:100%;
+    text-align: center;
+    }
+   
+ul {
+    list-style: none;
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+}
+
+
 
 section {
     height: 100%;
@@ -70,7 +87,7 @@ section {
     width: 600px;
     height: 600px;
     border: 2px solid #000;
-    background: #000 url('../images/snake.png') no-repeat center;
+    background: url('../images/snake.png') no-repeat center;
     background-size: contain;
     background-color: #c0c0c0;
     font-size:3rem;
@@ -113,9 +130,7 @@ section {
         font-size: 1.5rem;
     }
 
-    #wrapper {
-        background: #000
-    }
+    
 
     
 }

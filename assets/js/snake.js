@@ -334,6 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let rightDir = dx === pixelSize;
             let upDir = dy === -pixelSize;
             let downDir = dy === pixelSize;
+            Haptics.vibrate(200);
 
             if (this.getAttribute("id") === "btn-left" && !rightDir) {
                 dx = -pixelSize;
@@ -502,5 +503,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
     }
+
+    
 
 }) //end DOM loaded function

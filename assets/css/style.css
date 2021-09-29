@@ -7,9 +7,7 @@
 }
 
 body {
-    
-    background: #000 url('../images/snake.png') no-repeat fixed center;
-    background-size: contain;
+    background: #000;
 }
 
 section {
@@ -72,9 +70,15 @@ section {
     width: 600px;
     height: 600px;
     border: 2px solid #000;
-    background-color: rgba(192, 192, 192, .5);
+    background: #000 url('../images/snake.png') no-repeat center;
+    background-size: contain;
+    background-color: #c0c0c0;
     font-size:3rem;
     font-weight: 700;
+}
+
+#game-title {
+    margin-top: -10rem;
 }
 
 #play-now {
@@ -99,6 +103,21 @@ section {
         width: 450px;
         height: 450px;
     }
+
+    #game-title {
+        margin-top: -7.5rem;
+        font-size: 2.25rem;
+    }
+    
+    #play-now {
+        font-size: 1.5rem;
+    }
+
+    #wrapper {
+        background: #000
+    }
+
+    
 }
 
 @media screen and (max-width: 499px) {
@@ -107,6 +126,15 @@ section {
         font-size:5rem;
         width: 300px;
         height: 300px;
+    }
+
+    #game-title {
+        margin-top: -5rem;
+        font-size: 1.5rem;
+    }
+    
+    #play-now {
+        font-size: 1rem;
     }
 }
 

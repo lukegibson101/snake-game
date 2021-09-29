@@ -1,6 +1,5 @@
 // wait for the DOM to finish loading before running the game
 document.addEventListener("DOMContentLoaded", function () {
-
     // get canvas element
     let gameBoard = document.getElementById("snakeBoard");
     // let startButton = document.getElementById('startGame');
@@ -334,7 +333,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let rightDir = dx === pixelSize;
             let upDir = dy === -pixelSize;
             let downDir = dy === pixelSize;
-            Haptics.vibrate(200);
+            
 
             if (this.getAttribute("id") === "btn-left" && !rightDir) {
                 dx = -pixelSize;
@@ -374,6 +373,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (let i = 0; i < touchControls.length; i++) {
         touchControls[i].addEventListener('click', touchControlsClicked);
+        
     }
 
 
@@ -505,5 +505,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     
-
+    Haptics.vibrate(200);
 }) //end DOM loaded function

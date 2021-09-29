@@ -115,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
         gameBoardCtx.fillStyle = '#c0c0c0';
         // canvas border color
         gameBoardCtx.strokeStyle = '#000';
+        gameBoardCtx.lineWidth = pixelSize*2;
         // Draw a filled rectangle to cover the canvas
         gameBoardCtx.fillRect(0, 0, gameBoard.width, gameBoard.height);
         // draw the canvas border
@@ -210,6 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
         gameBoardCtx.fillStyle = '#000';
         // border of snake section
         gameBoardCtx.strokeStyle = 'yellow';
+        gameBoardCtx.lineWidth = 1;
         // Define size of each section
         gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, pixelSize, pixelSize);
         // draw the canvas border
@@ -224,10 +226,10 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = 4; i < snake.length; i++) { //start at 4 as length of starting snake
             if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true; //if snake hits itself
         }
-        let collideLeftWall = snake[0].x < 0;
-        let collideRightWall = snake[0].x > gameBoard.width - dx;
-        let collideToptWall = snake[0].y < 0;
-        let collideBottomWall = snake[0].y > gameBoard.width - dy;
+        let collideLeftWall = snake[0].x < pixelSize;
+        let collideRightWall = snake[0].x > (gameBoard.width - pixelSize) - dx;
+        let collideToptWall = snake[0].y < pixelSize;
+        let collideBottomWall = snake[0].y > (gameBoard.width - pixelSize) - dy;
         return collideLeftWall || collideRightWall || collideToptWall || collideBottomWall;
     }
 
@@ -476,6 +478,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function drawFood() {
         gameBoardCtx.fillStyle = 'red';
         gameBoardCtx.strokeStyle = 'black';
+        gameBoardCtx.lineWidth = 1;
         gameBoardCtx.beginPath();
         gameBoardCtx.arc(foodX + (pixelSize / 2), foodY + (pixelSize / 2), (pixelSize / 2), 0, 2 * Math.PI);
         gameBoardCtx.fill();
@@ -490,6 +493,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (bonusFood) {
             gameBoardCtx.fillStyle = 'green';
             gameBoardCtx.strokeStyle = 'black';
+            gameBoardCtx.lineWidth = 1;
             gameBoardCtx.beginPath();
             gameBoardCtx.arc(bonusFoodX + (pixelSize / 2), bonusFoodY + (pixelSize / 2), (pixelSize / 2), 0, 2 * Math.PI);
             gameBoardCtx.fill();

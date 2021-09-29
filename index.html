@@ -10,15 +10,15 @@
 </head>
 
 <body>
-   <header>
-       <nav>
-           <ul>
-               <li><button class="nav-btn">Settings</button></li>
-               <li><button class="nav-btn">Difficulty</button></li>
-               <li><button class="nav-btn">How to Play</button></li>
-           </ul>           
-       </nav>
-   </header>
+    <header>
+        <nav>
+            <ul>
+                <li><button class="nav-btn">Difficulty <i class="fas fa-star-half-alt"></i></button></li>
+                <li><button class="nav-btn">Settings <i class="fas fa-cog"></i></button></li>
+                <li><button class="nav-btn">How to Play <i class="far fa-question-circle"></i></button></li>
+            </ul>
+        </nav>
+    </header>
     <section>
         <div id="snake-container">
 
@@ -31,11 +31,11 @@
             <div id="highScore"><strong>High Score: <span id="newHighScore">0</span></strong></div>
             <center>
                 <button id="startGame">
-                    <div id ="game-title">
+                    <div id="game-title">
                         <h1>Snake</h1>
-                         <div id="play-now">
-                        Start Game
-                    </div>
+                        <div id="play-now">
+                            Start Game
+                        </div>
                     </div>
                 </button>
                 <button id="paused"><i class="far fa-pause-circle"></i></button>
@@ -86,7 +86,7 @@
             </center>
         </div>
     </section>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.all.min.js"></script>
     <script src="https://kit.fontawesome.com/cf20a1f091.js" crossorigin="anonymous"></script>
     <script src="assets/js/snake.js"></script>

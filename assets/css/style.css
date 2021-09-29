@@ -38,6 +38,12 @@ li {
     border: 3px solid #000;
     border-radius: 10px;
     box-sizing: border-box;
+    background-color: #c0c0c0;
+}
+
+.nav-btn:hover {
+    background-color: #990000;
+
 }
 
 

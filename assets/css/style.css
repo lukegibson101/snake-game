@@ -100,7 +100,6 @@ margin-bottom: 5px;
 }
 
 
-
 #game-message {
     height: 2rem;
 }
@@ -112,7 +111,10 @@ margin-bottom: 5px;
     width: 4rem;
     height: 4rem;
     font-size: 3rem;
+}
 
+#pause {
+    font-size: 2rem;
 }
 
 #game-message {
@@ -163,6 +165,8 @@ margin-bottom: 5px;
     border: 1px solid #000;
 
 }
+
+
 
 @media screen and (max-width: 600px) {
 

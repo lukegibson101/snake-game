@@ -67,6 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let bonusFood = false;
     let startGame = false;
     let snakeColor = "#008000";
+    let snakeBorder = "#000";
+    let canvasBg = "#c0c0c0";
     let scorePerFood = 30;
     
     // settings form submitted changes
@@ -87,8 +89,12 @@ document.addEventListener("DOMContentLoaded", function () {
             scorePerFood = 20;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>`;
          }
-         
          snakeColor = settingsForm.elements['snakeColor'].value;
+         snakeBorder = settingsForm.elements['snakeBorder'].value;
+         canvasBg = settingsForm.elements['canvasBg'].value;
+         pageBg = settingsForm.elements['pageBg'].value;
+         document.body.style.backgroundColor = pageBg;
+
         }
         
        
@@ -140,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function drawCanvas() {
         // background color of canvas
-        gameBoardCtx.fillStyle = '#c0c0c0';
+        gameBoardCtx.fillStyle = canvasBg;
         // canvas border color
         gameBoardCtx.strokeStyle = '#000';
         gameBoardCtx.lineWidth = (pixelSize * 2) - 2;
@@ -241,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // background color of snake section
         gameBoardCtx.fillStyle = snakeColor;
         // border of snake section
-        gameBoardCtx.strokeStyle = '#000';
+        gameBoardCtx.strokeStyle = snakeBorder;
         gameBoardCtx.lineWidth = 1;
         // Define size of each section
         gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, pixelSize, pixelSize);

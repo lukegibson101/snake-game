@@ -13,30 +13,10 @@
     <header>
         <nav>
             <ul>
-                <li><button class="nav-btn" id="settings-btn">
-                        <h2>Settings <i class="fas fa-cog"></i></h2>
-                    </button></li>
-                <li><button class="nav-btn" id="how-btn">
-                        <h2>How to Play <i class="far fa-question-circle"></i></h2>
-                    </button></li>
+                <li><button class="nav-btn"><h2>Settings <i class="fas fa-cog"></i></h2></button></li>
+                <li><button class="nav-btn"><h2>How to Play <i class="far fa-question-circle"></i></h2></button></li>
             </ul>
         </nav>
-        <div id="settings-modal" class="modal">
-
-            <!-- Setting Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>Some Text</p>
-            </div>
-
-            <div id="how-modal" class="modal">
-
-                <!-- How to Play Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>How to</p>
-                </div>
-
     </header>
     <section>
         <div id="snake-container">
@@ -48,7 +28,7 @@
                 </strong>
                 <div>
                     <strong>
-                        High Score: <span id="newHighScore">0</span>
+                   High Score: <span id="newHighScore">0</span>
                         <span class="float-right">Level: <span id="newLevel">0</span></span>
                     </strong>
                 </div>
@@ -67,7 +47,7 @@
                 <canvas id="snakeBoard"></canvas>
             </div>
             <div id="game-message"></div>
-
+            
 
         </div>
         <div id="touch-controls">
@@ -114,7 +94,6 @@
     <script type="text/javascript" src="assets/js/haptics.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.all.min.js"></script>
     <script src="https://kit.fontawesome.com/cf20a1f091.js" crossorigin="anonymous"></script>
-    <script src="assets/js/script.js"></script>
     <script src="assets/js/snake.js"></script>
 </body>
 

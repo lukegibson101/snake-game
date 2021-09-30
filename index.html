@@ -22,25 +22,38 @@
             </ul>
         </nav>
         <div id="settings-modal" class="modal">
-            <div class="modal-container">
-                <span class="float-right close"><i class="far fa-window-close"></i></span>
+            <div class="modal-container" id="settings-container">
+                <span class="float-right close" id="settings-close"><i class="far fa-window-close"></i></span>
                 <div>
                     <h2>Settings</h2>
                 </div>
                 <div>
                     <h3>Difficulty</h3>
+                    <p>
                     <input type="radio" id="easy" name="difficulty" value="easy">
-                    <label for="easy"><i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> Easy (20 points per food eaten. Starts off slow)</label><br>
+                    <label for="easy"><i class="fas fa-star"></i> <i class="far fa-star"></i> <i
+                            class="far fa-star"></i> Easy (20 points per food eaten. Starts off slow)</label><br>
                     <input type="radio" id="medium" name="difficulty" value="medium">
-                    <label for="medium"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i> Medium (30 points per food eaten. Faster start speed)</label><br>
+                    <label for="medium"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                            class="far fa-star"></i> Medium (30 points per food eaten. Faster start speed)</label><br>
                     <input type="radio" id="hard" name="difficulty" value="hard">
-                    <label for="hard"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>Hard (50 points per food eaten. Fast start speed)</label>
+                    <label for="hard"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                            class="fas fa-star"></i>Hard (50 points per food eaten. Fast start speed)</label>
+                    </p>
+                    <h3>Change Snake Color</h3>
+                    <p>
+                    <label for="favcolor">Change Snake Color:</label>
+                    <input type="color" id="favcolor" name="favcolor" value="#ff0000">
+                    </p>
+                    <p>
+                        <input type="submit">
+                    </p>
                 </div>
             </div>
         </div>
         <div id="how-modal" class="modal">
-            <div class="modal-container">
-                <span class="float-right close"><i class="far fa-window-close"></i></span>
+            <div class="modal-container" id="how-container">
+                <span class="float-right close" id="how-close"><i class="far fa-window-close"></i></span>
                 <div>Testing How To
                 </div>
             </div>

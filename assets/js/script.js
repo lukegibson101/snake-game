@@ -13,23 +13,13 @@ function showModal() {
     }
 }
 
-let modalClose = document.getElementsByClassName('modal');
-for (let i = 0; i < modalClose.length; i++) {
-    modalClose[i].addEventListener('click', closeModal);
-}
-let clickClose = document.getElementsByClassName('close');
-for (let i = 0; i < clickClose.length; i++) {
-   clickClose[i].addEventListener('click', closeModal);
-}
 
-function closeModal() {
-    if (this.getAttribute("id") === "settings-modal") {
-        document.getElementById('settings-modal').style.display = 'none';
+window.onclick = function(event) {
+    if (event.target == document.getElementById('settings-modal')) {
+        document.getElementById('settings-modal').style.display = "none";
     }
-    if (this.getAttribute("id") === "how-modal") {
-        document.getElementById('how-modal').style.display = 'none';
+    if (event.target == document.getElementById('how-modal')) {
+        document.getElementById('how-modal').style.display = "none";
     }
-}
-
-
+  }
 

@@ -1,7 +1,7 @@
-let modal = document.getElementsByClassName('nav-btn');
+let modalBtn = document.getElementsByClassName('nav-btn');
 
-    for (let i = 0; i < modal.length; i++) {
-        modal[i].addEventListener('click', showModal);
+    for (let i = 0; i < modalBtn.length; i++) {
+        modalBtn[i].addEventListener('click', showModal);
        
     }
 
@@ -15,3 +15,18 @@ let modal = document.getElementsByClassName('nav-btn');
 
     }
     
+    let modalClose = document.getElementsByClassName('modal');
+    for (let i = 0; i < modalClose.length; i++) {
+        modalClose[i].addEventListener('click', closeModal);
+        
+    }
+
+    function closeModal () {
+        if (this.getAttribute("id") === "settings-modal") {
+            document.getElementById('settings-modal').style.display = 'none';
+        }
+        if (this.getAttribute("id") === "how-modal") {
+          document.getElementById('how-modal').style.display = 'none';
+        }
+        
+    }

@@ -400,6 +400,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                     ++level;
                     bonusScore = 0;
+                    document.getElementById("game-message").style.backgroundColor = `#c0c0c0`;
+                    document.getElementById("game-message").style.border = `2px solid #000`;
+                    document.getElementById("game-message").style.borderRadius = `10px`;
                     document.getElementById("game-message").innerHTML = `<strong>Level Up! Speed Increased!</strong>`;
 
                     bonusFood = true;
@@ -410,7 +413,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         generateBonusFood();
                         if (clearGameMessage) {
                             document.getElementById("game-message").textContent = "";
-                        }
+                            document.getElementById("game-message").style.backgroundColor = `#f5f5f5`;
+                    document.getElementById("game-message").style.border = `2px solid #f5f5f5`;
+                       }
                     }, 5000);
                 }
 

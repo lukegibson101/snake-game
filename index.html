@@ -30,23 +30,27 @@
                 <div>
                     <h3>Difficulty</h3>
                     <p>
-                    <input type="radio" id="easy" name="difficulty" value="easy">
-                    <label for="easy"><i class="fas fa-star"></i> <i class="far fa-star"></i> <i
-                            class="far fa-star"></i> Easy (20 points per food eaten. Starts off slow)</label><br>
-                    <input type="radio" id="medium" name="difficulty" value="medium">
-                    <label for="medium"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
-                            class="far fa-star"></i> Medium (30 points per food eaten. Faster start speed)</label><br>
-                    <input type="radio" id="hard" name="difficulty" value="hard">
-                    <label for="hard"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
-                            class="fas fa-star"></i>Hard (50 points per food eaten. Fast start speed)</label>
+                        <form action="" method="POST" id="settings-form">
+                            <input type="radio" id="easy" name="difficulty" value="300">
+                            <label for="easy"><i class="fas fa-star"></i> <i class="far fa-star"></i> <i
+                                    class="far fa-star"></i> Easy (20 points per food eaten. Starts off
+                                slow)</label><br>
+                            <input type="radio" id="medium" name="difficulty" value="200">
+                            <label for="medium"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                                    class="far fa-star"></i> Medium (30 points per food eaten. Faster start
+                                speed)</label><br>
+                            <input type="radio" id="hard" name="difficulty" value="100">
+                            <label for="hard"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                                    class="fas fa-star"></i>Hard (50 points per food eaten. Fast start speed)</label>
                     </p>
                     <h3>Change Snake Color</h3>
                     <p>
-                    <label for="favcolor">Change Snake Color:</label>
-                    <input type="color" id="favcolor" name="favcolor" value="#ff0000">
+                        <label for="snakeColor">Change Snake Color:</label>
+                        <input type="color" id="snakeColor" name="snakeColor" value="#ff0000">
                     </p>
                     <p>
                         <input type="submit">
+                        </form>
                     </p>
                 </div>
             </div>
@@ -65,7 +69,7 @@
             <div id="scores" class="panel">
                 <strong>
                     Score: <span id="newScore">0</span>
-                    <span class="float-right">Difficulty <span id="difficulty">0</span></span>
+                    <span class="float-right">Difficulty <span id="difficulty-mode"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i></span></span>
                 </strong>
                 <div>
                     <strong>

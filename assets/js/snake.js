@@ -65,6 +65,29 @@ document.addEventListener("DOMContentLoaded", function () {
     let pause = true;
     let bonusFood = false;
     let startGame = false;
+    let snakeColor = "#008000";
+    
+    
+    let settingsForm = document.getElementById("settings-form");
+    settingsForm.addEventListener('submit', handleSettingsSubmit);
+    let difficultySetting = document.getElementById("difficulty-mode");
+    function handleSettingsSubmit() {
+        event.preventDefault();
+         speed = settingsForm.elements['difficulty'].value;
+         console.log(speed);
+         if (speed == 100) {
+            difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>`;
+         } else if (speed == 200) {
+            difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i>`;
+         } else if (speed == 300) {
+            difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>`;
+         }
+         
+         snakeColor = settingsForm.elements['snakeColor'].value;
+        }
+        
+       
+        
 
     let beginGame = document.getElementById('startGame');
     beginGame.addEventListener('click', startGameNow);
@@ -127,6 +150,9 @@ document.addEventListener("DOMContentLoaded", function () {
      * @returns refreshes game at speed dependent on speed variable. If snake has crashed, resets the game, recalls initial variables, records high score and shows player a message that its game over.
      */
     function playGame() {
+
+        
+        
         if (collisionDetection()) { // game is over. Reset some variables back to default
             Swal.fire({
                 position: 'top',
@@ -210,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function drawEachSnakeSection(snakeSection) {
         // background color of snake section
-        gameBoardCtx.fillStyle = 'green';
+        gameBoardCtx.fillStyle = snakeColor;
         // border of snake section
         gameBoardCtx.strokeStyle = '#000';
         gameBoardCtx.lineWidth = 1;

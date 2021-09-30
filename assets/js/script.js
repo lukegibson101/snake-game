@@ -14,6 +14,14 @@ function showModal() {
 }
 
 
+document.getElementById('how-close').onclick = function() {
+    document.getElementById('how-modal').style.display = "none";
+  }
+
+document.getElementById('settings-close').onclick = function() {
+    document.getElementById('settings-modal').style.display = "none";
+  }
+
 window.onclick = function(event) {
     if (event.target == document.getElementById('settings-modal')) {
         document.getElementById('settings-modal').style.display = "none";

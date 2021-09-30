@@ -13,10 +13,16 @@
     <header>
         <nav>
             <ul>
-                <li><button class="nav-btn"><h2>Settings <i class="fas fa-cog"></i></h2></button></li>
-                <li><button class="nav-btn"><h2>How to Play <i class="far fa-question-circle"></i></h2></button></li>
+                <li><button class="nav-btn" id="settings-btn"><h2>Settings <i class="fas fa-cog"></i></h2></button></li>
+                <li><button class="nav-btn" id="how-btn"><h2>How to Play <i class="far fa-question-circle"></i></h2></button></li>
             </ul>
         </nav>
+        <div id="settings-modal" class="modal">
+            Test Settings
+        </div>
+        <div id="how-modal" class="modal">
+            Test How
+        </div>
     </header>
     <section>
         <div id="snake-container">
@@ -94,6 +100,7 @@
     <script type="text/javascript" src="assets/js/haptics.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.all.min.js"></script>
     <script src="https://kit.fontawesome.com/cf20a1f091.js" crossorigin="anonymous"></script>
+    <script src="assets/js/script.js"></script>
     <script src="assets/js/snake.js"></script>
 </body>
 

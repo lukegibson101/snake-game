@@ -56,6 +56,10 @@ li {
 
 }
 
+.modal {
+    display: none;
+}
+
 
 section {
   width: 100%;

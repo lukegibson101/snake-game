@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let snakeBorder = "#000";
     let canvasBg = "#c0c0c0";
     let scorePerFood = 30;
+    let resetGame = false;
     
     // settings form submitted changes
     let settingsForm = document.getElementById("settings-form");
@@ -94,7 +95,9 @@ document.addEventListener("DOMContentLoaded", function () {
          canvasBg = settingsForm.elements['canvasBg'].value;
          pageBg = settingsForm.elements['pageBg'].value;
          document.body.style.backgroundColor = pageBg;
-
+         document.getElementById('game-message').style.borderColor = pageBg;
+         document.getElementById("game-message").style.backgroundColor = pageBg;
+         resetGame = true;
         }
         
        
@@ -119,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Set starGame to true and hides the star game button
+     * Set starGame to true and hides the start game button
      */
     function startGameNow() {
         if (startGame === false) {
@@ -162,7 +165,8 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function playGame() {
 
-        if (collisionDetection()) { // game is over. Reset some variables back to default
+        if (resetGame === true || collisionDetection()) {// game is over. Reset some variables back to default
+            if (collisionDetection()) {
             Swal.fire({
                 position: 'top',
                 icon: 'warning',
@@ -172,13 +176,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 timer: 2000
 
             });
+        } else if (resetGame === true) {
+            Swal.fire({
+                position: 'top',
+                icon: 'warning',
+                title: `Settings changed successfully. Game reloading...`,
+                timerProgressBar: true,
+                showConfirmButton: false,
+                timer: 2000
+            });
+
+        }
+            resetGame = false;
             highScore = document.getElementById('newHighScore').innerHTML;
             if (highScore < currentScore) {
                 document.getElementById('newHighScore').innerHTML = currentScore;
             }
             document.getElementById("game-message").textContent = "";
-            document.getElementById("game-message").style.backgroundColor = `#f5f5f5`;
-            document.getElementById("game-message").style.border = `2px solid #f5f5f5`;
+            document.getElementById("game-message").style.backgroundColor = pageBg;
+            document.getElementById("game-message").style.borderColor = pageBg;
             beginGame.style = "display:;";
             document.getElementById('newScore').innerHTML = "0";
             document.getElementById('newLevel').innerHTML = "1";
@@ -260,9 +276,11 @@ document.addEventListener("DOMContentLoaded", function () {
      * @returns detects if snake has collided with an object to call game over
      */
     function collisionDetection() {
+        
         for (let i = 4; i < snake.length; i++) { //start at 4 as length of starting snake
             if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true; //if snake hits itself
         }
+        
         let collideLeftWall = snake[0].x < pixelSize;
         let collideRightWall = snake[0].x > (gameBoard.width - pixelSize) - dx;
         let collideToptWall = snake[0].y < pixelSize;
@@ -450,8 +468,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         generateBonusFood();
                         if (clearGameMessage) {
                             document.getElementById("game-message").textContent = "";
-                            document.getElementById("game-message").style.backgroundColor = `#f5f5f5`;
-                            document.getElementById("game-message").style.border = `2px solid #f5f5f5`;
+                            document.getElementById("game-message").style.backgroundColor = pageBg;
+                            document.getElementById("game-message").style.borderColor = pageBg;
                         }
                     }, 5000);
                 }

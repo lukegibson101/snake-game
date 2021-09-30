@@ -11,17 +11,17 @@
 }
 
 body {
-    width:100%;
+    width: 100%;
     font-size: 16px;
     background: #f5f5f5;
-   
+
 }
 
 #nav {
     width: 100%;
     text-align: center;
-    
-    
+
+
 }
 
 ul {
@@ -30,14 +30,14 @@ ul {
     max-width: 600px;
     list-style: none;
     text-align: center;
-    
+
 
 }
 
 li {
-    width:45%;
+    width: 45%;
     display: inline-block;
-    
+
 
 }
 
@@ -48,7 +48,7 @@ li {
     border-radius: 10px;
     box-sizing: border-box;
     background-color: #c0c0c0;
-    
+
 }
 
 .nav-btn:hover {
@@ -59,21 +59,20 @@ li {
 .modal {
     display: none;
     position: fixed;
-  top: 0;
-  left: 0;
-  width:100%;
-  height:100%;
-  background: rgba(153, 51, 204, .5);
-  z-index:10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(153, 51, 204, .5);
+    z-index: 10;
 }
 
 .modal-container {
     position: relative;
     margin: auto;
-     
-top: 50%;
-transform: translateY(-50%);
-    max-width:600px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 600px;
     background-color: yellow;
     border: 5px solid #000;
     z-index: 12;
@@ -82,27 +81,27 @@ transform: translateY(-50%);
 
 
 section {
-  width: 100%;
+    width: 100%;
 
 }
 
 #snake-container {
     margin: 0 auto;
     max-width: 600px;
-    }
+}
 
 .panel {
-border: 2px solid #000;
-padding: 5px;
-border-radius: 10px;
-margin: 0 auto;
-background-color: #c0c0c0;
-margin-bottom: 5px;
+    border: 2px solid #000;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: #c0c0c0;
+    margin-bottom: 5px;
 }
 
 #canvas-container {
     text-align: center;
-    width:100%;
+    width: 100%;
 }
 
 #touch-controls {
@@ -146,7 +145,7 @@ margin-bottom: 5px;
     color: #990000;
     padding: 5px;
     height: 1rem;
-    width:50%;
+    width: 50%;
     margin: 0 auto 5px;
     border: 2px solid #f5f5f5;
 }
@@ -154,7 +153,7 @@ margin-bottom: 5px;
 
 .float-right {
     float: right;
-    }
+}
 
 
 
@@ -204,7 +203,7 @@ margin-bottom: 5px;
         height: 450px;
     }
 
-   
+
 
     #game-title {
         margin-top: -7.5rem;
@@ -216,7 +215,7 @@ margin-bottom: 5px;
     }
 
     #game-message {
-        width:75%;
+        width: 75%;
     }
 }
 
@@ -225,7 +224,7 @@ margin-bottom: 5px;
     #snake-container {
         width: 300px;
     }
-    
+
     #startGame,
     #paused {
         font-size: 5rem;
@@ -233,7 +232,7 @@ margin-bottom: 5px;
         height: 300px;
     }
 
-   
+
     #game-title {
         margin-top: -5rem;
         font-size: 1.5rem;
@@ -244,6 +243,6 @@ margin-bottom: 5px;
     }
 
     #game-message {
-        width:100%;
+        width: 100%;
     }
 }

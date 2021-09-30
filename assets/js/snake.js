@@ -71,38 +71,39 @@ document.addEventListener("DOMContentLoaded", function () {
     let canvasBg = "#c0c0c0";
     let scorePerFood = 30;
     let resetGame = false;
-    
+
     // settings form submitted changes
     let settingsForm = document.getElementById("settings-form");
     settingsForm.addEventListener('submit', handleSettingsSubmit);
     let difficultySetting = document.getElementById("difficulty-mode");
+
     function handleSettingsSubmit() {
         event.preventDefault();
-         startSpeed = settingsForm.elements['difficulty'].value;
-         console.log(speed);
-         if (startSpeed == 100) {
+        startSpeed = settingsForm.elements['difficulty'].value;
+        console.log(speed);
+        if (startSpeed == 100) {
             scorePerFood = 50;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>`;
-         } else if (startSpeed == 200) {
+        } else if (startSpeed == 200) {
             scorePerFood = 30;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i>`;
-         } else if (startSpeed == 300) {
+        } else if (startSpeed == 300) {
             scorePerFood = 20;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>`;
-         }
-         snakeColor = settingsForm.elements['snakeColor'].value;
-         snakeBorder = settingsForm.elements['snakeBorder'].value;
-         canvasBg = settingsForm.elements['canvasBg'].value;
-         pageBg = settingsForm.elements['pageBg'].value;
-         document.body.style.backgroundColor = pageBg;
-         document.getElementById('game-message').style.borderColor = pageBg;
-         document.getElementById("game-message").style.backgroundColor = pageBg;
-         document.getElementById('settings-modal').style.display = "none";
-         resetGame = true;
         }
-        
-       
-        
+        snakeColor = settingsForm.elements['snakeColor'].value;
+        snakeBorder = settingsForm.elements['snakeBorder'].value;
+        canvasBg = settingsForm.elements['canvasBg'].value;
+        pageBg = settingsForm.elements['pageBg'].value;
+        document.body.style.backgroundColor = pageBg;
+        document.getElementById('game-message').style.borderColor = pageBg;
+        document.getElementById("game-message").style.backgroundColor = pageBg;
+        document.getElementById('settings-modal').style.display = "none";
+        resetGame = true;
+    }
+
+
+
 
     let beginGame = document.getElementById('startGame');
     beginGame.addEventListener('click', startGameNow);
@@ -166,29 +167,31 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function playGame() {
 
-        if (resetGame === true || collisionDetection()) {// game is over. Reset some variables back to default
+        if (resetGame === true || collisionDetection()) { // game is over. Reset some variables back to default
             if (collisionDetection()) {
-            Swal.fire({
-                position: 'top',
-                icon: 'warning',
-                title: `Game Over! You reached level ${level} with a score of ${currentScore}. Game reloading...`,
-                timerProgressBar: true,
-                showConfirmButton: false,
-                timer: 2000
+                Swal.fire({
+                    position: 'top',
+                    icon: 'warning',
+                    title: `Game Over! You reached level ${level} with a score of ${currentScore}. Game reloading...`,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    timer: 2000
 
-            });
-        } else if (resetGame === true) {
-            Swal.fire({
-                position: 'top',
-                icon: 'warning',
-                title: `Settings changed successfully. Game reloading...`,
-                timerProgressBar: true,
-                showConfirmButton: false,
-                timer: 2000
-            });
+                });
+            } else if (resetGame === true) {
+                Swal.fire({
+                    position: 'top',
+                    icon: 'warning',
+                    title: `Settings changed successfully. Game reloading...`,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
 
-        }
+            }
             resetGame = false;
+            pause = false;
+            document.getElementById('paused').style.display = "none";
             highScore = document.getElementById('newHighScore').innerHTML;
             if (highScore < currentScore) {
                 document.getElementById('newHighScore').innerHTML = currentScore;
@@ -277,11 +280,11 @@ document.addEventListener("DOMContentLoaded", function () {
      * @returns detects if snake has collided with an object to call game over
      */
     function collisionDetection() {
-        
+
         for (let i = 4; i < snake.length; i++) { //start at 4 as length of starting snake
             if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true; //if snake hits itself
         }
-        
+
         let collideLeftWall = snake[0].x < pixelSize;
         let collideRightWall = snake[0].x > (gameBoard.width - pixelSize) - dx;
         let collideToptWall = snake[0].y < pixelSize;

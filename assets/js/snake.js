@@ -59,27 +59,32 @@ document.addEventListener("DOMContentLoaded", function () {
     let changingSnakeDirection = false;
     let dx = pixelSize;
     let dy = 0;
-    let speed = 200;
+    let startSpeed = 200;
+    let speed = startSpeed;
     let level = 1;
     let eatCount = 0;
     let pause = true;
     let bonusFood = false;
     let startGame = false;
     let snakeColor = "#008000";
+    let scorePerFood = 30;
     
-    
+    // settings form submitted changes
     let settingsForm = document.getElementById("settings-form");
     settingsForm.addEventListener('submit', handleSettingsSubmit);
     let difficultySetting = document.getElementById("difficulty-mode");
     function handleSettingsSubmit() {
         event.preventDefault();
-         speed = settingsForm.elements['difficulty'].value;
+         startSpeed = settingsForm.elements['difficulty'].value;
          console.log(speed);
-         if (speed == 100) {
+         if (startSpeed == 100) {
+            scorePerFood = 50;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>`;
-         } else if (speed == 200) {
+         } else if (startSpeed == 200) {
+            scorePerFood = 30;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i>`;
-         } else if (speed == 300) {
+         } else if (startSpeed == 300) {
+            scorePerFood = 20;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>`;
          }
          
@@ -151,8 +156,6 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function playGame() {
 
-        
-        
         if (collisionDetection()) { // game is over. Reset some variables back to default
             Swal.fire({
                 position: 'top',
@@ -202,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
             changingSnakeDirection = false;
             dx = pixelSize;
             dy = 0;
-            speed = 200;
+            speed = startSpeed;
             level = 1;
             eatCount = 0;
             startGame = false;
@@ -420,7 +423,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let snakeEaten = snake[0].x === foodX && snake[0].y === foodY; // chech snake head has just hit food
             if (snakeEaten) {
                 generateFood(); //generate a new food location
-                currentScore += (20 + bonusScore); // increase score
+                currentScore += (scorePerFood + bonusScore); // increase score
                 ++eatCount;
                 if (eatCount % 5 === 0) {
                     if (speed > 50) {

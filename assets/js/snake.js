@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
          document.body.style.backgroundColor = pageBg;
          document.getElementById('game-message').style.borderColor = pageBg;
          document.getElementById("game-message").style.backgroundColor = pageBg;
+         document.getElementById('settings-modal').style.display = "none";
          resetGame = true;
         }
         

@@ -13,10 +13,29 @@
     <header>
         <nav>
             <ul>
-                <li><button class="nav-btn"><h2>Settings <i class="fas fa-cog"></i></h2></button></li>
-                <li><button class="nav-btn"><h2>How to Play <i class="far fa-question-circle"></i></h2></button></li>
+                <li><button class="nav-btn">
+                        <h2>Settings <i class="fas fa-cog"></i></h2>
+                    </button></li>
+                <li><button class="nav-btn">
+                        <h2>How to Play <i class="far fa-question-circle"></i></h2>
+                    </button></li>
             </ul>
         </nav>
+        <div id="myModal" class="modal">
+
+            <!-- Setting Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Some Text</p>
+            </div>
+            <div id="myModal" class="modal">
+
+                <!-- How to Play Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Some text</p>
+                </div>
+
     </header>
     <section>
         <div id="snake-container">
@@ -28,7 +47,7 @@
                 </strong>
                 <div>
                     <strong>
-                   High Score: <span id="newHighScore">0</span>
+                        High Score: <span id="newHighScore">0</span>
                         <span class="float-right">Level: <span id="newLevel">0</span></span>
                     </strong>
                 </div>
@@ -47,7 +66,7 @@
                 <canvas id="snakeBoard"></canvas>
             </div>
             <div id="game-message"></div>
-            
+
 
         </div>
         <div id="touch-controls">

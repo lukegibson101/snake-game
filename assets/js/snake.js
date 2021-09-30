@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // set initial variables
     let currentScore = 0;
     let bonusScore = 0;
-    let changingSnakeDirection = false;  
+    let changingSnakeDirection = false;
     let dx = pixelSize;
     let dy = 0;
     let speed = 200;
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
         gameBoardCtx.fillStyle = '#c0c0c0';
         // canvas border color
         gameBoardCtx.strokeStyle = '#000';
-        gameBoardCtx.lineWidth = (pixelSize*2) - 2;
+        gameBoardCtx.lineWidth = (pixelSize * 2) - 2;
         // Draw a filled rectangle to cover the canvas
         gameBoardCtx.fillRect(0, 0, gameBoard.width, gameBoard.height);
         // draw the canvas border
@@ -142,6 +142,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById('newHighScore').innerHTML = currentScore;
             }
             document.getElementById("game-message").textContent = "";
+            document.getElementById("game-message").style.backgroundColor = `#f5f5f5`;
+            document.getElementById("game-message").style.border = `2px solid #f5f5f5`;
             beginGame.style = "display:;";
             document.getElementById('newScore').innerHTML = "0";
             document.getElementById('newLevel').innerHTML = "1";
@@ -334,7 +336,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let rightDir = dx === pixelSize;
             let upDir = dy === -pixelSize;
             let downDir = dy === pixelSize;
-            
+
 
             if (this.getAttribute("id") === "btn-left" && !rightDir) {
                 dx = -pixelSize;
@@ -374,7 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (let i = 0; i < touchControls.length; i++) {
         touchControls[i].addEventListener('click', touchControlsClicked);
-        
+
     }
 
 
@@ -414,8 +416,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (clearGameMessage) {
                             document.getElementById("game-message").textContent = "";
                             document.getElementById("game-message").style.backgroundColor = `#f5f5f5`;
-                    document.getElementById("game-message").style.border = `2px solid #f5f5f5`;
-                       }
+                            document.getElementById("game-message").style.border = `2px solid #f5f5f5`;
+                        }
                     }, 5000);
                 }
 
@@ -453,8 +455,8 @@ document.addEventListener("DOMContentLoaded", function () {
      * generates co-ordinates for food from generateFoodRandom and cheks they don't clash with the snake co-ordinates
      */
     function generateFood() {
-        foodX = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize*2)); // x co-ordinate
-        foodY = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize*2)); // y co-ordinate
+        foodX = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize * 2)); // x co-ordinate
+        foodY = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize * 2)); // y co-ordinate
         snake.forEach(function hasSnakeEaten(part) {
             let snakeEaten = part.x == foodX && part.y == foodY;
             if (snakeEaten) generateFood();
@@ -466,8 +468,8 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function generateBonusFood() {
         if (bonusFood) {
-            bonusFoodX = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize*2)); // x co-ordinate
-            bonusFoodY = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize*2)); // y co-ordinate
+            bonusFoodX = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize * 2)); // x co-ordinate
+            bonusFoodY = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize * 2)); // y co-ordinate
 
             snake.forEach(function hasBonusSnakeEaten(part) {
                 let bonusSnakeEaten = part.x == bonusFoodX && part.y == bonusFoodX;
@@ -510,6 +512,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    
-    
+
+
 }) //end DOM loaded function

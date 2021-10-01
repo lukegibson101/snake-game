@@ -80,6 +80,7 @@ li {
     z-index: 12;
     padding: 1rem 1rem 0 1rem;
     font-size: 1.5rem;
+    box-sizing: border-box;
 }
 
 .close {

@@ -99,11 +99,13 @@ document.addEventListener("DOMContentLoaded", function () {
         canvasBg = "#c0c0c0";
     } else {
         canvasBg = localStorage.getItem('canvasBg');
+        document.getElementById('canvasBg').value = canvasBg;
     }
     if (!localStorage.getItem('pageBg')) {
         pageBg = "#f5f5f5";
     } else {
         pageBg = localStorage.getItem('pageBg');
+        
     }
     if (!localStorage.getItem('scorePerFood')) {
         scorePerFood = 30;

@@ -3,69 +3,76 @@ document.addEventListener("DOMContentLoaded", function () {
     let paused = document.getElementById('paused');
     // define gameboard
     let gameBoard = document.getElementById("snakeBoard");
-    parent = gameBoard.parentNode; 
+    parent = gameBoard.parentNode;
     gameWidth = parent.offsetWidth;
     let pixelSize = 20;
-    if (gameWidth < 450) { // smaller screens
+    if (gameWidth < 450) {
         gameBoard.width = 300;
         gameBoard.height = 300;
-        pixelSize = 10; // defines "pixel size" Size of snake, size of each movememnt, size of each tile.
-    } else if (gameWidth < 600) { // small tablets
+        pixelSize = 10;
+    } else if (gameWidth < 600) {
         gameBoard.width = 450;
         gameBoard.height = 450;
         pixelSize = 15;
-    } else { // everything elsse
+    } else {
         gameBoard.width = gameWidth;
         gameBoard.height = gameWidth;
         pixelSize = 20;
     }
-    snakeStart = gameBoard.width - (gameBoard.width / 5); // set starting position on responsive canvas
+    snakeStart = gameBoard.width - (gameBoard.width / 5);
     let gameBoardCtx = gameBoard.getContext("2d");
 
 
-function initialSnake (pixelSize, snakeStart) {
-    // set initial snake co-ordinates
-     snake = [{
-            x: pixelSize * 5,
-            y: snakeStart
-        },
-        {
-            x: pixelSize * 4,
-            y: snakeStart
-        },
-        {
-            x: pixelSize * 3,
-            y: snakeStart
-        },
-        {
-            x: pixelSize * 2,
-            y: snakeStart
-        },
-        {
-            x: pixelSize,
-            y: snakeStart
-        }
-    ];
-}
+    /**
+     * 
+     * @param {size of pixel for screen} pixelSize 
+     * @param {location of snake at start} snakeStart 
+     */
+    function initialSnake(pixelSize, snakeStart) {
+        snake = [{
+                x: pixelSize * 5,
+                y: snakeStart
+            },
+            {
+                x: pixelSize * 4,
+                y: snakeStart
+            },
+            {
+                x: pixelSize * 3,
+                y: snakeStart
+            },
+            {
+                x: pixelSize * 2,
+                y: snakeStart
+            },
+            {
+                x: pixelSize,
+                y: snakeStart
+            }
+        ];
+    }
 
-function resetVariables () {
-    initialSnake(pixelSize, snakeStart);
+    /**
+     * Calls variables to start game.
+     */
+    function resetVariables() {
+        initialSnake(pixelSize, snakeStart);
 
-currentScore = 0;
-bonusScore = 0;
-changingSnakeDirection = false;
-dx = pixelSize;
-dy = 0;
-speed = startSpeed;
-level = 1;
-eatCount = 0;
-startGame = false;
-bonusFood = false;
-pause = true;
+        currentScore = 0;
+        bonusScore = 0;
+        changingSnakeDirection = false;
+        dx = pixelSize;
+        dy = 0;
+        speed = startSpeed;
+        level = 1;
+        eatCount = 0;
+        startGame = false;
+        bonusFood = false;
+        pause = true;
 
-}
+    }
 
-    // set initial variables
+    // set initial variables that are dynamic
     let startSpeed = 200;
     let snakeColor = "#008000";
     let snakeBorder = "#000";
@@ -81,6 +88,9 @@ pause = true;
     settingsForm.addEventListener('submit', handleSettingsSubmit);
     let difficultySetting = document.getElementById("difficulty-mode");
 
+    /**
+     * Handles user input changes and restarts that game
+     */
     function handleSettingsSubmit() {
         event.preventDefault();
         startSpeed = settingsForm.elements.difficulty.value;
@@ -106,20 +116,17 @@ pause = true;
         resetGame = true;
     }
 
-
-
-
     let beginGame = document.getElementById('startGame');
     beginGame.addEventListener('click', startGameNow);
-    // listen for keypress to start game
     document.addEventListener("keydown", startGameWithSpacebar);
 
+    /**
+     * Starts the game if spacebar pressed
+     * @param {spacebar} event 
+     */
     function startGameWithSpacebar(event) {
         let spaceBar = 32;
-
-        // get the code for the pressed key
         let SpacePressed = event.keyCode;
-
         if (startGame === false && SpacePressed === spaceBar) {
             startGame = true;
             pause = true;
@@ -138,17 +145,10 @@ pause = true;
         }
     }
 
-
-
-    //Begin game
     playGame();
-    //generate food
     generateFood();
     generateBonusFood();
-
-    // listen for keypress to change direction
     document.addEventListener("keydown", changeSnakeDirection);
-
 
     /**
      * sets the play area and sets background color and border
@@ -170,7 +170,6 @@ pause = true;
      * @returns refreshes game at speed dependent on speed variable. If snake has crashed, resets the game, recalls initial variables, records high score and shows player a message that its game over.
      */
     function playGame() {
-
         if (resetGame === true || collisionDetection()) { // game is over. Reset some variables back to default
             if (collisionDetection()) {
                 Swal.fire({
@@ -180,7 +179,6 @@ pause = true;
                     timerProgressBar: true,
                     showConfirmButton: false,
                     timer: 2000
-
                 });
             } else if (resetGame === true) {
                 Swal.fire({
@@ -191,7 +189,6 @@ pause = true;
                     showConfirmButton: false,
                     timer: 2000
                 });
-
             }
             resetGame = false;
             pause = false;
@@ -207,9 +204,8 @@ pause = true;
             document.getElementById('newScore').innerHTML = "0";
             document.getElementById('newLevel').innerHTML = "1";
             gameBoardCtx.clearRect(0, 0, gameBoard.width, gameBoard.height);
-
             drawCanvas();
-            resetVariables(pixelSize, snakeStart)
+            resetVariables();
             drawSnake();
             generateBonusFood();
             playGame();
@@ -222,12 +218,9 @@ pause = true;
             drawBonusFood();
             moveSnake();
             drawSnake();
-            // call again to refresh
             playGame();
         }, speed);
     }
-
-    
 
     /**
      * generate co-ordinates from snake array to pass to drawEachSnakeSection
@@ -257,11 +250,9 @@ pause = true;
      * @returns detects if snake has collided with an object to call game over
      */
     function collisionDetection() {
-
         for (let i = 4; i < snake.length; i++) { //start at 4 as length of starting snake
             if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true; //if snake hits itself
         }
-
         let collideLeftWall = snake[0].x < pixelSize;
         let collideRightWall = snake[0].x > (gameBoard.width - pixelSize) - dx;
         let collideToptWall = snake[0].y < pixelSize;
@@ -286,12 +277,8 @@ pause = true;
             let keyW = 87;
             let keyS = 83;
             let spaceBar = 32;
-
-            // prevent snake from reversing
             if (changingSnakeDirection) return;
             changingSnakeDirection = true;
-
-            // get the code for the pressed key
             let keyPressed = event.keyCode;
 
             //define what action to take depending on snake direction
@@ -344,12 +331,10 @@ pause = true;
                 if (pause === false) {
                     pause = true;
                     paused.style.display = "inline-block";
-
                 } else {
                     pause = false;
                     paused.style.display = "none";
                 }
-
             }
         }
     }
@@ -361,7 +346,6 @@ pause = true;
     function touchControlsClicked() {
         if (startGame) {
             Haptics.vibrate(100);
-            // prevent snake from reversing
             if (changingSnakeDirection) return;
             changingSnakeDirection = true;
 
@@ -370,7 +354,6 @@ pause = true;
             let rightDir = dx === pixelSize;
             let upDir = dy === -pixelSize;
             let downDir = dy === pixelSize;
-
 
             if (this.getAttribute("id") === "btn-left" && !rightDir) {
                 dx = -pixelSize;
@@ -396,24 +379,18 @@ pause = true;
                 if (pause === false) {
                     pause = true;
                     paused.style.display = "inline-block";
-
                 } else {
                     pause = false;
                     paused.style.display = "none";
                 }
             }
-
         }
     }
 
     let touchControls = document.getElementsByClassName('btnControls');
-
     for (let i = 0; i < touchControls.length; i++) {
         touchControls[i].addEventListener('click', touchControlsClicked);
-
     }
-
-
 
     /**
      * Move the snake by updating the snake array. Check if leveling up and call to generate bonus food. Update score.
@@ -425,10 +402,10 @@ pause = true;
                 y: snake[0].y + dy
             };
             snake.unshift(front);
-            let snakeEaten = snake[0].x === foodX && snake[0].y === foodY; // chech snake head has just hit food
+            let snakeEaten = snake[0].x === foodX && snake[0].y === foodY;
             if (snakeEaten) {
-                generateFood(); //generate a new food location
-                currentScore += (scorePerFood + bonusScore); // increase score
+                generateFood();
+                currentScore += (scorePerFood + bonusScore);
                 ++eatCount;
                 if (eatCount % 5 === 0) {
                     if (speed > 50) {
@@ -440,7 +417,6 @@ pause = true;
                     gameMessage.style.border = `2px solid #000`;
                     gameMessage.style.borderRadius = `10px`;
                     gameMessage.innerHTML = `<strong>Level Up! Speed Increased!</strong>`;
-
                     bonusFood = true;
                     generateBonusFood();
                     clearGameMessage = true;
@@ -454,11 +430,8 @@ pause = true;
                         }
                     }, 5000);
                 }
-
                 document.getElementById('newScore').innerHTML = currentScore;
                 document.getElementById('newLevel').innerHTML = level;
-
-
             } else { // remove the last part of the body (if has eaten the snake will now grow in size)
                 snake.pop();
             }
@@ -489,8 +462,8 @@ pause = true;
      * generates co-ordinates for food from generateFoodRandom and cheks they don't clash with the snake co-ordinates
      */
     function generateFood() {
-        foodX = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize * 2)); // x co-ordinate
-        foodY = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize * 2)); // y co-ordinate
+        foodX = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize * 2));
+        foodY = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize * 2));
         snake.forEach(function hasSnakeEaten(part) {
             let snakeEaten = part.x == foodX && part.y == foodY;
             if (snakeEaten) generateFood();
@@ -502,9 +475,8 @@ pause = true;
      */
     function generateBonusFood() {
         if (bonusFood) {
-            bonusFoodX = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize * 2)); // x co-ordinate
-            bonusFoodY = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize * 2)); // y co-ordinate
-
+            bonusFoodX = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize * 2));
+            bonusFoodY = generateFoodRandom(pixelSize, gameBoard.width - (pixelSize * 2));
             snake.forEach(function hasBonusSnakeEaten(part) {
                 let bonusSnakeEaten = part.x == bonusFoodX && part.y == bonusFoodX;
                 if (bonusSnakeEaten) generateBonusFood();
@@ -513,7 +485,6 @@ pause = true;
             bonusFoodX = "";
             bonusFoodY = "";
         }
-
     }
 
     /**
@@ -527,7 +498,6 @@ pause = true;
         gameBoardCtx.arc(foodX + (pixelSize / 2), foodY + (pixelSize / 2), (pixelSize / 2), 0, 2 * Math.PI);
         gameBoardCtx.fill();
         gameBoardCtx.stroke();
-
     }
 
     /**
@@ -543,9 +513,6 @@ pause = true;
             gameBoardCtx.fill();
             gameBoardCtx.stroke();
         }
-
     }
-
-
-
+    
 }) //end DOM loaded function

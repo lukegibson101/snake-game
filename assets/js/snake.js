@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
         snakeBorder = "#000";
     } else {
         snakeBorder = localStorage.getItem('snakeBorder');
+        document.getElementById('snakeBorder').value = snakeBorder;
     }
     if (!localStorage.getItem('canvasBg')) {
         canvasBg = "#c0c0c0";

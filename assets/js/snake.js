@@ -82,14 +82,38 @@ document.addEventListener("DOMContentLoaded", function () {
         startSpeed = localStorage.getItem('startSpeed');
         difficultySetting.innerHTML = localStorage.getItem('difficulty');
     }
-    let snakeColor = "#008000";
-    let snakeBorder = "#000";
-    let canvasBg = "#c0c0c0";
-    let pageBg = "#f5f5f5";
-    let scorePerFood = 30;
+    if (!localStorage.getItem('snakeColor')) {
+     snakeColor = "#008000";
+    } else {
+        snakeColor = localStorage.getItem('snakeColor');
+    }
+    if (!localStorage.getItem('snakeBorder')) {
+     snakeBorder = "#000";
+    } else {
+        snakeBorder = localStorage.getItem('snakeBorder');
+    }
+    if (!localStorage.getItem('canvasBg')) {
+     canvasBg = "#c0c0c0";
+    } else {
+        canvasBg = localStorage.getItem('canvasBg');
+    }
+    if (!localStorage.getItem('pageBg')) {
+     pageBg = "#f5f5f5";
+    } else {
+        pageBg = localStorage.getItem('pageBg');
+    }
+    if (!localStorage.getItem('scorePerFood')) {
+     scorePerFood = 30;
+    } else {
+        scorePerFood = localStorage.getItem('scorePerFood');
+    }
+    if (!localStorage.getItem('audio')) {
+     audio = true;
+    } else {
+        audio = localStorage.getItem('audio');
+    }
     let resetGame = false;
     let clearGameMessage = true;
-    let audio = true;
     resetVariables();
 
     // settings form submitted changes
@@ -108,14 +132,17 @@ document.addEventListener("DOMContentLoaded", function () {
             scorePerFood = 50;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>`;
             localStorage.setItem('difficulty', `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>`);
+            localStorage.setItem('scorePerFood', scorePerFood);
         } else if (startSpeed == 200) {
             scorePerFood = 30;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i>`;
             localStorage.setItem('difficulty', `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i>`);
+            localStorage.setItem('scorePerFood', scorePerFood);
         } else if (startSpeed == 300) {
             scorePerFood = 20;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>`;
             localStorage.setItem('difficulty', `<i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>`);
+            localStorage.setItem('scorePerFood', scorePerFood);
         }
         audio = settingsForm.elements['audio'].value;
         localStorage.setItem('audio', audio);
@@ -150,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
             startGame = true;
             pause = true;
             beginGame.style = "display:none;";
-            if (audio == true) {
+            if (audio === "true") {
                 gameSound = new sound("assets/sound/game-start.mp3");
                 gameSound.play();
             }
@@ -165,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
             startGame = true;
             pause = false;
             beginGame.style = "display:none;";
-            if (audio == true) {
+            if (audio === "true") {
                 gameSound = new sound("assets/sound/game-start.mp3");
                 gameSound.play();
             }
@@ -199,6 +226,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function playGame() {
         if (resetGame === true || collisionDetection()) { // game is over. Reset some variables back to default
             if (collisionDetection()) {
+                if (audio === "true") {
+                    gameSound = new sound("assets/sound/game-over.mp3");
+                    gameSound.play();
+                }
                 Swal.fire({
                     position: 'top',
                     icon: 'warning',
@@ -216,10 +247,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     showConfirmButton: false,
                     timer: 2000
                 });
-            }
-            if (audio == true) {
-                gameSound = new sound("assets/sound/game-over.mp3");
-                gameSound.play();
             }
             resetGame = false;
             pause = false;
@@ -438,7 +465,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 generateFood();
                 currentScore += (scorePerFood + bonusScore);
                 ++eatCount;
-                if (audio == true) {
+                if (audio === "true") {
                     gameSound = new sound("assets/sound/food.mp3");
                     gameSound.play();
                 }
@@ -448,7 +475,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                     ++level;
                     bonusScore = 0;
-                    if (audio == true) {
+                    if (audio === "true") {
                         gameSound = new sound("assets/sound/level-up.mp3");
                         gameSound.play();
                     }
@@ -482,7 +509,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     clearGameMessage = false;
                     bonusScore = 10;
                     gameMessage.innerHTML = `<strong><font color="green">Bonus Mode! +10 score per food eaten!</font></strong>`;
-                    if (audio == true) {
+                    if (audio === "true") {
                         gameSound = new sound("assets/sound/bonus-food.mp3");
                         gameSound.play();
                     }

@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let scorePerFood = 30;
     let resetGame = false;
     let clearGameMessage = true;
+    let audio = true;
     resetVariables();
 
     // settings form submitted changes
@@ -106,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
             scorePerFood = 20;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>`;
         }
+        audio = settingsForm.elements['audio'].value;
         snakeColor = settingsForm.elements['snakeColor'].value;
         snakeBorder = settingsForm.elements['snakeBorder'].value;
         canvasBg = settingsForm.elements['canvasBg'].value;
@@ -132,8 +134,10 @@ document.addEventListener("DOMContentLoaded", function () {
             startGame = true;
             pause = true;
             beginGame.style = "display:none;";
-            gameSound = new sound("assets/sound/game-start.mp3");
-            gameSound.play();
+            if (audio == true) {
+                gameSound = new sound("assets/sound/game-start.mp3");
+                gameSound.play();
+            }
         }
     }
 
@@ -145,8 +149,10 @@ document.addEventListener("DOMContentLoaded", function () {
             startGame = true;
             pause = false;
             beginGame.style = "display:none;";
-            gameSound = new sound("assets/sound/game-start.mp3");
-            gameSound.play();
+            if (audio == true) {
+                gameSound = new sound("assets/sound/game-start.mp3");
+                gameSound.play();
+            }
         }
     }
 
@@ -195,8 +201,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     timer: 2000
                 });
             }
-            gameSound = new sound("assets/sound/game-over.mp3");
-            gameSound.play();
+            if (audio == true) {
+                gameSound = new sound("assets/sound/game-over.mp3");
+                gameSound.play();
+            }
             resetGame = false;
             pause = false;
             paused.style.display = "none";
@@ -414,16 +422,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 generateFood();
                 currentScore += (scorePerFood + bonusScore);
                 ++eatCount;
-                gameSound = new sound("assets/sound/food.mp3");
-                gameSound.play();
+                if (audio == true) {
+                    gameSound = new sound("assets/sound/food.mp3");
+                    gameSound.play();
+                }
                 if (eatCount % 5 === 0) {
                     if (speed > 50) {
                         speed -= 10;
                     }
                     ++level;
                     bonusScore = 0;
-                    gameSound = new sound("assets/sound/level-up.mp3");
-                    gameSound.play();
+                    if (audio == true) {
+                        gameSound = new sound("assets/sound/level-up.mp3");
+                        gameSound.play();
+                    }
                     gameMessage.style.backgroundColor = `#c0c0c0`;
                     gameMessage.style.border = `2px solid #000`;
                     gameMessage.style.borderRadius = `10px`;
@@ -454,8 +466,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     clearGameMessage = false;
                     bonusScore = 10;
                     gameMessage.innerHTML = `<strong><font color="green">Bonus Mode! +10 score per food eaten!</font></strong>`;
-                    gameSound = new sound("assets/sound/bonus-food.mp3");
-                    gameSound.play();
+                    if (audio == true) {
+                        gameSound = new sound("assets/sound/bonus-food.mp3");
+                        gameSound.play();
+                    }
                 }
             }
         }

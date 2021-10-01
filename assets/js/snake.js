@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
         snakeColor = "#008000";
     } else {
         snakeColor = localStorage.getItem('snakeColor');
+        document.getElementById('snakeColor').value = snakeColor;
     }
     if (!localStorage.getItem('snakeBorder')) {
         snakeBorder = "#000";

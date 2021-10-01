@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         startSpeed = localStorage.getItem('startSpeed');
         difficultySetting.innerHTML = localStorage.getItem('difficulty');
+        document.getElementById(startSpeed).checked = true;
     }
     if (!localStorage.getItem('snakeColor')) {
         snakeColor = "#008000";

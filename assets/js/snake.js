@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     let gameMessage = document.getElementById("game-message");
     let paused = document.getElementById('paused');
-    // define gameboard
+    let gameSound;
+    
+
+             // define gameboard
     let gameBoard = document.getElementById("snakeBoard");
     parent = gameBoard.parentNode;
     gameWidth = parent.offsetWidth;
@@ -127,6 +130,9 @@ document.addEventListener("DOMContentLoaded", function () {
             startGame = true;
             pause = true;
             beginGame.style = "display:none;";
+            gameSound = new sound("assets/sound/game-start.mp3");
+            gameSound.play();
+            
         }
     }
 
@@ -138,6 +144,9 @@ document.addEventListener("DOMContentLoaded", function () {
             startGame = true;
             pause = false;
             beginGame.style = "display:none;";
+            gameSound = new sound("assets/sound/game-start.mp3");
+            gameSound.play();
+            
         }
     }
 
@@ -509,6 +518,25 @@ document.addEventListener("DOMContentLoaded", function () {
             gameBoardCtx.fill();
             gameBoardCtx.stroke();
         }
+    }
+
+    /**
+     * Plays soundeffects
+     * @param {sound file} src 
+     */
+    function sound(src) {
+        this.sound = document.createElement("audio");
+        this.sound.src = src;
+        this.sound.setAttribute("preload", "auto");
+        this.sound.setAttribute("controls", "none");
+        this.sound.style.display = "none";
+        document.body.appendChild(this.sound);
+        this.play = function(){
+            this.sound.play();
+        }
+        this.stop = function(){
+            this.sound.pause();
+        }    
     }
 
 }) //end DOM loaded function

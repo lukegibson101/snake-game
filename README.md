@@ -6,6 +6,8 @@ Whilst I have tried to deviate as much as possible and add many additional featu
 
 
 ### Media
-* The background image was taken from (https://pixabay.com)
+* The canvas image was taken from (https://pixabay.com)
 * Icons used were from (https://fontawesome.com/)
-* Game Over alert was created using SweetAlert2 (https://sweetalert2.github.io/)
+* Game Over alert was created using SweetAlert2 (https://sweetalert2.github.io/). The script was downloaded directly to the project as the site advised that calling the script from their site could cause some performance issues
+* Sound effects were taken from (https://mixkit.co/free-sound-effects/)
+* The Haptics effect JavaScript file for Android phones was taken from (http://hapticsjs.org/)

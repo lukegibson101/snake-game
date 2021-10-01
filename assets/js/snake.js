@@ -105,7 +105,11 @@ document.addEventListener("DOMContentLoaded", function () {
         pageBg = "#f5f5f5";
     } else {
         pageBg = localStorage.getItem('pageBg');
-        
+        document.getElementById('pageBg').value = pageBg;
+        document.body.style.backgroundColor = pageBg;
+        gameMessage.style.borderColor = pageBg;
+        gameMessage.style.backgroundColor = pageBg;
+
     }
     if (!localStorage.getItem('scorePerFood')) {
         scorePerFood = 30;
@@ -122,6 +126,14 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             document.getElementById("disable").checked = true;
         }
+    }
+    if (!localStorage.getItem('highScore')) {
+        highScore = 0;
+        document.getElementById('newHighScore').innerHTML = highScore;
+    } else {
+        highScore = localStorage.getItem('highScore');
+        document.getElementById('newHighScore').innerHTML = highScore;
+
     }
     let resetGame = false;
     let clearGameMessage = true;
@@ -262,9 +274,9 @@ document.addEventListener("DOMContentLoaded", function () {
             resetGame = false;
             pause = false;
             paused.style.display = "none";
-            highScore = document.getElementById('newHighScore').innerHTML;
             if (highScore < currentScore) {
                 document.getElementById('newHighScore').innerHTML = currentScore;
+                localStorage.setItem('highScore', currentScore);
             }
             gameMessage.textContent = "";
             gameMessage.style.backgroundColor = pageBg;

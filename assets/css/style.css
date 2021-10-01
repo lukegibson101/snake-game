@@ -17,6 +17,7 @@ body {
 
 }
 
+
 #nav {
     width: 100%;
     text-align: center;
@@ -78,6 +79,21 @@ li {
     border: 5px solid #000;
     z-index: 12;
     padding: 5px;
+}
+
+.submit {
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 5px;
+    margin-bottom: 1rem;
+    background-color: #008000;
+}
+
+.reset {
+    width:100%;
+    font-size: 1.5rem;
+    padding: 5px;
+    margin-bottom: 1rem;
 }
 
 

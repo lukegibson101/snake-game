@@ -2,8 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let gameMessage = document.getElementById("game-message");
     let paused = document.getElementById('paused');
     let gameSound;
+    let difficultySetting = document.getElementById("difficulty-mode");
+    let localStorage = window.localStorage;
 
-
+    
     // define gameboard
     let gameBoard = document.getElementById("snakeBoard");
     parent = gameBoard.parentNode;
@@ -74,7 +76,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // set initial variables that are dynamic
-    let startSpeed = 200;
+    if (!localStorage.getItem('startSpeed')) {
+     startSpeed = 200;
+    } else {
+        startSpeed = localStorage.getItem('startSpeed');
+        difficultySetting.innerHTML = localStorage.getItem('difficulty');
+    }
     let snakeColor = "#008000";
     let snakeBorder = "#000";
     let canvasBg = "#c0c0c0";
@@ -88,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // settings form submitted changes
     let settingsForm = document.getElementById("settings-form");
     settingsForm.addEventListener('submit', handleSettingsSubmit);
-    let difficultySetting = document.getElementById("difficulty-mode");
+    
 
     /**
      * Handles user input changes and restarts that game
@@ -96,28 +103,37 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleSettingsSubmit() {
         event.preventDefault();
         startSpeed = settingsForm.elements.difficulty.value;
-        console.log(speed);
+        localStorage.setItem('startSpeed', startSpeed);
         if (startSpeed == 100) {
             scorePerFood = 50;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>`;
+            localStorage.setItem('difficulty', `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>`);
         } else if (startSpeed == 200) {
             scorePerFood = 30;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i>`;
+            localStorage.setItem('difficulty', `<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i>`);
         } else if (startSpeed == 300) {
             scorePerFood = 20;
             difficultySetting.innerHTML = `<i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>`;
+            localStorage.setItem('difficulty', `<i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>`);
         }
         audio = settingsForm.elements['audio'].value;
+        localStorage.setItem('audio', audio);
         snakeColor = settingsForm.elements['snakeColor'].value;
+        localStorage.setItem('snakeColor', snakeColor);
         snakeBorder = settingsForm.elements['snakeBorder'].value;
+        localStorage.setItem('snakeBorder', snakeBorder);
         canvasBg = settingsForm.elements['canvasBg'].value;
+        localStorage.setItem('canvasBg', canvasBg);
         pageBg = settingsForm.elements['pageBg'].value;
+        localStorage.setItem('pageBg', pageBg);
         document.body.style.backgroundColor = pageBg;
         gameMessage.style.borderColor = pageBg;
         gameMessage.style.backgroundColor = pageBg;
         document.getElementById('settings-modal').style.display = "none";
         resetGame = true;
     }
+    console.log(localStorage);
 
     let beginGame = document.getElementById('startGame');
     beginGame.addEventListener('click', startGameNow);

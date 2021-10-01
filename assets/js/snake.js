@@ -107,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
         scorePerFood = 30;
     } else {
         scorePerFood = localStorage.getItem('scorePerFood');
+        scorePerFood = parseInt(scorePerFood);
     }
     if (!localStorage.getItem('audio')) {
         audio = true;

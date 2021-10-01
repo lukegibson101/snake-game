@@ -182,7 +182,6 @@ section {
     padding: 0;
     border-radius: 25px;
     background-color: #c0c0c0;
-    touch-action: manipulation; 
 }
 
 #table-buttons td {

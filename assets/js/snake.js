@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
     snakeStart = gameBoard.width - (gameBoard.width / 5);
     let gameBoardCtx = gameBoard.getContext("2d");
 
-
     /**
      * 
      * @param {size of pixel for screen} pixelSize 
@@ -69,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
         startGame = false;
         bonusFood = false;
         pause = true;
-
     }
 
     // set initial variables that are dynamic
@@ -79,9 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let canvasBg = "#c0c0c0";
     let scorePerFood = 30;
     let resetGame = false;
-
     resetVariables();
-
 
     // settings form submitted changes
     let settingsForm = document.getElementById("settings-form");
@@ -514,5 +510,5 @@ document.addEventListener("DOMContentLoaded", function () {
             gameBoardCtx.stroke();
         }
     }
-    
+
 }) //end DOM loaded function

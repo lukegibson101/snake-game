@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     let gameMessage = document.getElementById("game-message");
+    let paused = document.getElementById('paused');
     // define gameboard
     let gameBoard = document.getElementById("snakeBoard");
     parent = gameBoard.parentNode; 
@@ -194,7 +195,7 @@ pause = true;
             }
             resetGame = false;
             pause = false;
-            document.getElementById('paused').style.display = "none";
+            paused.style.display = "none";
             highScore = document.getElementById('newHighScore').innerHTML;
             if (highScore < currentScore) {
                 document.getElementById('newHighScore').innerHTML = currentScore;
@@ -342,11 +343,11 @@ pause = true;
             if (keyPressed === spaceBar) {
                 if (pause === false) {
                     pause = true;
-                    document.getElementById('paused').style.display = "inline-block";
+                    paused.style.display = "inline-block";
 
                 } else {
                     pause = false;
-                    document.getElementById('paused').style.display = "none";
+                    paused.style.display = "none";
                 }
 
             }
@@ -394,11 +395,11 @@ pause = true;
             if (this.getAttribute("id") === "pause") {
                 if (pause === false) {
                     pause = true;
-                    document.getElementById('paused').style.display = "inline-block";
+                    paused.style.display = "inline-block";
 
                 } else {
                     pause = false;
-                    document.getElementById('paused').style.display = "none";
+                    paused.style.display = "none";
                 }
             }
 

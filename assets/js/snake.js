@@ -1,13 +1,10 @@
-// wait for the DOM to finish loading before running the game
 document.addEventListener("DOMContentLoaded", function () {
-    // get canvas element
+    
+    // define gameboard
     let gameBoard = document.getElementById("snakeBoard");
-    // let startButton = document.getElementById('startGame');
-    parent = gameBoard.parentNode; // the div's parent element
-    console.log(parent);
-    gameWidth = parent.offsetWidth; // get width and height for canvas from parent element width (Will use this to manage responsiveness for different screen sizes)
-
-    // add responsive sized canvas and start game button
+    parent = gameBoard.parentNode; 
+    gameWidth = parent.offsetWidth;
+    let pixelSize = 20;
     if (gameWidth < 450) { // smaller screens
         gameBoard.width = 300;
         gameBoard.height = 300;
@@ -21,15 +18,13 @@ document.addEventListener("DOMContentLoaded", function () {
         gameBoard.height = gameWidth;
         pixelSize = 20;
     }
-
     snakeStart = gameBoard.width - (gameBoard.width / 5); // set starting position on responsive canvas
-    // set canvas to 2d drawing context
     let gameBoardCtx = gameBoard.getContext("2d");
 
 
-
+function initialSnake (pixelSize, snakeStart) {
     // set initial snake co-ordinates
-    let snake = [{
+     snake = [{
             x: pixelSize * 5,
             y: snakeStart
         },
@@ -50,27 +45,35 @@ document.addEventListener("DOMContentLoaded", function () {
             y: snakeStart
         }
     ];
+}
 
+function resetVariables () {
+    initialSnake(pixelSize, snakeStart);
 
+currentScore = 0;
+bonusScore = 0;
+changingSnakeDirection = false;
+dx = pixelSize;
+dy = 0;
+speed = startSpeed;
+level = 1;
+eatCount = 0;
+startGame = false;
+bonusFood = false;
+pause = true;
+
+}
 
     // set initial variables
-    let currentScore = 0;
-    let bonusScore = 0;
-    let changingSnakeDirection = false;
-    let dx = pixelSize;
-    let dy = 0;
     let startSpeed = 200;
-    let speed = startSpeed;
-    let level = 1;
-    let eatCount = 0;
-    let pause = true;
-    let bonusFood = false;
-    let startGame = false;
     let snakeColor = "#008000";
     let snakeBorder = "#000";
     let canvasBg = "#c0c0c0";
     let scorePerFood = 30;
     let resetGame = false;
+
+    resetVariables();
+
 
     // settings form submitted changes
     let settingsForm = document.getElementById("settings-form");
@@ -79,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function handleSettingsSubmit() {
         event.preventDefault();
-        startSpeed = settingsForm.elements['difficulty'].value;
+        startSpeed = settingsForm.elements.difficulty.value;
         console.log(speed);
         if (startSpeed == 100) {
             scorePerFood = 50;
@@ -203,39 +206,10 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('newScore').innerHTML = "0";
             document.getElementById('newLevel').innerHTML = "1";
             gameBoardCtx.clearRect(0, 0, gameBoard.width, gameBoard.height);
+
             drawCanvas();
-            snake = [{
-                    x: pixelSize * 5,
-                    y: snakeStart
-                },
-                {
-                    x: pixelSize * 4,
-                    y: snakeStart
-                },
-                {
-                    x: pixelSize * 3,
-                    y: snakeStart
-                },
-                {
-                    x: pixelSize * 2,
-                    y: snakeStart
-                },
-                {
-                    x: pixelSize,
-                    y: snakeStart
-                }
-            ];
+            resetVariables(pixelSize, snakeStart)
             drawSnake();
-            currentScore = 0;
-            bonusScore = 0;
-            changingSnakeDirection = false;
-            dx = pixelSize;
-            dy = 0;
-            speed = startSpeed;
-            level = 1;
-            eatCount = 0;
-            startGame = false;
-            bonusFood = false;
             generateBonusFood();
             playGame();
             return;
@@ -251,6 +225,8 @@ document.addEventListener("DOMContentLoaded", function () {
             playGame();
         }, speed);
     }
+
+    
 
     /**
      * generate co-ordinates from snake array to pass to drawEachSnakeSection

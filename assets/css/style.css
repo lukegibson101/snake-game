@@ -261,6 +261,10 @@ section {
 
 @media screen and (max-width: 600px) {
 
+    .modal-container {
+        width:90%;
+    }
+
     #snake-container {
         width: 450px;
     }
@@ -290,7 +294,15 @@ section {
 
 @media screen and (max-width: 500px) {
 
-    #snake-container {
+    .modal-container {
+        font-size: 1rem;
+    }
+
+    .submit, .reset {
+        font-size: 1rem;
+    }
+
+   #snake-container {
         width: 300px;
     }
 

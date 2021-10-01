@@ -78,7 +78,40 @@ li {
     background-color: yellow;
     border: 5px solid #000;
     z-index: 12;
-    padding: 5px;
+    padding: 1rem 1rem 0 1rem;
+    font-size: 1.5rem;
+}
+
+.close {
+    font-size: 2rem;
+    background-color: #c0c0c0;
+    padding: 0 5px 0 5px;
+    border: 2px solid #000;
+}
+
+.close:hover {
+    background-color:#990000;
+    cursor: pointer;
+}
+
+.modal h2 {
+    margin-bottom: 1rem;
+}
+
+.modal h3 {
+    margin-bottom: .5rem;
+}
+
+.modal p {
+    margin-bottom: 1rem;
+}
+
+form {
+    line-height: 150%;
+}
+
+input[type='radio'] { 
+    transform: scale(2); 
 }
 
 .submit {
@@ -87,14 +120,27 @@ li {
     padding: 5px;
     margin-bottom: 1rem;
     background-color: #008000;
+    border: 5px solid #000;
+    border-radius: 10px;
+}
+
+.submit:hover {
+    background-color: #03d403;
 }
 
 .reset {
     width:100%;
     font-size: 1.5rem;
     padding: 5px;
-    margin-bottom: 1rem;
+    background-color: #c0c0c0;
+    border: 5px solid #000;
+    border-radius: 10px;
 }
+
+.reset:hover {
+    background-color: #e4e3e3;
+}
+
 
 
 section {

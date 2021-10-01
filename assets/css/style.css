@@ -327,10 +327,6 @@ section {
         font-size: 1rem;
     }
 
-    #game-message {
-        width: 100%;
-    }
-
     .btnControls {
         width: 3rem;
         height: 3rem;

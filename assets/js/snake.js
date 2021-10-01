@@ -195,6 +195,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     timer: 2000
                 });
             }
+            gameSound = new sound("assets/sound/game-over.mp3");
+            gameSound.play();
             resetGame = false;
             pause = false;
             paused.style.display = "none";

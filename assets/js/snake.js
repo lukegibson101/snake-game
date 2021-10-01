@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let difficultySetting = document.getElementById("difficulty-mode");
     let localStorage = window.localStorage;
 
-    
+
     // define gameboard
     let gameBoard = document.getElementById("snakeBoard");
     parent = gameBoard.parentNode;
@@ -77,40 +77,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // set initial variables that are dynamic
     if (!localStorage.getItem('startSpeed')) {
-     startSpeed = 200;
+        startSpeed = 200;
     } else {
         startSpeed = localStorage.getItem('startSpeed');
         difficultySetting.innerHTML = localStorage.getItem('difficulty');
     }
     if (!localStorage.getItem('snakeColor')) {
-     snakeColor = "#008000";
+        snakeColor = "#008000";
     } else {
         snakeColor = localStorage.getItem('snakeColor');
     }
     if (!localStorage.getItem('snakeBorder')) {
-     snakeBorder = "#000";
+        snakeBorder = "#000";
     } else {
         snakeBorder = localStorage.getItem('snakeBorder');
     }
     if (!localStorage.getItem('canvasBg')) {
-     canvasBg = "#c0c0c0";
+        canvasBg = "#c0c0c0";
     } else {
         canvasBg = localStorage.getItem('canvasBg');
     }
     if (!localStorage.getItem('pageBg')) {
-     pageBg = "#f5f5f5";
+        pageBg = "#f5f5f5";
     } else {
         pageBg = localStorage.getItem('pageBg');
     }
     if (!localStorage.getItem('scorePerFood')) {
-     scorePerFood = 30;
+        scorePerFood = 30;
     } else {
         scorePerFood = localStorage.getItem('scorePerFood');
     }
     if (!localStorage.getItem('audio')) {
-     audio = true;
+        audio = true;
     } else {
         audio = localStorage.getItem('audio');
+        if (audio === "true") {
+            document.getElementById("enable").checked = true;
+        } else {
+            document.getElementById("disable").checked = true;
+        }
     }
     let resetGame = false;
     let clearGameMessage = true;
@@ -119,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // settings form submitted changes
     let settingsForm = document.getElementById("settings-form");
     settingsForm.addEventListener('submit', handleSettingsSubmit);
-    
+
 
     /**
      * Handles user input changes and restarts that game

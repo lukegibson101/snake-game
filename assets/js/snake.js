@@ -2,9 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let gameMessage = document.getElementById("game-message");
     let paused = document.getElementById('paused');
     let gameSound;
-    
 
-             // define gameboard
+
+    // define gameboard
     let gameBoard = document.getElementById("snakeBoard");
     parent = gameBoard.parentNode;
     gameWidth = parent.offsetWidth;
@@ -132,7 +132,6 @@ document.addEventListener("DOMContentLoaded", function () {
             beginGame.style = "display:none;";
             gameSound = new sound("assets/sound/game-start.mp3");
             gameSound.play();
-            
         }
     }
 
@@ -146,7 +145,6 @@ document.addEventListener("DOMContentLoaded", function () {
             beginGame.style = "display:none;";
             gameSound = new sound("assets/sound/game-start.mp3");
             gameSound.play();
-            
         }
     }
 
@@ -412,12 +410,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 generateFood();
                 currentScore += (scorePerFood + bonusScore);
                 ++eatCount;
+                gameSound = new sound("assets/sound/food.mp3");
+                gameSound.play();
                 if (eatCount % 5 === 0) {
                     if (speed > 50) {
                         speed -= 10;
                     }
                     ++level;
                     bonusScore = 0;
+                    gameSound = new sound("assets/sound/level-up.mp3");
+                    gameSound.play();
                     gameMessage.style.backgroundColor = `#c0c0c0`;
                     gameMessage.style.border = `2px solid #000`;
                     gameMessage.style.borderRadius = `10px`;
@@ -448,6 +450,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     clearGameMessage = false;
                     bonusScore = 10;
                     gameMessage.innerHTML = `<strong><font color="green">Bonus Mode! +10 score per food eaten!</font></strong>`;
+                    gameSound = new sound("assets/sound/bonus-food.mp3");
+                    gameSound.play();
                 }
             }
         }
@@ -531,12 +535,12 @@ document.addEventListener("DOMContentLoaded", function () {
         this.sound.setAttribute("controls", "none");
         this.sound.style.display = "none";
         document.body.appendChild(this.sound);
-        this.play = function(){
+        this.play = function () {
             this.sound.play();
         }
-        this.stop = function(){
+        this.stop = function () {
             this.sound.pause();
-        }    
+        }
     }
 
 }) //end DOM loaded function

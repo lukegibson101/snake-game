@@ -78,8 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let snakeColor = "#008000";
     let snakeBorder = "#000";
     let canvasBg = "#c0c0c0";
+    let pageBg = "#f5f5f5";
     let scorePerFood = 30;
     let resetGame = false;
+    let clearGameMessage = true;
     resetVariables();
 
     // settings form submitted changes

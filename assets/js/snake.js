@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    
+    let gameMessage = document.getElementById("game-message");
     // define gameboard
     let gameBoard = document.getElementById("snakeBoard");
     parent = gameBoard.parentNode; 
@@ -99,8 +99,8 @@ pause = true;
         canvasBg = settingsForm.elements['canvasBg'].value;
         pageBg = settingsForm.elements['pageBg'].value;
         document.body.style.backgroundColor = pageBg;
-        document.getElementById('game-message').style.borderColor = pageBg;
-        document.getElementById("game-message").style.backgroundColor = pageBg;
+        gameMessage.style.borderColor = pageBg;
+        gameMessage.style.backgroundColor = pageBg;
         document.getElementById('settings-modal').style.display = "none";
         resetGame = true;
     }
@@ -199,9 +199,9 @@ pause = true;
             if (highScore < currentScore) {
                 document.getElementById('newHighScore').innerHTML = currentScore;
             }
-            document.getElementById("game-message").textContent = "";
-            document.getElementById("game-message").style.backgroundColor = pageBg;
-            document.getElementById("game-message").style.borderColor = pageBg;
+            gameMessage.textContent = "";
+            gameMessage.style.backgroundColor = pageBg;
+            gameMessage.style.borderColor = pageBg;
             beginGame.style = "display:;";
             document.getElementById('newScore').innerHTML = "0";
             document.getElementById('newLevel').innerHTML = "1";
@@ -435,10 +435,10 @@ pause = true;
                     }
                     ++level;
                     bonusScore = 0;
-                    document.getElementById("game-message").style.backgroundColor = `#c0c0c0`;
-                    document.getElementById("game-message").style.border = `2px solid #000`;
-                    document.getElementById("game-message").style.borderRadius = `10px`;
-                    document.getElementById("game-message").innerHTML = `<strong>Level Up! Speed Increased!</strong>`;
+                    gameMessage.style.backgroundColor = `#c0c0c0`;
+                    gameMessage.style.border = `2px solid #000`;
+                    gameMessage.style.borderRadius = `10px`;
+                    gameMessage.innerHTML = `<strong>Level Up! Speed Increased!</strong>`;
 
                     bonusFood = true;
                     generateBonusFood();
@@ -447,9 +447,9 @@ pause = true;
                         bonusFood = false;
                         generateBonusFood();
                         if (clearGameMessage) {
-                            document.getElementById("game-message").textContent = "";
-                            document.getElementById("game-message").style.backgroundColor = pageBg;
-                            document.getElementById("game-message").style.borderColor = pageBg;
+                            gameMessage.textContent = "";
+                            gameMessage.style.backgroundColor = pageBg;
+                            gameMessage.style.borderColor = pageBg;
                         }
                     }, 5000);
                 }
@@ -468,7 +468,7 @@ pause = true;
                     generateBonusFood();
                     clearGameMessage = false;
                     bonusScore = 10;
-                    document.getElementById("game-message").innerHTML = `<strong><font color="green">Bonus Mode! +10 score per food eaten!</font></strong>`;
+                    gameMessage.innerHTML = `<strong><font color="green">Bonus Mode! +10 score per food eaten!</font></strong>`;
                 }
             }
         }

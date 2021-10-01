@@ -174,7 +174,6 @@ section {
     position: relative;
     margin: 0 auto;
     width: 100%;
-    touch-action: manipulation; 
 }
 
 #table-buttons {
@@ -183,6 +182,7 @@ section {
     padding: 0;
     border-radius: 25px;
     background-color: #c0c0c0;
+    touch-action: manipulation; 
 }
 
 #table-buttons td {
@@ -201,6 +201,7 @@ section {
     width: 4rem;
     height: 4rem;
     font-size: 3rem;
+    touch-action: manipulation; 
 }
 
 .btnControls:hover {

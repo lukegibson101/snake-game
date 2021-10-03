@@ -341,34 +341,50 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function moveUp() {
-        let downDir = dy === pixelSize;
-        if (!downDir) {
-            dx = 0;
-            dy = -pixelSize;
+        if (stopControls === false) {
+            stopControls = true;
+            setTimeout(delayedController, speed);
+            let downDir = dy === pixelSize;
+            if (!downDir) {
+                dx = 0;
+                dy = -pixelSize;
+            }
         }
     }
 
     function moveDown() {
-        let upDir = dy === -pixelSize;
-        if (!upDir) {
-            dx = 0;
-            dy = pixelSize;
+        if (stopControls === false) {
+            stopControls = true;
+            setTimeout(delayedController, speed);
+            let upDir = dy === -pixelSize;
+            if (!upDir) {
+                dx = 0;
+                dy = pixelSize;
+            }
         }
     }
 
     function moveLeft() {
-        let rightDir = dx === pixelSize;
-        if (!rightDir) {
-            dx = -pixelSize;
-            dy = 0;
+        if (stopControls === false) {
+            stopControls = true;
+            setTimeout(delayedController, speed);
+            let rightDir = dx === pixelSize;
+            if (!rightDir) {
+                dx = -pixelSize;
+                dy = 0;
+            }
         }
     }
 
     function moveRight() {
-        let leftDir = dx === -pixelSize;
-        if (!leftDir) {
-            dx = pixelSize;
-            dy = 0;
+        if (stopControls === false) {
+            stopControls = true;
+            setTimeout(delayedController, speed);
+            let leftDir = dx === -pixelSize;
+            if (!leftDir) {
+                dx = pixelSize;
+                dy = 0;
+            }
         }
     }
 
@@ -415,27 +431,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     gameControl.on('connect', function (gamepad) {
-        if (changingSnakeDirection) return;
-        changingSnakeDirection = true;
-        gamepad.before('button3', moveUp);
-        gamepad.before('button0', moveDown);
-        gamepad.before('button2', moveLeft);
-        gamepad.before('button1', moveRight);
-        gamepad.before('button12', moveUp);
-        gamepad.before('button13', moveDown);
-        gamepad.before('button14', moveLeft);
-        gamepad.before('button15', moveRight);
-        gamepad.before('up0', moveUp);
-        gamepad.before('down0', moveDown);
-        gamepad.before('left0', moveLeft);
-        gamepad.before('right0', moveRight);
-        gamepad.before('up1', moveUp);
-        gamepad.before('down1', moveDown);
-        gamepad.before('left1', moveLeft);
-        gamepad.before('right1', moveRight);
-        gamepad.before('button9', gameStartOrPause);
-        stopControls = true;
-        setTimeout(delayedController, speed);
+            if (changingSnakeDirection) return;
+            changingSnakeDirection = true;
+            gamepad.on('button3', moveUp);
+            gamepad.on('button0', moveDown);
+            gamepad.on('button2', moveLeft);
+            gamepad.on('button1', moveRight);
+            gamepad.on('button12', moveUp);
+            gamepad.on('button13', moveDown);
+            gamepad.on('button14', moveLeft);
+            gamepad.on('button15', moveRight);
+            gamepad.on('up0', moveUp);
+            gamepad.on('down0', moveDown);
+            gamepad.on('left0', moveLeft);
+            gamepad.on('right0', moveRight);
+            gamepad.on('up1', moveUp);
+            gamepad.on('down1', moveDown);
+            gamepad.on('left1', moveLeft);
+            gamepad.on('right1', moveRight);
+            gamepad.before('button9', gameStartOrPause);
     });
 
     /**

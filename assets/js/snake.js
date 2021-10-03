@@ -3,9 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let playButton = document.getElementById('pause');
     let stopControls = false;
     let paused = document.getElementById('paused');
-    let gameSound;
     let difficultySetting = document.getElementById("difficulty-mode");
     let localStorage = window.localStorage;
+    let startGameSound = new sound("assets/sound/game-start.mp3");
+    let eatFoodSound = new sound("assets/sound/food.mp3");
+    let levelUpSound = new sound("assets/sound/level-up.mp3");
+    let gameOverSound = new sound("assets/sound/game-over.mp3");
+    let eatBonusFoodSound = new sound("assets/sound/bonus-food.mp3");
 
     // define gameboard
     let gameBoard = document.getElementById("snakeBoard");
@@ -138,7 +142,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     let resetGame = false;
     let clearGameMessage = true;
-    let stopController = false;
     resetVariables();
 
     // settings form submitted changes
@@ -224,8 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // game is over. Reset some variables back to default
             if (collisionDetection()) {
                 if (audio === "true") {
-                    gameSound = new sound("assets/sound/game-over.mp3");
-                    gameSound.play();
+                    gameOverSound.play();
                 }
                 Swal.fire({
                     position: 'top',
@@ -324,8 +326,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 beginGame.style = "display:none;";
                 playButton.innerHTML = '<i class="fas fa-pause"></i>';
                 if (audio === "true") {
-                    gameSound = new sound("assets/sound/game-start.mp3");
-                    gameSound.play();
+                    startGameSound.play();
                 }
             } else if (pause === false && startGame === true) {
                 pause = true;
@@ -487,8 +488,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentScore += (scorePerFood + bonusScore);
                 ++eatCount;
                 if (audio === "true") {
-                    gameSound = new sound("assets/sound/food.mp3");
-                    gameSound.play();
+                    eatFoodSound.play();
                 }
                 if (eatCount % 5 === 0) {
                     if (speed > 50) {
@@ -497,8 +497,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     ++level;
                     bonusScore = 0;
                     if (audio === "true") {
-                        gameSound = new sound("assets/sound/level-up.mp3");
-                        gameSound.play();
+                        levelUpSound.play();
                     }
                     gameMessage.style.backgroundColor = `#c0c0c0`;
                     gameMessage.style.border = `2px solid #000`;
@@ -531,8 +530,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     bonusScore = 10;
                     gameMessage.innerHTML = `<strong><font color="green">Bonus Mode! +10 score per food eaten!</font></strong>`;
                     if (audio === "true") {
-                        gameSound = new sound("assets/sound/bonus-food.mp3");
-                        gameSound.play();
+                        eatBonusFoodSound.play();
                     }
                 }
             }

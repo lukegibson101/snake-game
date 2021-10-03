@@ -332,57 +332,28 @@ document.addEventListener("DOMContentLoaded", function () {
         let keyW = 87;
         let keyS = 83;
         let spaceBar = 32;
+        let enter = 13;
         if (changingSnakeDirection) return;
         changingSnakeDirection = true;
         let keyPressed = event.keyCode;
 
-        //define what action to take depending on snake direction
-        let leftDir = dx === -pixelSize;
-        let rightDir = dx === pixelSize;
-        let upDir = dy === -pixelSize;
-        let downDir = dy === pixelSize;
-
-        if (keyPressed === arrowLeft && !rightDir) {
-            dx = -pixelSize;
-            dy = 0;
+        if (keyPressed === arrowLeft || keyPressed === keyA) {
+            moveLeft();
         }
 
-        if (keyPressed === arrowRight && !leftDir) {
-            dx = pixelSize;
-            dy = 0;
+        if (keyPressed === arrowRight || keyPressed === keyD) {
+            moveRight();
         }
 
-        if (keyPressed === arrowUp && !downDir) {
-            dx = 0;
-            dy = -pixelSize;
+        if (keyPressed === arrowUp || keyPressed === keyW) {
+            moveUp();
         }
 
-        if (keyPressed === arrowDown && !upDir) {
-            dx = 0;
-            dy = pixelSize;
+        if (keyPressed === arrowDown || keyPressed === keyS) {
+            moveDown();
         }
 
-        if (keyPressed === keyA && !rightDir) {
-            dx = -pixelSize;
-            dy = 0;
-        }
-
-        if (keyPressed === keyD && !leftDir) {
-            dx = pixelSize;
-            dy = 0;
-        }
-
-        if (keyPressed === keyW && !downDir) {
-            dx = 0;
-            dy = -pixelSize;
-        }
-
-        if (keyPressed === keyS && !upDir) {
-            dx = 0;
-            dy = pixelSize;
-        }
-
-        if (keyPressed === spaceBar) {
+        if (keyPressed === spaceBar || keyPressed === enter) {
             gameStartOrPause();
         }
     }

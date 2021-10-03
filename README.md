@@ -12,3 +12,4 @@ Whilst I have tried to deviate as much as possible and add many additional featu
 * Sound effects were taken from (https://mixkit.co/free-sound-effects/)
 * The Haptics effect JavaScript file for Android phones was taken from (http://hapticsjs.org/)
 * The script to enable controller inputs was taken from (https://github.com/alvaromontoro/gamecontroller.js/)
+* Favicon images were generated with (https://realfavicongenerator.net/)

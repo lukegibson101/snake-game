@@ -44,9 +44,9 @@
                     <h3>Audio</h3>
                     <p>
                         <input type="radio" id="enable" name="audio" value="true" checked>
-                            <label for="enable">Enabled</label><br>
-                                    <input type="radio" id="disable" name="audio" value="false">
-                            <label for="disable">Disabled</label>
+                        <label for="enable">Enabled</label><br>
+                        <input type="radio" id="disable" name="audio" value="false">
+                        <label for="disable">Disabled</label>
                     </p>
                     <h3>Change Snake Color</h3>
                     <p>
@@ -75,7 +75,50 @@
         <div id="how-modal" class="modal">
             <div class="modal-container" id="how-container">
                 <span class="float-right close" id="how-close"><i class="fas fa-times"></i></span>
-                <div>Testing How To
+                <div>
+                    <p>
+                        <h2>Game Rules</h2>
+                        <div class="margin-bottom">
+                            <div class="snake"></div><div class="snake"></div><span class="snake"></span><span class="snake"></span><span class="snake"></span>
+                            Guide the snake around the game area to collect food and increase your Score. If you hit the
+                            barrier or the snake hits itself it is game over!
+                        </div>
+                        <div class="margin-bottom">
+                            <span class="food"></span>
+                            Eat the red food to increase your score. For every 5 food eaten you will level up and the
+                            Snake's speed will increase.
+                        </div>
+                        <div class="margin-bottom">
+                            <span class="bonus-food"></span>
+                            Bonus food will appear when you level up and disappear after a few seconds. If you eat this
+                            you will gain +10 to your score per food eaten until you level up.
+                        </div>
+                    </p>
+                    <p>
+                        <h2>Controls</h2>
+                        <div class="margin-bottom">
+                            Snake has been designed with player options in mind and has various different control
+                            schemes.
+                        </div>
+                        <h3>Keyboard <i class="far fa-keyboard"></i></h3>
+                        <div class="margin-bottom">
+                            Players can control the direction of the snake with the Arrow Keys or with wasd.<br>
+                            Enter / Space starts and pauses the game.
+                        </div>
+                        <h3>Touch Controls <i class="far fa-hand-point-up"></i></h3>
+                        <div class="margin-bottom">
+                            The game can be fully controlled with touch controls. The directional arrows are used to
+                            control the snake.<br>
+                            The play button starts and pauses the game. The game can also be started by tapping the game
+                            area.
+                        </div>
+                        <h3>Game Controller <i class="fas fa-gamepad"></i></h3>
+                        <div class="margin-bottom">
+                            Snake is compatable with most game controllers and can be controlled with the Dpad, Analogue sticks or Face buttons.<br>
+                            The Start button starts the game and pauses it.
+
+                        </div>
+                    </p>
                 </div>
             </div>
         </div>
@@ -86,7 +129,8 @@
             <div id="scores" class="panel">
                 <strong>
                     Score: <span id="newScore">0</span>
-                    <span class="float-right">Difficulty <span id="difficulty-mode"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i></span></span>
+                    <span class="float-right">Difficulty <span id="difficulty-mode"><i class="fas fa-star"></i> <i
+                                class="fas fa-star"></i> <i class="far fa-star"></i></span></span>
                 </strong>
                 <div>
                     <strong>

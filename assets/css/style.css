@@ -82,7 +82,7 @@ li {
     padding: 1rem 1rem 0 1rem;
     font-size: 1.5rem;
     box-sizing: border-box;
-    
+
 }
 
 .close {
@@ -93,7 +93,7 @@ li {
 }
 
 .close:hover {
-    background-color:#990000;
+    background-color: #990000;
     cursor: pointer;
 }
 
@@ -113,8 +113,8 @@ form {
     line-height: 150%;
 }
 
-input[type='radio'] { 
-    transform: scale(2); 
+input[type='radio'] {
+    transform: scale(2);
 }
 
 .submit {
@@ -132,7 +132,7 @@ input[type='radio'] {
 }
 
 .reset {
-    width:100%;
+    width: 100%;
     font-size: 1.5rem;
     padding: 5px;
     background-color: #c0c0c0;
@@ -225,7 +225,7 @@ section {
     width: 4rem;
     height: 4rem;
     font-size: 3rem;
-    touch-action: manipulation; 
+    touch-action: manipulation;
 }
 
 .btnControls:hover {
@@ -293,7 +293,7 @@ section {
 @media screen and (max-width: 600px) {
 
     .modal-container {
-        width:90%;
+        width: 90%;
     }
 
     #snake-container {
@@ -329,15 +329,16 @@ section {
         font-size: 1rem;
     }
 
-    input[type='radio'] { 
-        transform: scale(1.5); 
+    input[type='radio'] {
+        transform: scale(1.5);
     }
 
-    .submit, .reset {
+    .submit,
+    .reset {
         font-size: 1rem;
     }
 
-   #snake-container {
+    #snake-container {
         width: 300px;
     }
 
@@ -346,6 +347,11 @@ section {
         font-size: 5rem;
         width: 300px;
         height: 300px;
+    }
+
+    #startGame {
+        background: url('../images/snake-mobile.png') no-repeat center;
+        background-size: contain;
     }
 
 

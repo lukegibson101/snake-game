@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('settings-modal').style.display = "none";
         resetGame = true;
     }
-    console.log(localStorage);
+
 
     let beginGame = document.getElementById('startGame');
     beginGame.addEventListener('click', startGameNow);
@@ -346,81 +346,80 @@ document.addEventListener("DOMContentLoaded", function () {
      * @returns listens for a key press and either turns the snake in the correct direction or pauses the game
      */
     function changeSnakeDirection(event) {
-        if (startGame) {
-            // define key presses for directions
-            let arrowLeft = 37;
-            let arrowRight = 39;
-            let arrowUp = 38;
-            let arrowDown = 40;
-            let keyA = 65;
-            let keyD = 68;
-            let keyW = 87;
-            let keyS = 83;
-            let spaceBar = 32;
-            if (changingSnakeDirection) return;
-            changingSnakeDirection = true;
-            let keyPressed = event.keyCode;
+        // define key presses for directions
+        let arrowLeft = 37;
+        let arrowRight = 39;
+        let arrowUp = 38;
+        let arrowDown = 40;
+        let keyA = 65;
+        let keyD = 68;
+        let keyW = 87;
+        let keyS = 83;
+        let spaceBar = 32;
+        if (changingSnakeDirection) return;
+        changingSnakeDirection = true;
+        let keyPressed = event.keyCode;
 
-            //define what action to take depending on snake direction
-            let leftDir = dx === -pixelSize;
-            let rightDir = dx === pixelSize;
-            let upDir = dy === -pixelSize;
-            let downDir = dy === pixelSize;
+        //define what action to take depending on snake direction
+        let leftDir = dx === -pixelSize;
+        let rightDir = dx === pixelSize;
+        let upDir = dy === -pixelSize;
+        let downDir = dy === pixelSize;
 
-            if (keyPressed === arrowLeft && !rightDir) {
-                dx = -pixelSize;
-                dy = 0;
-            }
+        if (keyPressed === arrowLeft && !rightDir) {
+            dx = -pixelSize;
+            dy = 0;
+        }
 
-            if (keyPressed === arrowRight && !leftDir) {
-                dx = pixelSize;
-                dy = 0;
-            }
+        if (keyPressed === arrowRight && !leftDir) {
+            dx = pixelSize;
+            dy = 0;
+        }
 
-            if (keyPressed === arrowUp && !downDir) {
-                dx = 0;
-                dy = -pixelSize;
-            }
+        if (keyPressed === arrowUp && !downDir) {
+            dx = 0;
+            dy = -pixelSize;
+        }
 
-            if (keyPressed === arrowDown && !upDir) {
-                dx = 0;
-                dy = pixelSize;
-            }
+        if (keyPressed === arrowDown && !upDir) {
+            dx = 0;
+            dy = pixelSize;
+        }
 
-            if (keyPressed === keyA && !rightDir) {
-                dx = -pixelSize;
-                dy = 0;
-            }
+        if (keyPressed === keyA && !rightDir) {
+            dx = -pixelSize;
+            dy = 0;
+        }
 
-            if (keyPressed === keyD && !leftDir) {
-                dx = pixelSize;
-                dy = 0;
-            }
+        if (keyPressed === keyD && !leftDir) {
+            dx = pixelSize;
+            dy = 0;
+        }
 
-            if (keyPressed === keyW && !downDir) {
-                dx = 0;
-                dy = -pixelSize;
-            }
+        if (keyPressed === keyW && !downDir) {
+            dx = 0;
+            dy = -pixelSize;
+        }
 
-            if (keyPressed === keyS && !upDir) {
-                dx = 0;
-                dy = pixelSize;
-            }
+        if (keyPressed === keyS && !upDir) {
+            dx = 0;
+            dy = pixelSize;
+        }
 
-            if (keyPressed === spaceBar) {
-                if (pause === false) {
-                    pause = true;
-                    paused.style.display = "inline-block";
-                } else {
-                    pause = false;
-                    paused.style.display = "none";
-                }
+        if (keyPressed === spaceBar) {
+            if (pause === false) {
+                pause = true;
+                paused.style.display = "inline-block";
+            } else {
+                pause = false;
+                paused.style.display = "none";
             }
         }
     }
 
     gameControl.on('connect', function (gamepad) {
-        if (startGame) {
+        
+
             if (changingSnakeDirection) return;
             changingSnakeDirection = true;
             gamepad.before('button3', moveUp);
@@ -439,8 +438,28 @@ document.addEventListener("DOMContentLoaded", function () {
             gamepad.before('down1', moveDown);
             gamepad.before('left1', moveLeft);
             gamepad.before('right1', moveRight);
-        }
+            gamepad.before('button9', gamePadStartButton);
+       
     });
+
+    function gamePadStartButton() {
+        if (startGame === false) {
+            startGame = true;
+            pause = false;
+            beginGame.style = "display:none;";
+            if (audio === "true") {
+                gameSound = new sound("assets/sound/game-start.mp3");
+                gameSound.play();
+            }
+        } else if (pause === false && startGame === true) {
+            pause = true;
+            paused.style.display = "inline-block";
+        } else {
+            pause = false;
+            paused.style.display = "none";
+        }
+
+    }
 
     function moveUp() {
         let downDir = dy === pixelSize;

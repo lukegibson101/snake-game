@@ -5,6 +5,18 @@ document.addEventListener("DOMContentLoaded", function () {
     let difficultySetting = document.getElementById("difficulty-mode");
     let localStorage = window.localStorage;
 
+    gameControl.on('connect', function(gamepad) {
+        gamepad.on('up', moveCharacterUp);
+      });
+
+      gameControl.on('connect', gamepad => {
+        console.log('A new gamepad was connected!');
+        gamepad.on('button0', () => { console.log('Button 0 still pressed...'); })
+      });
+
+      
+       
+
 
     // define gameboard
     let gameBoard = document.getElementById("snakeBoard");

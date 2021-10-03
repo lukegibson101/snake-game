@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     let gameMessage = document.getElementById("game-message");
+    let playButton = document.getElementById('pause');
     let paused = document.getElementById('paused');
     let gameSound;
     let difficultySetting = document.getElementById("difficulty-mode");
@@ -238,6 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     timer: 2000
                 });
             }
+            playButton.innerHTML = '<i class="fas fa-play"></i>';
             resetGame = false;
             pause = false;
             paused.style.display = "none";
@@ -380,8 +382,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     gameControl.on('connect', function (gamepad) {
-        if(stopController === false) {
-            console.log(stopController);
             if (changingSnakeDirection) return;
             changingSnakeDirection = true;
             gamepad.before('button3', moveUp);
@@ -401,8 +401,6 @@ document.addEventListener("DOMContentLoaded", function () {
             gamepad.before('left1', moveLeft);
             gamepad.before('right1', moveRight);
             gamepad.before('button9', gameStartOrPause);
-        
-        }
     });
 
     function gameStartOrPause() {
@@ -410,6 +408,7 @@ document.addEventListener("DOMContentLoaded", function () {
             startGame = true;
             pause = false;
             beginGame.style = "display:none;";
+            playButton.innerHTML = '<i class="fas fa-pause"></i>';
             if (audio === "true") {
                 gameSound = new sound("assets/sound/game-start.mp3");
                 gameSound.play();
@@ -417,9 +416,11 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (pause === false && startGame === true) {
             pause = true;
             paused.style.display = "inline-block";
+            playButton.innerHTML = '<i class="fas fa-play"></i>';
         } else {
             pause = false;
             paused.style.display = "none";
+            playButton.innerHTML = '<i class="fas fa-pause"></i>';
         }
 
     }

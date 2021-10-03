@@ -1,5 +1,16 @@
 # **A Game of Snake**
+![Am I Responsive?](docs/read-me/am-i-responsive.png) 
 
+## Table of Contents
+ ## Table of contents
+1. [**Planning Stage**](#planning-stage)
+1. [**Future Features to be Added**](#future-features-to-be-added)
+1. [**Testing**](#testing)
+1. [**Bugs**](#bugs)
+1. [**Other Changes**](#other-changes)
+1. [**Deployment**](#deployment)
+1. [**Technology Used**](#technology-used)
+1. [**Credits**](#credits)
 
 
 ## Credits

@@ -412,8 +412,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (keyPressed === spaceBar || keyPressed === enter) {
             gameStartOrPause();
         }
-        stopControls = true;
-            setTimeout(delayedController, speed);
     }
 
     gameControl.on('connect', function (gamepad) {
@@ -436,6 +434,8 @@ document.addEventListener("DOMContentLoaded", function () {
         gamepad.before('left1', moveLeft);
         gamepad.before('right1', moveRight);
         gamepad.before('button9', gameStartOrPause);
+        stopControls = true;
+        setTimeout(delayedController, speed);
     });
 
     /**

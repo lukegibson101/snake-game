@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let levelUpSound = new sound("assets/sound/level-up.mp3");
     let gameOverSound = new sound("assets/sound/game-over.mp3");
     let eatBonusFoodSound = new sound("assets/sound/bonus-food.mp3");
+    let audio = true;
 
     // define gameboard
     let gameBoard = document.getElementById("snakeBoard");

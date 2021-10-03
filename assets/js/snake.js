@@ -185,22 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let beginGame = document.getElementById('startGame');
-    beginGame.addEventListener('click', startGameNow);
-
-    /**
-     * Set starGame to true and hides the start game button
-     */
-    function startGameNow() {
-        if (startGame === false) {
-            startGame = true;
-            pause = false;
-            beginGame.style = "display:none;";
-            if (audio === "true") {
-                gameSound = new sound("assets/sound/game-start.mp3");
-                gameSound.play();
-            }
-        }
-    }
+     beginGame.addEventListener('click', gameStartOrPause);
 
     playGame();
     generateFood();
@@ -479,7 +464,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * @returns touch / click controls for buttons
      */
     function touchControlsClicked() {
-        if (startGame) {
+        
             Haptics.vibrate(100);
             if (changingSnakeDirection) return;
             changingSnakeDirection = true;
@@ -511,15 +496,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (this.getAttribute("id") === "pause") {
-                if (pause === false) {
-                    pause = true;
-                    paused.style.display = "inline-block";
-                } else {
-                    pause = false;
-                    paused.style.display = "none";
-                }
+               gameStartOrPause();
             }
-        }
+        
     }
 
     let touchControls = document.getElementsByClassName('btnControls');

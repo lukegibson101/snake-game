@@ -136,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     let resetGame = false;
     let clearGameMessage = true;
+    let stopController = false;
     resetVariables();
 
     // settings form submitted changes
@@ -183,28 +184,8 @@ document.addEventListener("DOMContentLoaded", function () {
         resetGame = true;
     }
 
-
     let beginGame = document.getElementById('startGame');
     beginGame.addEventListener('click', startGameNow);
-    document.addEventListener("keydown", startGameWithSpacebar);
-
-    /**
-     * Starts the game if spacebar pressed
-     * @param {spacebar} event 
-     */
-    function startGameWithSpacebar(event) {
-        let spaceBar = 32;
-        let SpacePressed = event.keyCode;
-        if (startGame === false && SpacePressed === spaceBar) {
-            startGame = true;
-            pause = true;
-            beginGame.style = "display:none;";
-            if (audio === "true") {
-                gameSound = new sound("assets/sound/game-start.mp3");
-                gameSound.play();
-            }
-        }
-    }
 
     /**
      * Set starGame to true and hides the start game button
@@ -241,12 +222,14 @@ document.addEventListener("DOMContentLoaded", function () {
         gameBoardCtx.strokeRect(0, 0, gameBoard.width, gameBoard.height);
     }
 
+
     /**
      * 
      * @returns refreshes game at speed dependent on speed variable. If snake has crashed, resets the game, recalls initial variables, records high score and shows player a message that its game over.
      */
     function playGame() {
-        if (resetGame === true || collisionDetection()) { // game is over. Reset some variables back to default
+        if (resetGame === true || collisionDetection()) {
+            // game is over. Reset some variables back to default
             if (collisionDetection()) {
                 if (audio === "true") {
                     gameSound = new sound("assets/sound/game-over.mp3");
@@ -270,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     timer: 2000
                 });
             }
-            resetGame = false;
+
             pause = false;
             paused.style.display = "none";
             if (highScore < currentScore) {
@@ -407,19 +390,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (keyPressed === spaceBar) {
-            if (pause === false) {
-                pause = true;
-                paused.style.display = "inline-block";
-            } else {
-                pause = false;
-                paused.style.display = "none";
-            }
+            gameStartOrPause();
         }
     }
 
     gameControl.on('connect', function (gamepad) {
-        
-
+        if(stopController === false) {
+            console.log(stopController);
             if (changingSnakeDirection) return;
             changingSnakeDirection = true;
             gamepad.before('button3', moveUp);
@@ -438,11 +415,12 @@ document.addEventListener("DOMContentLoaded", function () {
             gamepad.before('down1', moveDown);
             gamepad.before('left1', moveLeft);
             gamepad.before('right1', moveRight);
-            gamepad.before('button9', gamePadStartButton);
-       
+            gamepad.before('button9', gameStartOrPause);
+        
+        }
     });
 
-    function gamePadStartButton() {
+    function gameStartOrPause() {
         if (startGame === false) {
             startGame = true;
             pause = false;

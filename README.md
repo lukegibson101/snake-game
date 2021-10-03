@@ -3,6 +3,7 @@
 
 ## Table of Contents
 1. [**Planning Stage**](#planning-stage)
+1. [**Features**](#features)
 1. [**Future Features to be Added**](#future-features-to-be-added)
 1. [**Testing**](#testing)
 1. [**Bugs**](#bugs)
@@ -58,6 +59,31 @@ game canvas to all fit on screen.
 ![Wireframe tablet](docs/wireframes/snake-tablet.png)
 ![Wireframe mobile](docs/wireframes/snake-mobile.png)
 
+## Features
+
+### Difficulty
+There are 3 difficulty settings. 
+ * Easy: The snake starts at a slower pace and scores 20 per food eaten.
+ * Medium: The snake starts at a moderate pace and scores 30 per food eaten.
+ * Hard: The snake starts at a fast pace and scores 50 per food eaten.
+
+ Regardless of difficulty setting, for every food eaten, the user will level up and the snake will move slightly faster. Even on easy difficulty the snake can end up moving really fast.
+ However, the users highest potential score will be lower on the easier difficulties. 
+
+### Food
+Food is generated at game start and everytime the snake "eats" the food to increase score.
+Bonus food is generated everytime the user levels up and despwans after a few seconds. If the snake eats the bonus food the user gains a +10 pint bonus per food eaten for that level.
+
+### Customisation
+Users can set the page up how they like, changing the background color of the page, game area, the snake and the snake outline to create a truly personailised page based on the users preferences.
+
+### Controls
+There are several options for users to play. They can use touch controls, 2 sets of keyboard inputs (arrow keys and wasd) and several sets of gamepad inputs (D-Pad, anaologue sticks, face buttons)
+allowing users to use what control scheme is most comfortable to them.
+
+### High Score
+A users high score is stored, allowing the user to compete against themselves. 
+
 ## Features to be added
 As with any project, ongoing development is always key. Future features I would like to plan into my project are: 
  * Global leaderboards
@@ -67,10 +93,36 @@ As with any project, ongoing development is always key. Future features I would 
  * Different game modes - e.g can pass through walls and appear on opposite side of game area rather than game over
 
  ## Testing
- 
+
+ ### Responsiveness
+ The site is fully responsive and the game area scales down by device size to ensure a smooth experience on all devices. The only issue I encountered was finding a compromise on the touch input button sizes to ensure that screen sizes as small as an iPhone 5 could display the game area and the touch controls on screen. 
+
+ ### LightHouse
+
+
+ ## Desktop
+ ![Lighthouse for Desktop](docs/read-me/lighthouse-desktop.png) 
 
 
 
+## Bugs
+During the development of Snake I encountered numerous obstacles and bugs. A few of larger ones are listed below.
+
+### Fixed Bugs
+ * Bug: Snake was merging with canvas border but "still in play". 
+   * Fix: Set canvas border width to same as snake (pixelSize) and tweaked border size by a pixel to get a pixel perfect layout.
+ * As canvas size decreased with screen size it created odd pixel alignment causing the snake to trigger wall collision before actually hitting the barrier.
+   * Fix: Standardised canvas size based on screen size (300, 450 or 600 pixels wide and tall) and set snake size to the matching ratio (10px, 15px and 20px) to maintain game integrity.
+ * Bug: When game over alert was displaying game could be started with controller when pressing start.
+   * Fix: Set a gamepad stop function and call it in a timeout function the same length as the alert to disable button functionality.
+ * Bug: Gamepad could record multiple button presses in a single tick resulting in the snake turning in on itself and calling game over.
+   * Fix: set stopControls to true and call a timeout function to turn controls back on each tick. 
+ * Bug: When implementing local storage variables, score would update as a string. 
+   * Fix: Call score as a parseInt when calling the value from local storage to convert into an integer.
+
+### Known Bugs
+ * On IOS sounds do not play correctly. This is due to inbuilt OS settings which stop sounds playing by default.
+ * On IOS haptic feedback does not play when using touch controls. Again this is because of OS system settings.
 
 ## Credits
 
@@ -87,3 +139,6 @@ Whilst I have tried to deviate as much as possible and add many additional featu
 * The Haptics effect JavaScript file for Android phones was taken from (http://hapticsjs.org/)
 * The script to enable controller inputs was taken from (https://github.com/alvaromontoro/gamecontroller.js/)
 * Favicon images were generated with (https://realfavicongenerator.net/)
+
+### Thanks
+* [Richard Wells](https://github.com/D0nni387) - Code Institute mentor who's advice and guidance supported me in the completion of this project and encouraged me to go above and beyond what I thought I could achieve. 

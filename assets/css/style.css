@@ -144,6 +144,31 @@ input[type='radio'] {
     background-color: #e4e3e3;
 }
 
+.snake {
+    display: inline-block;
+    background-color: #008000;
+    border: 1px solid #000;
+    width: 1rem;
+    height: 1rem;
+}
+
+.food {
+    display: inline-block;
+    background-color: #C7372F;
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+}
+
+.bonus-food {
+    display: inline-block;
+    background-color: #8DB600;
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+}
 
 
 section {
@@ -228,7 +253,9 @@ section {
     float: right;
 }
 
-
+.margin-bottom {
+    margin-bottom: 1rem;
+}
 
 #startGame {
     position: absolute;

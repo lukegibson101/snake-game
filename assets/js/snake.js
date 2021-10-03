@@ -5,19 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let difficultySetting = document.getElementById("difficulty-mode");
     let localStorage = window.localStorage;
 
-    gameControl.on('connect', function(gamepad) {
-        gamepad.on('up', moveCharacterUp);
-      });
-
-      gameControl.on('connect', gamepad => {
-        console.log('A new gamepad was connected!');
-        gamepad.on('button0', () => { console.log('Button 0 still pressed...'); })
-      });
-
-      
-       
-
-
     // define gameboard
     let gameBoard = document.getElementById("snakeBoard");
     parent = gameBoard.parentNode;
@@ -431,6 +418,64 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+
+    gameControl.on('connect', function (gamepad) {
+        if (startGame) {
+            if (changingSnakeDirection) return;
+            changingSnakeDirection = true;
+            gamepad.before('button3', moveUp);
+            gamepad.before('button0', moveDown);
+            gamepad.before('button2', moveLeft);
+            gamepad.before('button1', moveRight);
+            gamepad.before('button12', moveUp);
+            gamepad.before('button13', moveDown);
+            gamepad.before('button14', moveLeft);
+            gamepad.before('button15', moveRight);
+            gamepad.before('up0', moveUp);
+            gamepad.before('down0', moveDown);
+            gamepad.before('left0', moveLeft);
+            gamepad.before('right0', moveRight);
+            gamepad.before('up1', moveUp);
+            gamepad.before('down1', moveDown);
+            gamepad.before('left1', moveLeft);
+            gamepad.before('right1', moveRight);
+        }
+    });
+
+    function moveUp() {
+        let downDir = dy === pixelSize;
+        if (!downDir) {
+            dx = 0;
+            dy = -pixelSize;
+        }
+    }
+
+    function moveDown() {
+        let upDir = dy === -pixelSize;
+        if (!upDir) {
+            dx = 0;
+            dy = pixelSize;
+        }
+    }
+
+    function moveLeft() {
+        let rightDir = dx === pixelSize;
+        if (!rightDir) {
+            dx = -pixelSize;
+            dy = 0;
+        }
+    }
+
+    function moveRight() {
+        let leftDir = dx === -pixelSize;
+        if (!leftDir) {
+            dx = pixelSize;
+            dy = 0;
+        }
+    }
+
+
+
 
     /**
      * 

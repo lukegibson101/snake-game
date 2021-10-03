@@ -6,7 +6,6 @@
 1. [**Future Features to be Added**](#future-features-to-be-added)
 1. [**Testing**](#testing)
 1. [**Bugs**](#bugs)
-1. [**Other Changes**](#other-changes)
 1. [**Deployment**](#deployment)
 1. [**Technology Used**](#technology-used)
 1. [**Credits**](#credits)
@@ -58,6 +57,18 @@ game canvas to all fit on screen.
 ![Wireframe desktop](docs/wireframes/snake-desktop.png)
 ![Wireframe tablet](docs/wireframes/snake-tablet.png)
 ![Wireframe mobile](docs/wireframes/snake-mobile.png)
+
+## Features to be added
+As with any project, ongoing development is always key. Future features I would like to plan into my project are: 
+ * Global leaderboards
+ * More level types - add in hazards to the game area for the snake to avoid
+ * Score X amount of points to advance to the next game area
+ * Improved graphics
+ * Different game modes - e.g can pass through walls and appear on opposite side of game area rather than game over
+
+ ## Testing
+ 
+
 
 
 

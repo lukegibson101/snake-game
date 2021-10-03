@@ -528,7 +528,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     generateBonusFood();
                     clearGameMessage = false;
                     bonusScore = 10;
-                    gameMessage.innerHTML = `<strong><font color="green">Bonus Mode! +10 score per food eaten!</font></strong>`;
+                    gameMessage.innerHTML = `<strong><font color="#008000">Bonus Mode! +10 score per food eaten!</font></strong>`;
                     if (audio === "true") {
                         eatBonusFoodSound.play();
                     }

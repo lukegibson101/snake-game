@@ -582,8 +582,8 @@ document.addEventListener("DOMContentLoaded", function () {
      * Take generated co-ordinates and draw food to the canvas
      */
     function drawFood() {
-        gameBoardCtx.fillStyle = 'red';
-        gameBoardCtx.strokeStyle = 'black';
+        gameBoardCtx.fillStyle = '#C7372F';
+        gameBoardCtx.strokeStyle = '#000';
         gameBoardCtx.lineWidth = 1;
         gameBoardCtx.beginPath();
         gameBoardCtx.arc(foodX + (pixelSize / 2), foodY + (pixelSize / 2), (pixelSize / 2), 0, 2 * Math.PI);
@@ -596,8 +596,8 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function drawBonusFood() {
         if (bonusFood) {
-            gameBoardCtx.fillStyle = 'green';
-            gameBoardCtx.strokeStyle = 'black';
+            gameBoardCtx.fillStyle = '#8DB600';
+            gameBoardCtx.strokeStyle = '#000';
             gameBoardCtx.lineWidth = 1;
             gameBoardCtx.beginPath();
             gameBoardCtx.arc(bonusFoodX + (pixelSize / 2), bonusFoodY + (pixelSize / 2), (pixelSize / 2), 0, 2 * Math.PI);

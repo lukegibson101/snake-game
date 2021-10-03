@@ -316,6 +316,61 @@ document.addEventListener("DOMContentLoaded", function () {
         return collideLeftWall || collideRightWall || collideToptWall || collideBottomWall;
     }
 
+    function gameStartOrPause() {
+        if (stopControls === false) {
+            if (startGame === false) {
+                startGame = true;
+                pause = false;
+                beginGame.style = "display:none;";
+                playButton.innerHTML = '<i class="fas fa-pause"></i>';
+                if (audio === "true") {
+                    gameSound = new sound("assets/sound/game-start.mp3");
+                    gameSound.play();
+                }
+            } else if (pause === false && startGame === true) {
+                pause = true;
+                paused.style.display = "inline-block";
+                playButton.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                pause = false;
+                paused.style.display = "none";
+                playButton.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+        }
+    }
+
+    function moveUp() {
+        let downDir = dy === pixelSize;
+        if (!downDir) {
+            dx = 0;
+            dy = -pixelSize;
+        }
+    }
+
+    function moveDown() {
+        let upDir = dy === -pixelSize;
+        if (!upDir) {
+            dx = 0;
+            dy = pixelSize;
+        }
+    }
+
+    function moveLeft() {
+        let rightDir = dx === pixelSize;
+        if (!rightDir) {
+            dx = -pixelSize;
+            dy = 0;
+        }
+    }
+
+    function moveRight() {
+        let leftDir = dx === -pixelSize;
+        if (!leftDir) {
+            dx = pixelSize;
+            dy = 0;
+        }
+    }
+
     /**
      * 
      * @param {*} event key press
@@ -380,64 +435,6 @@ document.addEventListener("DOMContentLoaded", function () {
         gamepad.before('button9', gameStartOrPause);
     });
 
-    function gameStartOrPause() {
-        if (stopControls === false) {
-            if (startGame === false) {
-                startGame = true;
-                pause = false;
-                beginGame.style = "display:none;";
-                playButton.innerHTML = '<i class="fas fa-pause"></i>';
-                if (audio === "true") {
-                    gameSound = new sound("assets/sound/game-start.mp3");
-                    gameSound.play();
-                }
-            } else if (pause === false && startGame === true) {
-                pause = true;
-                paused.style.display = "inline-block";
-                playButton.innerHTML = '<i class="fas fa-play"></i>';
-            } else {
-                pause = false;
-                paused.style.display = "none";
-                playButton.innerHTML = '<i class="fas fa-pause"></i>';
-            }
-        }
-    }
-
-    function moveUp() {
-        let downDir = dy === pixelSize;
-        if (!downDir) {
-            dx = 0;
-            dy = -pixelSize;
-        }
-    }
-
-    function moveDown() {
-        let upDir = dy === -pixelSize;
-        if (!upDir) {
-            dx = 0;
-            dy = pixelSize;
-        }
-    }
-
-    function moveLeft() {
-        let rightDir = dx === pixelSize;
-        if (!rightDir) {
-            dx = -pixelSize;
-            dy = 0;
-        }
-    }
-
-    function moveRight() {
-        let leftDir = dx === -pixelSize;
-        if (!leftDir) {
-            dx = pixelSize;
-            dy = 0;
-        }
-    }
-
-
-
-
     /**
      * 
      * @returns touch / click controls for buttons
@@ -448,36 +445,25 @@ document.addEventListener("DOMContentLoaded", function () {
         if (changingSnakeDirection) return;
         changingSnakeDirection = true;
 
-        //define what action to take depending on snake direction
-        let leftDir = dx === -pixelSize;
-        let rightDir = dx === pixelSize;
-        let upDir = dy === -pixelSize;
-        let downDir = dy === pixelSize;
-
-        if (this.getAttribute("id") === "btn-left" && !rightDir) {
-            dx = -pixelSize;
-            dy = 0;
+        if (this.getAttribute("id") === "btn-left") {
+            moveLeft();
         }
 
-        if (this.getAttribute("id") === "btn-right" && !leftDir) {
-            dx = pixelSize;
-            dy = 0;
+        if (this.getAttribute("id") === "btn-right") {
+            moveRight();
         }
 
-        if (this.getAttribute("id") === "btn-up" && !downDir) {
-            dx = 0;
-            dy = -pixelSize;
+        if (this.getAttribute("id") === "btn-up") {
+            moveUp();
         }
 
-        if (this.getAttribute("id") === "btn-down" && !upDir) {
-            dx = 0;
-            dy = pixelSize;
+        if (this.getAttribute("id") === "btn-down") {
+            moveDown();
         }
 
         if (this.getAttribute("id") === "pause") {
             gameStartOrPause();
         }
-
     }
 
     let touchControls = document.getElementsByClassName('btnControls');

@@ -262,7 +262,7 @@ section {
     width: 600px;
     height: 600px;
     border: 2px solid #000;
-    background: url('../images/snake.png') no-repeat center;
+    background: url('../images/snake.webp') no-repeat center;
     background-size: contain;
     background-color: #c0c0c0;
     font-size: 3rem;
@@ -303,12 +303,11 @@ section {
     #startGame,
     #paused {
         font-size: 7.5rem;
-        width: 450px;
+        width: 100%;
         height: 450px;
     }
 
-
-
+    
     #game-title {
         margin-top: -7.5rem;
         font-size: 2.25rem;
@@ -348,12 +347,6 @@ section {
         width: 300px;
         height: 300px;
     }
-
-    #startGame {
-        background: url('../images/snake-mobile.png') no-repeat center;
-        background-size: contain;
-    }
-
 
     #game-title {
         margin-top: -5rem;

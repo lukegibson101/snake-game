@@ -52,6 +52,14 @@ The target user is someone who wants to kill some time with a simple fun game
  I used (https://userway.org/) to check the contrasting colors worked well
  ![Contrast Checker](docs/read-me/contrast-checker.png) 
 
+### Wireframes
+I used wireframes to initially plan the project. As the project developed I made some alterations based on design challenges I faced, particularly for mobile devices and the need for the touch controls and the
+game canvas to all fit on screen. 
+![Wireframe desktop](docs/wireframes/snake-desktop.png)
+![Wireframe tablet](docs/wireframes/snake-tablet.png)
+![Wireframe mobile](docs/wireframes/snake-mobile.png)
+
+
 
 ## Credits
 

@@ -412,6 +412,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (keyPressed === spaceBar || keyPressed === enter) {
             gameStartOrPause();
         }
+        stopControls = true;
+            setTimeout(delayedController, speed);
     }
 
     gameControl.on('connect', function (gamepad) {

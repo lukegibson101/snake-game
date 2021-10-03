@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     timer: 2000
                 });
             }
-
+            resetGame = false;
             pause = false;
             paused.style.display = "none";
             if (highScore < currentScore) {

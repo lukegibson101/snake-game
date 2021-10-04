@@ -1,6 +1,6 @@
 # **A Game of Snake**
 A game of Snake is a website where users can visit to play the classic game Snake. It is targeting users either looking for a bit of Nokia nostalgia or those looking for a quick easy and fun game to play.
-The site has several customisation options available for the user to truly set up the look ad feel of the game as they want. It also offers several difficulty modes to keep the user coming back for more.
+The site has several customisation options available for the user to truly set up the look and feel of the game as they want. It also offers several difficulty modes to keep the user coming back for more.
 
 ![Am I Responsive?](docs/read-me/am-i-responsive.png) 
 

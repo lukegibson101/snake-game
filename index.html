@@ -39,29 +39,29 @@
                     <h2>Settings</h2>
                 </div>
                 <form method="POST" id="settings-form">
-                <div class="margin-bottom">
-                    <h3>Difficulty</h3>
-                        
-                            <input type="radio" id="300" name="difficulty" value="300">
-                            <label for="300"><i class="fas fa-star"></i> <i class="far fa-star"></i> <i
-                                    class="far fa-star"></i> Easy (20 points per food eaten. Slow)</label><br>
-                            <input type="radio" id="200" name="difficulty" value="200" checked>
-                            <label for="200"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
-                                    class="far fa-star"></i> Medium (30 points per food eaten. Normal)</label><br>
-                            <input type="radio" id="100" name="difficulty" value="100">
-                            <label for="100"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
-                                    class="fas fa-star"></i>Hard (50 points per food eaten. Fast.)</label>
-                            </div>
-                            <div class="margin-bottom">
-                    <h3>Audio</h3>
-                    
+                    <div class="margin-bottom">
+                        <h3>Difficulty</h3>
+
+                        <input type="radio" id="300" name="difficulty" value="300">
+                        <label for="300"><i class="fas fa-star"></i> <i class="far fa-star"></i> <i
+                                class="far fa-star"></i> Easy (20 points per food eaten. Slow)</label><br>
+                        <input type="radio" id="200" name="difficulty" value="200" checked>
+                        <label for="200"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                                class="far fa-star"></i> Medium (30 points per food eaten. Normal)</label><br>
+                        <input type="radio" id="100" name="difficulty" value="100">
+                        <label for="100"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                                class="fas fa-star"></i>Hard (50 points per food eaten. Fast.)</label>
+                    </div>
+                    <div class="margin-bottom">
+                        <h3>Audio</h3>
+
                         <input type="radio" id="enable" name="audio" value="true">
                         <label for="enable">Enabled</label><br>
                         <input type="radio" id="disable" name="audio" value="false" checked>
                         <label for="disable">Disabled</label>
                     </div>
                     <div class="margin-bottom">
-                    <h3>Change Snake Color</h3>
+                        <h3>Change Snake Color</h3>
                         <label for="snakeColor">Change Snake Color:</label>
                         <input type="color" id="snakeColor" name="snakeColor" value="#008000"><br>
                         <label for="snakeBorder">Change Snake Border Color:</label>
@@ -70,63 +70,62 @@
                         <input type="color" id="canvasBg" name="canvasBg" value="#c0c0c0"><br>
                         <label for="pageBg">Change Page Background:</label>
                         <input type="color" id="pageBg" name="pageBg" value="#f5f5f5"><br>
-</div>
-<div class="margin-bottom">
+                    </div>
+                    <div class="margin-bottom">
                         <button type="submit" class="submit">
                             Submit Changes - Game will restart
                         </button>
                         <button type="reset" class="reset">
                             Reset to default options
                         </button>
-                        </div>
-                        </form>
-                    
-                </div>
+                    </div>
+                </form>
+
             </div>
+        </div>
         <div id="how-modal" class="modal">
             <div class="modal-container" id="how-container">
                 <span class="float-right close" id="how-close"><i class="fas fa-times"></i></span>
                 <div>
-                        <h2>Game Rules</h2>
-                        <div class="margin-bottom">
-                            <div class="snake"></div><div class="snake"></div><span class="snake"></span><span class="snake"></span><span class="snake"></span>
-                            Guide the snake around the game area to collect food and increase your Score. If you hit the
-                            barrier or the snake hits itself it is game over!
-                        </div>
-                        <div class="margin-bottom">
-                            <span class="food"></span>
-                            Eat the red food to increase your score. For every 5 food eaten you will level up and the
-                            Snake's speed will increase.
-                        </div>
-                        <div class="margin-bottom">
-                            <span class="bonus-food"></span>
-                            Bonus food will appear when you level up and disappear after a few seconds. If you eat this
-                            you will gain +10 to your score per food eaten until you level up.
-                        </div>
-                        <h2>Controls</h2>
-                        <div class="margin-bottom">
-                            Snake has been designed with player options in mind and has various different control
-                            schemes.
-                        </div>
-                        <h3>Keyboard <i class="far fa-keyboard"></i></h3>
-                        <div class="margin-bottom">
-                            Players can control the direction of the snake with the Arrow Keys or with wasd.<br>
-                            Enter / Space starts and pauses the game.
-                        </div>
-                        <h3>Touch Controls <i class="far fa-hand-point-up"></i></h3>
-                        <div class="margin-bottom">
-                            The game can be fully controlled with touch controls. The directional arrows are used to
-                            control the snake.<br>
-                            The play button starts and pauses the game. The game can also be started by tapping the game
-                            area.
-                        </div>
-                        <h3>Game Controller <i class="fas fa-gamepad"></i></h3>
-                        <div class="margin-bottom">
-                            Snake is compatable with most game controllers and can be controlled with the Dpad, Analogue
-                            sticks or Face buttons.<br>
-                            The Start button starts the game and pauses it.
-                        </div>
-                    
+                    <h2>Game Rules</h2>
+                    <div class="margin-bottom">
+                        <div class="snake"></div><div class="snake"></div><div class="snake"></div><div class="snake"></div><div class="snake"></div>
+                        Guide the snake around the game area to collect food and increase your Score. If you hit the
+                        barrier or the snake hits itself it is game over!
+                    </div>
+                    <div class="margin-bottom">
+                        <span class="food"></span>
+                        Eat the red food to increase your score. For every 5 food eaten you will level up and the
+                        Snake's speed will increase.
+                    </div>
+                    <div class="margin-bottom">
+                        <span class="bonus-food"></span>
+                        Bonus food will appear when you level up and disappear after a few seconds. If you eat this
+                        you will gain +10 to your score per food eaten until you level up.
+                    </div>
+                    <h2>Controls</h2>
+                    <div class="margin-bottom">
+                        Snake has been designed with player options in mind and has various different control
+                        schemes.
+                    </div>
+                    <h3>Keyboard <i class="far fa-keyboard"></i></h3>
+                    <div class="margin-bottom">
+                        Players can control the direction of the snake with the Arrow Keys or with wasd.<br>
+                        Enter / Space starts and pauses the game.
+                    </div>
+                    <h3>Touch Controls <i class="far fa-hand-point-up"></i></h3>
+                    <div class="margin-bottom">
+                        The game can be fully controlled with touch controls. The directional arrows are used to
+                        control the snake.<br>
+                        The play button starts and pauses the game. The game can also be started by tapping the game
+                        area.
+                    </div>
+                    <h3>Game Controller <i class="fas fa-gamepad"></i></h3>
+                    <div class="margin-bottom">
+                        Snake is compatable with most game controllers and can be controlled with the Dpad, Analogue
+                        sticks or Face buttons.<br>
+                        The Start button starts the game and pauses it.
+                    </div>
                 </div>
             </div>
         </div>
@@ -156,7 +155,6 @@
                     </div>
                 </button>
                 <button id="paused"><i class="far fa-pause-circle"></i></button>
-
                 <canvas id="snakeBoard"></canvas>
             </div>
             <div id="game-message"></div>

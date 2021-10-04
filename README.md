@@ -6,37 +6,61 @@ The site has several customisation options available for the user to truly set u
 
 ## **Table of Contents**
 1. [**Planning Stage**](#planning-stage)
+  * Project Goals
+  * User Goals
+  * User Stories
+  * Design Goals
+  * Design Choices
+    * Font
+    * Color Scheme
+  * Wireframes
 1. [**Features**](#features)
+  * Difficulty
+  * Food
+  * Customisation
+  * High Score
 1. [**Future Features to be Added**](#future-features-to-be-added)
 1. [**Testing**](#testing)
+  * Responsiveness
+  * Lighthouse
+    * Desktop
+    * Mobile
+  * Validators
 1. [**Bugs**](#bugs)
+  * Fixed Bugs
+  * Known Bugs
 1. [**Technology Used**](#technology-used)
+  * Languages
+  * Libraries
 1. [**Deployment**](#deployment)
 1. [**Credits**](#credits)
+  * Content
+  * Media
+  * Thanks
 
 ## **Planning Stage**
 
 ### Project Goals
-The goal of this project was to create a simple game for users to play, whilst providing several customisable options as well as multiple control schemes for ease of use
+The goal of this project was to create a simple game for users to play, whilst providing several customisable options as well as multiple control schemes for ease of use.
 
 ### User Goals
-The target user is someone who wants to kill some time with a simple fun game
- * A casual gamer
- * A user who likes to fill their time with something quick and easy
- * A user looking to play a game whilst commuting or on a break at work
+The target user is someone who wants to kill some time with a simple fun game.
+ * A casual gamer.
+ * A user who likes to fill their time with something quick and easy.
+ * A user looking to play a game whilst commuting or on a break at work.
 
  ### User Stories
- * As a user I want the site to be easy to use and easily navigable
- * As a user I want to be able to challenge myself to beat my previous best score
- * As a user I want to be able to customise my game area to look and feel exactly as I want it
- * As a user I want to be able to control the game easily
- * As a user I want to be able to pick up and play a simple fun game
+ * As a user I want the site to be easy to use and easy to navigate.
+ * As a user I want to be able to challenge myself to beat my previous best score.
+ * As a user I want to be able to customise my game area to look and feel exactly as I want it.
+ * As a user I want to be able to control the game easily.
+ * As a user I want to be able to pick up and play a simple fun game.
 
  ### Design Goals
- * A simple minimilistic site that works on all devices
- * Customisation options
- * Easy to use controls
- * Be fun enough for users to return to the site and play again
+ * A simple minimilistic site that works on all devices.
+ * Customisation options.
+ * Easy to use controls.
+ * Be fun enough for users to return to the site and play again.
 
 ### Design Choices
  
@@ -47,13 +71,13 @@ The target user is someone who wants to kill some time with a simple fun game
  As an initial color scheme I went with a smoky white background and a grey/silver game canvas and control area. This gives a good contrast but also stays in line with the retro theme. 
  For the Settings modal's I went for a bright yellow to really help it stand out and grab the users attention as they customise their game. 
  For the game itself I went with a green snake with red and green "apples" for food, trying to keep the colors as authentic as possible.
- * Background: #f5f5f5
- * Game Canvas and Information panels: #c0c0c0
- * Snake: #008000
- * Food: #C7372F
- * Bonus Food: #8DB600
- I used (https://userway.org/) to check the contrasting colors worked well
- ![Contrast Checker](docs/read-me/contrast-checker.png) 
+ * Background: #f5f5f5.
+ * Game Canvas and Information panels: #c0c0c0.
+ * Snake: #008000.
+ * Food: #C7372F.
+ * Bonus Food: #8DB600.
+ I used (https://userway.org/) to check the contrasting colors worked well.
+ ![Contrast Checker](docs/read-me/contrast-checker.png)
 
 ### Wireframes
 I used wireframes to initially plan the project. As the project developed I made some alterations based on design challenges I faced, particularly for mobile devices and the need for the touch controls and the
@@ -95,11 +119,11 @@ A users high score is stored, allowing the user to compete against themselves.
 
 ## **Features to be added**
 As with any project, ongoing development is always key. Future features I would like to plan into my project are: 
- * Global leaderboards
- * More level types - add in hazards to the game area for the snake to avoid
- * Score X amount of points to advance to the next game area
- * Improved graphics
- * Different game modes - e.g can pass through walls and appear on opposite side of game area rather than game over
+ * Global leaderboards.
+ * More level types - add in hazards to the game area for the snake to avoid.
+ * Score X amount of points to advance to the next game area.
+ * Improved graphics.
+ * Different game modes - e.g can pass through walls and appear on opposite side of game area rather than game over.
 
  ## **Testing**
 
@@ -161,14 +185,14 @@ During the development of Snake I encountered numerous obstacles and bugs. A few
  ## **Deployment**
 I deployed the website on GitHub pages via the following:
 
-1. From the projects repository go to the **settings** tab
-1. On the left hand menu near the bottom click on the **pages** link
-1. Under **Source** click on the button "None" which will produce a drop down
-1. Click on **Main** and then click **Save**
-1. The following message will appear:  **Your site is ready to be published**
-1. After a few minutes the site will be published and the message will change to **Your site is published**
+1. From the projects repository go to the **settings** tab.
+1. On the left hand menu near the bottom click on the **pages** link.
+1. Under **Source** click on the button "None" which will produce a drop down.
+1. Click on **Main** and then click **Save**.
+1. The following message will appear:  **Your site is ready to be published**.
+1. After a few minutes the site will be published and the message will change to **Your site is published**.
 
-You can access the live site via the following link [A Game of Snake](https://gibbo101.github.io/snake-game/)
+You can access the live site via the following link [A Game of Snake](https://gibbo101.github.io/snake-game/).
 
 
 ## **Credits**
@@ -178,9 +202,9 @@ You can access the live site via the following link [A Game of Snake](https://gi
 Whilst I have tried to deviate as much as possible and add many additional features, there may be some similarities in the code.
 
 ### Media
-* The canvas image was taken from (https://pixabay.com)
-* Sound effects were taken from (https://mixkit.co/free-sound-effects/)
-* Favicon images were generated with (https://realfavicongenerator.net/)
+* The canvas image was taken from (https://pixabay.com).
+* Sound effects were taken from (https://mixkit.co/free-sound-effects/).
+* Favicon images were generated with (https://realfavicongenerator.net/).
 
 ### Thanks
 * [Richard Wells](https://github.com/D0nni387) - Code Institute mentor who's advice and guidance supported me in the completion of this project and encouraged me to go above and beyond what I thought I could achieve. 

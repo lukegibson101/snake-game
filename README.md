@@ -126,6 +126,7 @@ As with any project, ongoing development is always key. Future features I would 
  * Different game modes - e.g can pass through walls and appear on opposite side of game area rather than game over.
 
  ## **Testing**
+ The website has been tested on Chrome, MS Edge and Firefox with no issues found. It has also been tested on iPhone and Android devices with no issues reported.
 
  ### Responsiveness
  The site is fully responsive and the game area scales down by device size to ensure a smooth experience on all devices. The only issue I encountered was finding a compromise on the touch input button sizes to ensure that screen sizes as small as an iPhone 5 could display the game area and the touch controls on screen. 

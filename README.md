@@ -5,7 +5,7 @@ The site has several customisation options available for the user to truly set u
 ![Am I Responsive?](docs/read-me/am-i-responsive.png) 
 
 ## **Table of Contents**
-1. [**Planning Stage**](#planning-stage)
+* [**Planning Stage**](#planning-stage)
   * Project Goals
   * User Goals
   * User Stories
@@ -14,26 +14,26 @@ The site has several customisation options available for the user to truly set u
     * Font
     * Color Scheme
   * Wireframes
-1. [**Features**](#features)
+* [**Features**](#features)
   * Difficulty
   * Food
   * Customisation
   * High Score
-1. [**Future Features to be Added**](#future-features-to-be-added)
-1. [**Testing**](#testing)
+* [**Future Features to be Added**](#future-features-to-be-added)
+* [**Testing**](#testing)
   * Responsiveness
   * Lighthouse
     * Desktop
     * Mobile
   * Validators
-1. [**Bugs**](#bugs)
+* [**Bugs**](#bugs)
   * Fixed Bugs
   * Known Bugs
-1. [**Technology Used**](#technology-used)
+* [**Technology Used**](#technology-used)
   * Languages
   * Libraries
-1. [**Deployment**](#deployment)
-1. [**Credits**](#credits)
+* [**Deployment**](#deployment)
+* [**Credits**](#credits)
   * Content
   * Media
   * Thanks

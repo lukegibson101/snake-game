@@ -254,7 +254,7 @@ section {
 }
 
 #game-title {
-    margin-top: -10rem;
+    margin-top: 10rem
 }
 
 #play-now {
@@ -290,7 +290,7 @@ section {
     }
 
     #game-title {
-        margin-top: -7.5rem;
+        margin-top: 7.5rem;
         font-size: 2.25rem;
     }
 
@@ -331,7 +331,7 @@ section {
     }
 
     #game-title {
-        margin-top: -5rem;
+        margin-top: 5rem;
         font-size: 1.5rem;
     }
 

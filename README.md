@@ -111,7 +111,7 @@ Before running Lighthouse I converted the snake image into the webp format. Webp
 All HTML files were run through (https://validator.w3.org/) and my CSS file was run through (https://jigsaw.w3.org/css-validator/) to ensure all code meets the correct standard. 
 There was one error found in the HTML, however, this part of the code formed a vital function of the game and despite trying to fix I could not find a solution. No errors were found for the CSS. 
 ![HTML Error](docs/read-me/html-validator.png)
-snake.js and modal.js were run through (https://jshint.com/) and no errors were found. 
+For javasscript, snake.js and modal.js were run through (https://jshint.com/) and no errors were found. 
 
 
 ## Bugs
@@ -125,7 +125,7 @@ During the development of Snake I encountered numerous obstacles and bugs. A few
  * Bug: When game over alert was displaying game could be started with controller when pressing start.
    * Fix: Set a gamepad stop function and call it in a timeout function the same length as the alert to disable button functionality.
  * Bug: Gamepad could record multiple button presses in a single tick resulting in the snake turning in on itself and calling game over.
-   * Fix: set stopControls to true and call a timeout function to turn controls back on each tick. 
+   * Fix: set stopControls to true and call a timeout function to turn controls back on after 50 miliseconds. 
  * Bug: When implementing local storage variables, score would update as a string. 
    * Fix: Call score as a parseInt when calling the value from local storage to convert into an integer.
 

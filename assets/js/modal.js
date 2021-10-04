@@ -1,7 +1,6 @@
 let modalBtn = document.getElementsByClassName('nav-btn');
 for (let i = 0; i < modalBtn.length; i++) {
     modalBtn[i].addEventListener('click', showModal);
-
 }
 
 /**

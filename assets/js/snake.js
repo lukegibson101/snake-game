@@ -173,15 +173,15 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem('difficulty', `<i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>`);
             localStorage.setItem('scorePerFood', scorePerFood);
         }
-        audio = settingsForm.elements['audio'].value;
+        audio = settingsForm.elements.audio.value;
         localStorage.setItem('audio', audio);
-        snakeColor = settingsForm.elements['snakeColor'].value;
+        snakeColor = settingsForm.elements.snakeColor.value;
         localStorage.setItem('snakeColor', snakeColor);
-        snakeBorder = settingsForm.elements['snakeBorder'].value;
+        snakeBorder = settingsForm.elements.snakeBorder.value;
         localStorage.setItem('snakeBorder', snakeBorder);
-        canvasBg = settingsForm.elements['canvasBg'].value;
+        canvasBg = settingsForm.elements.canvasBg.value;
         localStorage.setItem('canvasBg', canvasBg);
-        pageBg = settingsForm.elements['pageBg'].value;
+        pageBg = settingsForm.elements.pageBg.value;
         localStorage.setItem('pageBg', pageBg);
         document.body.style.backgroundColor = pageBg;
         gameMessage.style.borderColor = pageBg;

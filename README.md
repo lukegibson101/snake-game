@@ -142,6 +142,8 @@ Before running Lighthouse I converted the snake image into the webp format. Webp
 
   ### **Validators**
 ![Valid CSS](http://jigsaw.w3.org/css-validator/images/vcss)
+
+
 All HTML files were run through (https://validator.w3.org/) and my CSS file was run through (https://jigsaw.w3.org/css-validator/) to ensure all code meets the correct standard. 
 No errors were found for HTML or CSS. 
 For javasscript, snake.js and modal.js were run through (https://jshint.com/) and no errors were found. 

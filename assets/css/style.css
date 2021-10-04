@@ -68,7 +68,7 @@ li {
     margin: 0 auto;
     top: 1rem;
     max-width: 600px;
-    background-color: yellow;
+    background-color: #FFFF00;
     border: 5px solid #000;
     z-index: 12;
     padding: 1rem 1rem 0 1rem;
@@ -112,10 +112,11 @@ input[type='radio'] {
     background-color: #008000;
     border: 5px solid #000;
     border-radius: 10px;
+    color: #FFFF00;
 }
 
 .submit:hover {
-    background-color: #03d403;
+    background-color: #2c2a2a;
 }
 
 .reset {
@@ -318,6 +319,7 @@ section {
     .reset {
         font-size: 1rem;
     }
+
 
     #snake-container {
         width: 300px;

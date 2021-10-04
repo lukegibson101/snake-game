@@ -98,11 +98,20 @@ As with any project, ongoing development is always key. Future features I would 
  The site is fully responsive and the game area scales down by device size to ensure a smooth experience on all devices. The only issue I encountered was finding a compromise on the touch input button sizes to ensure that screen sizes as small as an iPhone 5 could display the game area and the touch controls on screen. 
 
  ### LightHouse
-
+Before running Lighthouse I converted the snake image into the webp format. Webp is a new image format which is significantly smaller in file size to png and jpg and will be the new standard for images in the future. Before converting my images i checked (https://caniuse.com/webp) for compatability. It is compatable on all browsers expect for IE 11 and is compatable on macOS 11 Big Sur and later. This gave what I felt to be an acceptable level of compatability to warrant its use.
 
  ## Desktop
- ![Lighthouse for Desktop](docs/read-me/lighthouse-desktop.png) 
+ ![Lighthouse for Desktop](docs/read-me/lighthouse-desktop.png)
 
+ ## Mobile
+ ![Lighthouse for Desktop](docs/read-me/lighthouse-mobile.png)
+
+  ### **Validators**
+![Valid CSS](http://jigsaw.w3.org/css-validator/images/vcss)
+All HTML files were run through (https://validator.w3.org/) and my CSS file was run through (https://jigsaw.w3.org/css-validator/) to ensure all code meets the correct standard. 
+There was one error found in the HTML, however, this part of the code formed a vital function of the game and despite trying to fix I could not find a solution. No errors were found for the CSS. 
+![HTML Error](docs/read-me/html-validator.png)
+snake.js and modal.js were run through (https://jshint.com/) and no errors were found. 
 
 
 ## Bugs

@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * @returns refreshes game at speed dependent on speed variable. If snake has crashed, resets the game, recalls initial variables, records high score and shows player a message that its game over.
      */
     function playGame() {
-        if (resetGame === true || collisionDetection()) {
+        if (resetGame || collisionDetection()) {
             stopControls = true;
             setTimeout(delayedController, 2000);
             // game is over. Reset some variables back to default
@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     showConfirmButton: false,
                     timer: 2000
                 });
-            } else if (resetGame === true) {
+            } else if (resetGame) {
                 Swal.fire({
                     position: 'top',
                     icon: 'warning',
@@ -310,8 +310,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function gameStartOrPause() {
-        if (stopControls === false) {
-            if (startGame === false) {
+        if (!stopControls) {
+            if (!startGame) {
                 startGame = true;
                 pause = false;
                 beginGame.style = "display:none;";
@@ -319,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (audio === "true") {
                     startGameSound.play();
                 }
-            } else if (pause === false && startGame === true) {
+            } else if (!pause && startGame) {
                 pause = true;
                 paused.style.display = "inline-block";
                 playButton.innerHTML = '<i class="fas fa-play"></i>';
@@ -332,7 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function moveUp() {
-        if (stopControls === false) {
+        if (!stopControls) {
             stopControls = true;
             setTimeout(delayedController, 50);
             let downDir = dy === pixelSize;
@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function moveDown() {
-        if (stopControls === false) {
+        if (!stopControls) {
             stopControls = true;
             setTimeout(delayedController, 50);
             let upDir = dy === -pixelSize;
@@ -356,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function moveLeft() {
-        if (stopControls === false) {
+        if (!stopControls) {
             stopControls = true;
             setTimeout(delayedController, 50);
             let rightDir = dx === pixelSize;
@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function moveRight() {
-        if (stopControls === false) {
+        if (!stopControls) {
             stopControls = true;
             setTimeout(delayedController, 50);
             let leftDir = dx === -pixelSize;
@@ -483,7 +483,7 @@ document.addEventListener("DOMContentLoaded", function () {
      * Move the snake by updating the snake array. Check if leveling up and call to generate bonus food. Update score.
      */
     function moveSnake() {
-        if (pause === false && startGame == true) {
+        if (!pause && startGame == true) {
             let front = {
                 x: snake[0].x + dx,
                 y: snake[0].y + dy

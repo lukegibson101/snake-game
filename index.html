@@ -21,7 +21,9 @@
 </head>
 
 <body>
+    <!--Header-->
     <header>
+        <!--Navigation Buttons to open Modals-->
         <nav>
             <ul>
                 <li><button class="nav-btn" id="settings-btn" aria-label="Adjust Game Settings">
@@ -32,6 +34,7 @@
                     </button></li>
             </ul>
         </nav>
+        <!--Modal for settings-->
         <div id="settings-modal" class="modal">
             <div class="modal-container" id="settings-container">
                 <span class="float-right close" id="settings-close"><i class="fas fa-times"></i></span>
@@ -83,6 +86,7 @@
 
             </div>
         </div>
+        <!--Modal for How to Play-->
         <div id="how-modal" class="modal">
             <div class="modal-container" id="how-container">
                 <span class="float-right close" id="how-close"><i class="fas fa-times"></i></span>
@@ -130,8 +134,10 @@
             </div>
         </div>
     </header>
+    <!--Main body content-->
     <section>
         <div id="snake-container">
+            <!--Scores panel-->
             <div id="scores" class="panel">
                 <strong>
                     Score: <span id="newScore">0</span>
@@ -145,6 +151,7 @@
                     </strong>
                 </div>
             </div>
+            <!--Game area-->
             <div id="canvas-container">
                 <a id="startGame">
                     <div id="game-title">
@@ -157,10 +164,12 @@
                 <button id="paused"><i class="far fa-pause-circle"></i></button>
                 <canvas id="snakeBoard"></canvas>
             </div>
+            <!--Game message panel-->
             <div id="game-message"></div>
         </div>
-        <div id="touch-controls">
-
+        <!--Touch controls box-->
+        <div id="touch-controls"></div>
+        
             <table id="table-buttons">
                 <tr>
                     <td></td>

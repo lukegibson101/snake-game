@@ -38,10 +38,10 @@
                 <div>
                     <h2>Settings</h2>
                 </div>
-                <div>
+                <form method="POST" id="settings-form">
+                <div class="margin-bottom">
                     <h3>Difficulty</h3>
-                    <p>
-                        <form action="" method="POST" id="settings-form">
+                        
                             <input type="radio" id="300" name="difficulty" value="300">
                             <label for="300"><i class="fas fa-star"></i> <i class="far fa-star"></i> <i
                                     class="far fa-star"></i> Easy (20 points per food eaten. Slow)</label><br>
@@ -51,43 +51,42 @@
                             <input type="radio" id="100" name="difficulty" value="100">
                             <label for="100"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
                                     class="fas fa-star"></i>Hard (50 points per food eaten. Fast.)</label>
-                    </p>
+                            </div>
+                            <div class="margin-bottom">
                     <h3>Audio</h3>
-                    <p>
+                    
                         <input type="radio" id="enable" name="audio" value="true">
                         <label for="enable">Enabled</label><br>
                         <input type="radio" id="disable" name="audio" value="false" checked>
                         <label for="disable">Disabled</label>
-                    </p>
+                    </div>
+                    <div class="margin-bottom">
                     <h3>Change Snake Color</h3>
-                    <p>
                         <label for="snakeColor">Change Snake Color:</label>
                         <input type="color" id="snakeColor" name="snakeColor" value="#008000"><br>
                         <label for="snakeBorder">Change Snake Border Color:</label>
-                        <input type="color" id="snakeBorder" name="snakeBorder" value="#000"><br>
+                        <input type="color" id="snakeBorder" name="snakeBorder" value="#000000"><br>
                         <label for="canvasBg">Change Game Area Background:</label>
                         <input type="color" id="canvasBg" name="canvasBg" value="#c0c0c0"><br>
                         <label for="pageBg">Change Page Background:</label>
                         <input type="color" id="pageBg" name="pageBg" value="#f5f5f5"><br>
-
-                    </p>
-                    <p>
+</div>
+<div class="margin-bottom">
                         <button type="submit" class="submit">
                             Submit Changes - Game will restart
                         </button>
                         <button type="reset" class="reset">
                             Reset to default options
                         </button>
+                        </div>
                         </form>
-                    </p>
+                    
                 </div>
             </div>
-        </div>
         <div id="how-modal" class="modal">
             <div class="modal-container" id="how-container">
                 <span class="float-right close" id="how-close"><i class="fas fa-times"></i></span>
                 <div>
-                    <p>
                         <h2>Game Rules</h2>
                         <div class="margin-bottom">
                             <div class="snake"></div><div class="snake"></div><span class="snake"></span><span class="snake"></span><span class="snake"></span>
@@ -104,8 +103,6 @@
                             Bonus food will appear when you level up and disappear after a few seconds. If you eat this
                             you will gain +10 to your score per food eaten until you level up.
                         </div>
-                    </p>
-                    <p>
                         <h2>Controls</h2>
                         <div class="margin-bottom">
                             Snake has been designed with player options in mind and has various different control
@@ -129,7 +126,7 @@
                             sticks or Face buttons.<br>
                             The Start button starts the game and pauses it.
                         </div>
-                    </p>
+                    
                 </div>
             </div>
         </div>
@@ -205,7 +202,7 @@
         </div>
     </section>
     <script src="assets/js/gamecontroller.min.js"></script>
-    <script type="text/javascript" src="assets/js/haptics.js"></script>
+    <script src="assets/js/haptics.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.all.min.js"></script>
     <script src="https://kit.fontawesome.com/cf20a1f091.js" crossorigin="anonymous"></script>
     <script src="assets/js/modal.js"></script>

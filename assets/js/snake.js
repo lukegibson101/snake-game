@@ -1,85 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let gameMessage = document.getElementById("game-message");
-    let playButton = document.getElementById('pause');
-    let stopControls = false;
-    let paused = document.getElementById('paused');
-    let difficultySetting = document.getElementById("difficulty-mode");
-    let localStorage = window.localStorage;
-    let startGameSound = new sound("assets/sound/game-start.mp3");
-    let eatFoodSound = new sound("assets/sound/food.mp3");
-    let levelUpSound = new sound("assets/sound/level-up.mp3");
-    let gameOverSound = new sound("assets/sound/game-over.mp3");
+    // set initial variables
     let eatBonusFoodSound = new sound("assets/sound/bonus-food.mp3");
-    
+    let startGameSound = new sound("assets/sound/game-start.mp3");
+    let gameOverSound = new sound("assets/sound/game-over.mp3");
+    let gameMessage = document.getElementById("game-message");
+    let levelUpSound = new sound("assets/sound/level-up.mp3");
+    let eatFoodSound = new sound("assets/sound/food.mp3");
+    let difficultySetting = document.getElementById("difficulty-mode");
+    let beginGame = document.getElementById('startGame');
+    let playButton = document.getElementById('pause');
+    let paused = document.getElementById('paused');
+    let localStorage = window.localStorage;
+    let clearGameMessage = true;
+    let stopControls = false;
+    let resetGame = false;
 
-    // define gameboard
-    let gameBoard = document.getElementById("snakeBoard");
-    parent = gameBoard.parentNode;
-    gameWidth = parent.offsetWidth;
-    let pixelSize = 20;
-    if (gameWidth < 450) {
-        gameBoard.width = 300;
-        gameBoard.height = 300;
-        pixelSize = 10;
-    } else if (gameWidth < 600) {
-        gameBoard.width = 450;
-        gameBoard.height = 450;
-        pixelSize = 15;
-    } else {
-        gameBoard.width = gameWidth;
-        gameBoard.height = gameWidth;
-        pixelSize = 20;
-    }
-    snakeStart = gameBoard.width - (gameBoard.width / 5);
-    let gameBoardCtx = gameBoard.getContext("2d");
-
-    /**
-     * 
-     * @param {size of pixel for screen} pixelSize 
-     * @param {location of snake at start} snakeStart 
-     */
-    function initialSnake(pixelSize, snakeStart) {
-        snake = [{
-                x: pixelSize * 5,
-                y: snakeStart
-            },
-            {
-                x: pixelSize * 4,
-                y: snakeStart
-            },
-            {
-                x: pixelSize * 3,
-                y: snakeStart
-            },
-            {
-                x: pixelSize * 2,
-                y: snakeStart
-            },
-            {
-                x: pixelSize,
-                y: snakeStart
-            }
-        ];
-    }
-
-    /**
-     * Calls variables to start game.
-     */
-    function resetVariables() {
-        initialSnake(pixelSize, snakeStart);
-
-        currentScore = 0;
-        bonusScore = 0;
-        changingSnakeDirection = false;
-        dx = pixelSize;
-        dy = 0;
-        speed = startSpeed;
-        level = 1;
-        eatCount = 0;
-        startGame = false;
-        bonusFood = false;
-        pause = true;
-    }
+    // event listeners for game inputs
+    beginGame.addEventListener('click', gameStartOrPause);
+    document.addEventListener("keydown", changeSnakeDirection);
+    let settingsForm = document.getElementById("settings-form");
+    settingsForm.addEventListener('submit', handleSettingsSubmit);
 
     // set initial variables that are dynamic
     if (!localStorage.getItem('startSpeed')) {
@@ -141,14 +81,80 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('newHighScore').innerHTML = highScore;
 
     }
-    let resetGame = false;
-    let clearGameMessage = true;
+
+    // define gameboard
+    let gameBoard = document.getElementById("snakeBoard");
+    parent = gameBoard.parentNode;
+    gameWidth = parent.offsetWidth;
+    let pixelSize = 20;
+    if (gameWidth < 450) {
+        gameBoard.width = 300;
+        gameBoard.height = 300;
+        pixelSize = 10;
+    } else if (gameWidth < 600) {
+        gameBoard.width = 450;
+        gameBoard.height = 450;
+        pixelSize = 15;
+    } else {
+        gameBoard.width = gameWidth;
+        gameBoard.height = gameWidth;
+        pixelSize = 20;
+    }
+    snakeStart = gameBoard.width - (gameBoard.width / 5);
+    let gameBoardCtx = gameBoard.getContext("2d");
+
+    // get game started now all initial variables have been called
     resetVariables();
+    playGame();
+    generateFood();
+    generateBonusFood();
 
-    // settings form submitted changes
-    let settingsForm = document.getElementById("settings-form");
-    settingsForm.addEventListener('submit', handleSettingsSubmit);
+    /**
+     * 
+     * @param {size of pixel for screen} pixelSize 
+     * @param {location of snake at start} snakeStart 
+     */
+    function initialSnake(pixelSize, snakeStart) {
+        snake = [{
+                x: pixelSize * 5,
+                y: snakeStart
+            },
+            {
+                x: pixelSize * 4,
+                y: snakeStart
+            },
+            {
+                x: pixelSize * 3,
+                y: snakeStart
+            },
+            {
+                x: pixelSize * 2,
+                y: snakeStart
+            },
+            {
+                x: pixelSize,
+                y: snakeStart
+            }
+        ];
+    }
 
+    /**
+     * Calls variables to start game.
+     */
+    function resetVariables() {
+        initialSnake(pixelSize, snakeStart);
+        currentScore = 0;
+        bonusScore = 0;
+        changingSnakeDirection = false;
+        dx = pixelSize;
+        dy = 0;
+        speed = startSpeed;
+        level = 1;
+        eatCount = 0;
+        startGame = false;
+        bonusFood = false;
+        pause = true;
+    }
 
     /**
      * Handles user input changes and restarts that game
@@ -190,26 +196,14 @@ document.addEventListener("DOMContentLoaded", function () {
         resetGame = true;
     }
 
-    let beginGame = document.getElementById('startGame');
-    beginGame.addEventListener('click', gameStartOrPause);
-
-    playGame();
-    generateFood();
-    generateBonusFood();
-    document.addEventListener("keydown", changeSnakeDirection);
-
     /**
      * sets the play area and sets background color and border
      */
     function drawCanvas() {
-        // background color of canvas
         gameBoardCtx.fillStyle = canvasBg;
-        // canvas border color
         gameBoardCtx.strokeStyle = '#000';
         gameBoardCtx.lineWidth = (pixelSize * 2) - 2;
-        // Draw a filled rectangle to cover the canvas
         gameBoardCtx.fillRect(0, 0, gameBoard.width, gameBoard.height);
-        // draw the canvas border
         gameBoardCtx.strokeRect(0, 0, gameBoard.width, gameBoard.height);
     }
 
@@ -293,14 +287,10 @@ document.addEventListener("DOMContentLoaded", function () {
      * @param {*} draws the snake to the canvas from co-ordinates given in drawSnake 
      */
     function drawEachSnakeSection(snakeSection) {
-        // background color of snake section
         gameBoardCtx.fillStyle = snakeColor;
-        // border of snake section
         gameBoardCtx.strokeStyle = snakeBorder;
         gameBoardCtx.lineWidth = 1;
-        // Define size of each section
         gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, pixelSize, pixelSize);
-        // draw the canvas border
         gameBoardCtx.strokeRect(snakeSection.x, snakeSection.y, pixelSize, pixelSize);
     }
 
@@ -309,8 +299,8 @@ document.addEventListener("DOMContentLoaded", function () {
      * @returns detects if snake has collided with an object to call game over
      */
     function collisionDetection() {
-        for (let i = 4; i < snake.length; i++) { //start at 4 as length of starting snake
-            if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true; //if snake hits itself
+        for (let i = 4; i < snake.length; i++) { 
+            if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true;
         }
         let collideLeftWall = snake[0].x < pixelSize;
         let collideRightWall = snake[0].x > (gameBoard.width - pixelSize) - dx;

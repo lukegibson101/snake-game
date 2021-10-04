@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function drawCanvas() {
         gameBoardCtx.fillStyle = canvasBg;
         gameBoardCtx.strokeStyle = '#000';
-        gameBoardCtx.lineWidth = (pixelSize * 2) - 2;
+        gameBoardCtx.lineWidth = (pixelSize * 2) - 1;
         gameBoardCtx.fillRect(0, 0, gameBoard.width, gameBoard.height);
         gameBoardCtx.strokeRect(0, 0, gameBoard.width, gameBoard.height);
     }

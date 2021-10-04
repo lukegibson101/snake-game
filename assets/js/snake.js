@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // define gameboard
     let gameBoard = document.getElementById("snakeBoard");
-    parent = gameBoard.parentNode;
+    let parent = gameBoard.parentNode;
     gameWidth = parent.offsetWidth;
     let pixelSize = 20;
     if (gameWidth < 450) {
@@ -643,10 +643,10 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.appendChild(this.sound);
         this.play = function () {
             this.sound.play();
-        }
+        };
         this.stop = function () {
             this.sound.pause();
-        }
+        };
     }
 
-}) //end DOM loaded function
+}); //end DOM loaded function

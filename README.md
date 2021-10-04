@@ -72,20 +72,26 @@ There are 3 difficulty settings.
 
  Regardless of difficulty setting, for every food eaten, the user will level up and the snake will move slightly faster. Even on easy difficulty the snake can end up moving really fast.
  However, the users highest potential score will be lower on the easier difficulties. 
+ ![Difficulty](docs/read-me/difficulty.png)
+
 
 ### Food
 Food is generated at game start and everytime the snake "eats" the food to increase score.
 Bonus food is generated everytime the user levels up and despwans after a few seconds. If the snake eats the bonus food the user gains a +10 pint bonus per food eaten for that level.
+![Food](docs/read-me/food.png)
 
 ### Customisation
 Users can set the page up how they like, changing the background color of the page, game area, the snake and the snake outline to create a truly personailised page based on the users preferences.
+![Customisation](docs/read-me/customisation.png)
 
 ### Controls
 There are several options for users to play. They can use touch controls, 2 sets of keyboard inputs (arrow keys and wasd) and several sets of gamepad inputs (D-Pad, anaologue sticks, face buttons)
 allowing users to use what control scheme is most comfortable to them.
+![Controls](docs/read-me/controls.png)
 
 ### High Score
 A users high score is stored, allowing the user to compete against themselves. 
+![High Score](docs/read-me/high-score.png)
 
 ## Features to be added
 As with any project, ongoing development is always key. Future features I would like to plan into my project are: 

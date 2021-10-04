@@ -18,8 +18,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // event listeners for game inputs
     beginGame.addEventListener('click', gameStartOrPause);
     document.addEventListener("keydown", changeSnakeDirection);
+
     let settingsForm = document.getElementById("settings-form");
     settingsForm.addEventListener('submit', handleSettingsSubmit);
+
+    let touchControls = document.getElementsByClassName('btnControls');
+    for (let i = 0; i < touchControls.length; i++) {
+        touchControls[i].addEventListener('click', touchControlsClicked);
+    }
 
     // set initial variables that are dynamic
     if (!localStorage.getItem('startSpeed')) {
@@ -197,21 +203,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * sets the play area and sets background color and border
-     */
-    function drawCanvas() {
-        gameBoardCtx.fillStyle = canvasBg;
-        gameBoardCtx.strokeStyle = '#000';
-        gameBoardCtx.lineWidth = (pixelSize * 2) - 1;
-        gameBoardCtx.fillRect(0, 0, gameBoard.width, gameBoard.height);
-        gameBoardCtx.strokeRect(0, 0, gameBoard.width, gameBoard.height);
-    }
-
-    function delayedController() {
-        stopControls = false;
-    }
-
-    /**
      * 
      * @returns refreshes game at speed dependent on speed variable. If snake has crashed, resets the game, recalls initial variables, records high score and shows player a message that its game over.
      */
@@ -284,18 +275,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * 
-     * @param {*} draws the snake to the canvas from co-ordinates given in drawSnake 
-     */
-    function drawEachSnakeSection(snakeSection) {
-        gameBoardCtx.fillStyle = snakeColor;
-        gameBoardCtx.strokeStyle = snakeBorder;
-        gameBoardCtx.lineWidth = 1;
-        gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, pixelSize, pixelSize);
-        gameBoardCtx.strokeRect(snakeSection.x, snakeSection.y, pixelSize, pixelSize);
-    }
-
-    /**
-     * 
      * @returns detects if snake has collided with an object to call game over
      */
     function collisionDetection() {
@@ -309,6 +288,16 @@ document.addEventListener("DOMContentLoaded", function () {
         return collideLeftWall || collideRightWall || collideToptWall || collideBottomWall;
     }
 
+    /**
+     * Stops controls from functioning
+     */
+    function delayedController() {
+        stopControls = false;
+    }
+
+    /**
+     * Start game or pause game depending on game state
+     */
     function gameStartOrPause() {
         if (!stopControls) {
             if (!startGame) {
@@ -331,6 +320,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    /**
+     * Move Snake Up
+     */
     function moveUp() {
         if (!stopControls) {
             stopControls = true;
@@ -343,6 +335,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    /**
+     * Move snake down
+     */
     function moveDown() {
         if (!stopControls) {
             stopControls = true;
@@ -355,6 +350,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    /**
+     * Move snake left
+     */
     function moveLeft() {
         if (!stopControls) {
             stopControls = true;
@@ -367,6 +365,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    /**
+     * move snake right
+     */
     function moveRight() {
         if (!stopControls) {
             stopControls = true;
@@ -421,6 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // inputs for gamepad controllers
     gameControl.on('connect', function (gamepad) {
             if (changingSnakeDirection) return;
             changingSnakeDirection = true;
@@ -448,7 +450,6 @@ document.addEventListener("DOMContentLoaded", function () {
      * @returns touch / click controls for buttons
      */
     function touchControlsClicked() {
-
         Haptics.vibrate(100);
         if (changingSnakeDirection) return;
         changingSnakeDirection = true;
@@ -472,11 +473,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (this.getAttribute("id") === "pause") {
             gameStartOrPause();
         }
-    }
-
-    let touchControls = document.getElementsByClassName('btnControls');
-    for (let i = 0; i < touchControls.length; i++) {
-        touchControls[i].addEventListener('click', touchControlsClicked);
     }
 
     /**
@@ -581,6 +577,29 @@ document.addEventListener("DOMContentLoaded", function () {
             bonusFoodX = "";
             bonusFoodY = "";
         }
+    }
+
+    /**
+     * sets the play area and sets background color and border
+     */
+     function drawCanvas() {
+        gameBoardCtx.fillStyle = canvasBg;
+        gameBoardCtx.strokeStyle = '#000';
+        gameBoardCtx.lineWidth = (pixelSize * 2) - 1;
+        gameBoardCtx.fillRect(0, 0, gameBoard.width, gameBoard.height);
+        gameBoardCtx.strokeRect(0, 0, gameBoard.width, gameBoard.height);
+    }
+
+    /**
+     * 
+     * @param {*} draws the snake to the canvas from co-ordinates given in drawSnake 
+     */
+     function drawEachSnakeSection(snakeSection) {
+        gameBoardCtx.fillStyle = snakeColor;
+        gameBoardCtx.strokeStyle = snakeBorder;
+        gameBoardCtx.lineWidth = 1;
+        gameBoardCtx.fillRect(snakeSection.x, snakeSection.y, pixelSize, pixelSize);
+        gameBoardCtx.strokeRect(snakeSection.x, snakeSection.y, pixelSize, pixelSize);
     }
 
     /**

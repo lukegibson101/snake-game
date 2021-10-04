@@ -1,4 +1,7 @@
 # **A Game of Snake**
+A game of Snake is a website where users can visit to play the classic game Snake. It is targeting users either looking for a bit of Nokia nostalgia or those looking for a quick easy and fun game to play.
+The site has several customisation options available for the user to truly set up the look ad feel of the game as they want. It also offers several difficulty modes to keep the user coming back for more.
+
 ![Am I Responsive?](docs/read-me/am-i-responsive.png) 
 
 ## Table of Contents
@@ -38,7 +41,7 @@ The target user is someone who wants to kill some time with a simple fun game
 ### Design Choices
  
  #### Font
- Designing Snake I wanted to go for a retro feel and picked a single font from google fonts called Gemunu Libre which was in keeping with the minimilistic design and retro feel.
+ Designing Snake I wanted to go for a retro feel and picked a single font from google fonts called [Gemunu Libre](https://fonts.google.com/specimen/Gemunu+Libre?query=Gemunu+Libre) which was in keeping with the minimilistic design and retro feel.
 
  #### Color Scheme
  As an initial color scheme I went with a smoky white background and a grey/silver game canvas and control area. This gives a good contrast but also stays in line with the retro theme. 
@@ -109,8 +112,7 @@ Before running Lighthouse I converted the snake image into the webp format. Webp
   ### **Validators**
 ![Valid CSS](http://jigsaw.w3.org/css-validator/images/vcss)
 All HTML files were run through (https://validator.w3.org/) and my CSS file was run through (https://jigsaw.w3.org/css-validator/) to ensure all code meets the correct standard. 
-There was one error found in the HTML, however, this part of the code formed a vital function of the game and despite trying to fix I could not find a solution. No errors were found for the CSS. 
-![HTML Error](docs/read-me/html-validator.png)
+No errors were found for HTML or CSS. 
 For javasscript, snake.js and modal.js were run through (https://jshint.com/) and no errors were found. 
 
 
@@ -128,6 +130,10 @@ During the development of Snake I encountered numerous obstacles and bugs. A few
    * Fix: set stopControls to true and call a timeout function to turn controls back on after 50 miliseconds. 
  * Bug: When implementing local storage variables, score would update as a string. 
    * Fix: Call score as a parseInt when calling the value from local storage to convert into an integer.
+* Bug: HTML error when runniong through the validator. Div not allowed inside of a button. 
+  * Fix: Change \<button\> tag to an \<a\> tag. 
+  ![HTML Error](docs/read-me/html-validator.png)
+
 
 ### Known Bugs
  * On IOS sounds do not play correctly. This is due to inbuilt OS settings which stop sounds playing by default.

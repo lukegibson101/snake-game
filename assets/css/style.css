@@ -14,15 +14,12 @@ body {
     width: 100%;
     font-size: 16px;
     background-color: #f5f5f5;
-
 }
 
 
 #nav {
     width: 100%;
     text-align: center;
-
-
 }
 
 ul {
@@ -31,15 +28,11 @@ ul {
     max-width: 600px;
     list-style: none;
     text-align: center;
-
-
 }
 
 li {
     width: 45%;
     display: inline-block;
-
-
 }
 
 .nav-btn {
@@ -51,13 +44,11 @@ li {
     background-color: #c0c0c0;
     font-size: 1.2rem;
     font-weight: 700;
-
 }
 
 .nav-btn:hover {
     background-color: #2c2a2a;
     color: #f5f5f5;
-
 }
 
 .modal {
@@ -83,7 +74,6 @@ li {
     padding: 1rem 1rem 0 1rem;
     font-size: 1.5rem;
     box-sizing: border-box;
-
 }
 
 .close {
@@ -170,7 +160,6 @@ input[type='radio'] {
 
 section {
     width: 100%;
-
 }
 
 #snake-container {
@@ -210,7 +199,6 @@ section {
     padding: 3px;
 }
 
-
 #game-message {
     height: 2rem;
 }
@@ -244,7 +232,6 @@ section {
     border: 2px solid;
     border-color: #f5f5f5;
 }
-
 
 .float-right {
     float: right;
@@ -285,8 +272,6 @@ section {
     border: 1px solid #000;
 }
 
-
-
 @media screen and (max-width: 600px) {
 
     .modal-container {
@@ -304,7 +289,6 @@ section {
         height: 450px;
     }
 
-    
     #game-title {
         margin-top: -7.5rem;
         font-size: 2.25rem;

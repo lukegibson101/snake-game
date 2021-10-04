@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function moveUp() {
         if (stopControls === false) {
             stopControls = true;
-            setTimeout(delayedController, speed);
+            setTimeout(delayedController, 50);
             let downDir = dy === pixelSize;
             if (!downDir) {
                 dx = 0;
@@ -356,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function moveDown() {
         if (stopControls === false) {
             stopControls = true;
-            setTimeout(delayedController, speed);
+            setTimeout(delayedController, 50);
             let upDir = dy === -pixelSize;
             if (!upDir) {
                 dx = 0;
@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function moveLeft() {
         if (stopControls === false) {
             stopControls = true;
-            setTimeout(delayedController, speed);
+            setTimeout(delayedController, 50);
             let rightDir = dx === pixelSize;
             if (!rightDir) {
                 dx = -pixelSize;
@@ -380,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function moveRight() {
         if (stopControls === false) {
             stopControls = true;
-            setTimeout(delayedController, speed);
+            setTimeout(delayedController, 50);
             let leftDir = dx === -pixelSize;
             if (!leftDir) {
                 dx = pixelSize;

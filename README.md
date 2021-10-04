@@ -4,17 +4,17 @@ The site has several customisation options available for the user to truly set u
 
 ![Am I Responsive?](docs/read-me/am-i-responsive.png) 
 
-## Table of Contents
+## **Table of Contents**
 1. [**Planning Stage**](#planning-stage)
 1. [**Features**](#features)
 1. [**Future Features to be Added**](#future-features-to-be-added)
 1. [**Testing**](#testing)
 1. [**Bugs**](#bugs)
-1. [**Deployment**](#deployment)
 1. [**Technology Used**](#technology-used)
+1. [**Deployment**](#deployment)
 1. [**Credits**](#credits)
 
-## Planning Stage
+## **Planning Stage**
 
 ### Project Goals
 The goal of this project was to create a simple game for users to play, whilst providing several customisable options as well as multiple control schemes for ease of use
@@ -62,7 +62,7 @@ game canvas to all fit on screen.
 ![Wireframe tablet](docs/wireframes/snake-tablet.png)
 ![Wireframe mobile](docs/wireframes/snake-mobile.png)
 
-## Features
+## **Features**
 
 ### Difficulty
 There are 3 difficulty settings. 
@@ -93,7 +93,7 @@ allowing users to use what control scheme is most comfortable to them.
 A users high score is stored, allowing the user to compete against themselves. 
 ![High Score](docs/read-me/high-score.png)
 
-## Features to be added
+## **Features to be added**
 As with any project, ongoing development is always key. Future features I would like to plan into my project are: 
  * Global leaderboards
  * More level types - add in hazards to the game area for the snake to avoid
@@ -101,7 +101,7 @@ As with any project, ongoing development is always key. Future features I would 
  * Improved graphics
  * Different game modes - e.g can pass through walls and appear on opposite side of game area rather than game over
 
- ## Testing
+ ## **Testing**
 
  ### Responsiveness
  The site is fully responsive and the game area scales down by device size to ensure a smooth experience on all devices. The only issue I encountered was finding a compromise on the touch input button sizes to ensure that screen sizes as small as an iPhone 5 could display the game area and the touch controls on screen. 
@@ -122,7 +122,7 @@ No errors were found for HTML or CSS.
 For javasscript, snake.js and modal.js were run through (https://jshint.com/) and no errors were found. 
 
 
-## Bugs
+## **Bugs**
 During the development of Snake I encountered numerous obstacles and bugs. A few of larger ones are listed below.
 
 ### Fixed Bugs
@@ -145,20 +145,41 @@ During the development of Snake I encountered numerous obstacles and bugs. A few
  * On IOS sounds do not play correctly. This is due to inbuilt OS settings which stop sounds playing by default.
  * On IOS haptic feedback does not play when using touch controls. Again this is because of OS system settings.
 
-## Credits
+## **Technology Used**
+
+### Languages
+ * HTML
+ * CSS
+ * JavaScript
+
+### Libraries
+ * [Sweet Alert 2](https://sweetalert2.github.io/) - For game over and changing settings alerts.
+ * [Font Awesome](https://fontawesome.com/) - For icons used around the site.
+ * [Haptic Feedback](http://hapticsjs.org/) - Used to implement haptic feedback on touch controls for Android phones.
+ * [Game Controller Support](https://github.com/alvaromontoro/gamecontroller.js/) - Used to enable game controller pad support.
+
+ ## **Deployment**
+I deployed the website on GitHub pages via the following:
+
+1. From the projects repository go to the **settings** tab
+1. On the left hand menu near the bottom click on the **pages** link
+1. Under **Source** click on the button "None" which will produce a drop down
+1. Click on **Main** and then click **Save**
+1. The following message will appear:  **Your site is ready to be published**
+1. After a few minutes the site will be published and the message will change to **Your site is published**
+
+You can access the live site via the following link [A Game of Snake](https://gibbo101.github.io/snake-game/)
+
+
+## **Credits**
 
 ### Content
 * The Snake game was inspired by (https://www.educative.io/blog/javascript-snake-game-tutorial). 
-Whilst I have tried to deviate as much as possible and add many additional features, there may be some similarities in the code
-
+Whilst I have tried to deviate as much as possible and add many additional features, there may be some similarities in the code.
 
 ### Media
 * The canvas image was taken from (https://pixabay.com)
-* Icons used were from (https://fontawesome.com/)
-* Game Over alert was created using SweetAlert2 (https://sweetalert2.github.io/). The script was downloaded directly to the project as the site advised that calling the script from their site could cause some performance issues
 * Sound effects were taken from (https://mixkit.co/free-sound-effects/)
-* The Haptics effect JavaScript file for Android phones was taken from (http://hapticsjs.org/)
-* The script to enable controller inputs was taken from (https://github.com/alvaromontoro/gamecontroller.js/)
 * Favicon images were generated with (https://realfavicongenerator.net/)
 
 ### Thanks
